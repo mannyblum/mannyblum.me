@@ -1,0 +1,197 @@
+:root {
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400; */
+  font-family: "Archivo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+
+  color-scheme: light dark;
+  color: #000;
+  background-color: #f8d6b3;
+
+  /* background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo Narrow", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-gap: 1rem;
+  width: 100%;
+}
+
+.container .card.intro {
+  background-color: #7fbc8c;
+}
+
+.container aside {
+  margin: 10px;
+  padding: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow: 5px 5px;
+}
+
+.container aside ul {
+  /* margin: 10px;
+  padding: 0; */
+  padding-left: 20px;
+}
+
+.container aside ul li {
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.container aside .education p {
+  font-size: 0.9rem;
+}
+
+.container aside .education p strong {
+  font-variation-settings: "wdth" 100;
+  margin-right: 4px;
+  display: block;
+}
+
+.container main {
+  margin: 10px;
+  margin-right: 20px;
+}
+
+.container .card {
+  padding: 20px;
+  background-color: #fff;
+  border: 3px solid #000;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.container .card span.hilite {
+  font-weight: bold;
+  background-color: #87ceeb;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.container .card.shadow {
+  box-shadow: 5px 5px;
+}
+
+.container .card.contact {
+  background-color: #a388ee;
+}
+
+.container .card.job {
+  background-color: #fff;
+}
+
+.container .card.project {
+  background-color: #e3dff2;
+}
+
+.container .experience header {
+  margin-bottom: 20px;
+}
+.container .experience header h2 {
+  color: #ff4911;
+}
+
+main h1 {
+  font-size: 3rem;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+main h2 {
+  font-size: 2.3rem;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+main h3 {
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+main h3 {
+  font-size: 1.8rem;
+  margin: 0;
+  margin-bottom: 0;
+}
+main h4 {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+main h4 span {
+  font-size: 0.9rem;
+  display: block;
+}
+
+main h5 {
+  font-size: 1.4rem;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+main h6 {
+  font-size: 1.2rem;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.container .card.contact {
+}
+
+.container .card.contact ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.container .card.contact ul li {
+  display: block;
+}
