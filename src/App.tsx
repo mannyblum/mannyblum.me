@@ -41,7 +41,7 @@ function App() {
             Georgia College &amp; State University
           </p>
         </section>
-        <section className="other">
+        {/* <section className="other">
           <h2>Interests</h2>
           <ul>
             <li></li>
@@ -49,7 +49,7 @@ function App() {
             <li></li>
             <li></li>
           </ul>
-        </section>
+        </section> */}
       </aside>
       <main>
         <section>
@@ -88,10 +88,16 @@ function App() {
         </section>
         <section className="contact card shadow">
           <ul>
-            <li>manny.blum@gmail.com</li>
+            <li>
+              <a href="mailto:manny.blum@gmail.com">manny.blum@gmail.com</a>
+            </li>
             <li>(404) 713-0804</li>
             <li>Atlanta, GA</li>
-            <li>http://linkedin.com</li>
+            <li>
+              <a href="www.linkedin.com/in/manny-blum-16a66a143">
+                http://linkedin.com
+              </a>
+            </li>
           </ul>
         </section>
         <section className="experience">
@@ -105,7 +111,7 @@ function App() {
                 <span>JUNE 2022 - APRIL 2025</span>
               </h4>
             </header>
-            <section className="card project">
+            <section className="card shadow project">
               <h6>AutonomOS, Engineering, Research & Development</h6>
               <p>
                 Helped lead front-end efforts in developing a scalable platform
@@ -115,7 +121,7 @@ function App() {
 
               <ul>
                 <li>
-                  Built and maintained a complex, modular dashboard using
+                  Built and maintained a complex, modular dashboard using{" "}
                   <span className="hilite">Next.js</span>,{" "}
                   <span className="hilite">Apollo Client (GraphQL)</span>, and{" "}
                   <span className="hilite">Material UI</span>, enabling
@@ -150,7 +156,7 @@ function App() {
                 <span>NOV 2017 - June 2022</span>
               </h4>
             </header>
-            <section className="card project">
+            <section className="card shadow project">
               <h6>EMS (Enterprise Mobility Security) Portal</h6>
               <ul>
                 <li>
@@ -181,7 +187,7 @@ function App() {
                 </li>
               </ul>
             </section>
-            <section className="card project">
+            <section className="card shadow project">
               <h6>Contractor Tablet Application</h6>
               <ul>
                 <li>
@@ -204,7 +210,7 @@ function App() {
                 </li>
               </ul>
             </section>
-            <section className="card project">
+            <section className="card shadow project">
               <h6>Retail Inventory Management Services</h6>
               <ul>
                 <li>
@@ -236,7 +242,7 @@ function App() {
               </h4>
             </header>
 
-            <section className="card project">
+            <section className="card shadow project">
               <h6>Developer Experience Engineer</h6>
               <ul>
                 <li>
@@ -317,7 +323,7 @@ function App() {
                 <span>APR 2011 - SEPT 2013</span>
               </h4>
             </header>
-            <section className="card project">
+            <section className="card shadow project">
               <h6>UI Developer</h6>
               <ul>
                 <li>

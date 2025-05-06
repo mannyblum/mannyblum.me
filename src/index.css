@@ -99,8 +99,8 @@ h6 {
 }
 
 .container .card span.hilite {
-  font-weight: bold;
-  background-color: #87ceeb;
+  /* background-color: #87ceeb; */
+  background-color: #ff6b6b;
   padding: 2px 4px;
   border-radius: 5px;
 }
@@ -125,7 +125,7 @@ h6 {
   margin-bottom: 20px;
 }
 .container .experience header h2 {
-  color: #ff4911;
+  color: #ff6b6b;
 }
 
 main h1 {
@@ -180,7 +180,25 @@ p {
   margin-bottom: 20px;
 }
 
-.container .card.contact {
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  list-style-position: outside;
+}
+
+li::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  /* background-color: #ff4911; */
+  background-color: #ff6b6b;
+  box-shadow: 2px 2px #000;
+  margin-left: -20px;
+  margin-right: 10px;
 }
 
 .container .card.contact ul {
@@ -194,4 +212,8 @@ p {
 
 .container .card.contact ul li {
   display: block;
+}
+
+.container .card.contact ul li::before {
+  display: none;
 }
