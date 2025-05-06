@@ -157,7 +157,17 @@ main h4 {
   margin-bottom: 20px;
 }
 
-main h4 span {
+.card.job .title {
+  display: block;
+  font-size: 1.35rem;
+}
+
+.card.job .company {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.card.job .dates {
   font-size: 0.9rem;
   display: block;
 }
@@ -216,4 +226,66 @@ li::before {
 
 .container .card.contact ul li::before {
   display: none;
+}
+
+.container .card.contact a {
+  color: #e3dff2;
+  /* font-style: italic; */
+  font-variation-settings: "wdth" 75;
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    font-size: 24px;
+  }
+  aside {
+    display: none;
+  }
+
+  .container {
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    display: inline-block;
+  }
+
+  .container main {
+    margin-right: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container main h1 {
+    font-size: 2rem;
+  }
+
+  .container main h2 {
+    font-size: 1.1rem;
+  }
+
+  .container .experience header h2 {
+    font-size: 2rem;
+  }
+
+  .card.job .title {
+    display: block;
+    font-size: 1.35rem;
+  }
+
+  .card.job .company {
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  .card.job ul {
+    padding-inline-start: 20px;
+  }
+
+  .card.job ul li {
+    margin-bottom: 10px;
+  }
+
+  .container .card.contact ul {
+    grid-template-columns: 1fr;
+  }
 }

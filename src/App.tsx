@@ -107,8 +107,9 @@ function App() {
           <article className="card shadow job">
             <header>
               <h4>
-                Senior Software Engineer - Beep
-                <span>JUNE 2022 - APRIL 2025</span>
+                <span className="title">Senior Software Engineer</span>
+                <span className="company">Beep</span>
+                <span className="dates">JUNE 2022 - APRIL 2025</span>
               </h4>
             </header>
             <section className="card shadow project">
@@ -152,8 +153,9 @@ function App() {
           <article className="card shadow job">
             <header>
               <h4>
-                Senior Software Developer - Bluefletch
-                <span>NOV 2017 - June 2022</span>
+                <span className="title">Senior Software Developer</span>
+                <span className="company">Bluefletch</span>
+                <span className="dates">NOV 2017 - June 2022</span>
               </h4>
             </header>
             <section className="card shadow project">
@@ -237,8 +239,9 @@ function App() {
           <article className="card shadow job">
             <header>
               <h4>
-                Software Developer - Ionic Security
-                <span>SEPT 2013 - SEPT 2017</span>
+                <span className="title">Software Developer</span>
+                <span className="company">Ionic Security</span>
+                <span className="dates">SEPT 2013 - SEPT 2017</span>
               </h4>
             </header>
 
@@ -319,8 +322,9 @@ function App() {
           <article className="card shadow job">
             <header>
               <h4>
-                Developer - CMG – Digital &amp; Strategy
-                <span>APR 2011 - SEPT 2013</span>
+                <span className="title">Developer</span>
+                <span className="company">CMG – Digital &amp; Strategy</span>
+                <span className="dates">APR 2011 - SEPT 2013</span>
               </h4>
             </header>
             <section className="card shadow project">
