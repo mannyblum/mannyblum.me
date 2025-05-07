@@ -21,6 +21,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* body { background: red } */
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -47,6 +49,11 @@ h6 {
   grid-template-columns: 300px 1fr;
   grid-gap: 1rem;
   width: 100%;
+  grid-template-areas:
+    "aside intro"
+    "aside profile"
+    "aside contact"
+    "aside experience";
 }
 
 .container .card.intro {
@@ -54,6 +61,7 @@ h6 {
 }
 
 .container aside {
+  grid-area: aside;
   margin: 10px;
   padding: 20px;
   padding-bottom: 0px;
@@ -88,6 +96,7 @@ h6 {
 .container main {
   margin: 10px;
   margin-right: 20px;
+  grid-area: main;
 }
 
 .container .card {
@@ -111,6 +120,7 @@ h6 {
 
 .container .card.contact {
   background-color: #a388ee;
+  position: relative;
 }
 
 .container .card.job {
@@ -121,6 +131,22 @@ h6 {
   background-color: #e3dff2;
 }
 
+.container .intro {
+  grid-area: intro;
+}
+
+.container .profile {
+  grid-area: profile;
+}
+
+.container .contact {
+  grid-area: contact;
+}
+
+.container .experience {
+  grid-area: experience;
+}
+
 .container .experience header {
   margin-bottom: 20px;
 }
@@ -128,33 +154,48 @@ h6 {
   color: #ff6b6b;
 }
 
-main h1 {
+.container h1 {
   font-size: 3rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-main h2 {
+.container h2 {
   font-size: 2.3rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-main h3 {
+.container .skills h2 {
+  font-size: 1.8rem;
+}
+
+.container h3 {
   font-size: 2rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-main h3 {
+.container .skills h3 {
+  font-size: 1.2rem;
+}
+
+.container h4 {
   font-size: 1.8rem;
   margin: 0;
   margin-bottom: 0;
 }
-main h4 {
-  font-size: 1.5rem;
+
+.container h5 {
+  font-size: 1.4rem;
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 0;
+}
+
+.container h6 {
+  font-size: 1.2rem;
+  margin: 0;
+  margin-bottom: 0;
 }
 
 .card.job .title {
@@ -170,18 +211,6 @@ main h4 {
 .card.job .dates {
   font-size: 0.9rem;
   display: block;
-}
-
-main h5 {
-  font-size: 1.4rem;
-  margin: 0;
-  margin-bottom: 0;
-}
-
-main h6 {
-  font-size: 1.2rem;
-  margin: 0;
-  margin-bottom: 0;
 }
 
 p {
@@ -234,33 +263,96 @@ li::before {
   font-variation-settings: "wdth" 75;
 }
 
+.icon {
+  position: absolute;
+  top: -32px;
+  /* left: 100px; */
+  left: calc(100% - 100px);
+}
+
+.icon.phone {
+  display: block;
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
+}
+
+.contact:hover .icon.phone {
+  /* -webkit-animation: ring 4s 0.7s ease-in-out infinite;
+  -webkit-transform-origin: 50% 4px;
+  -moz-animation: ring 4s 0.7s ease-in-out infinite;
+  -moz-transform-origin: 50% 4px; */
+  /* animation: ring 2s linear infinite;
+  transform-origin: center; */
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(5deg);
+    scale: 1;
+  }
+  25% {
+    /* transform: rotate(-22.5deg); */
+  }
+  50% {
+    transform: rotate(-5deg);
+    /* transform: rotate(0); */
+    scale: 1.1;
+  }
+  75% {
+    /* transform: rotate(22.5deg); */
+  }
+  100% {
+    transform: rotate(5deg);
+    /* scale: 1; */
+    scale: 1;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   :root {
     font-size: 24px;
   }
-  aside {
-    display: none;
+
+  .container aside {
+    margin: 0;
+    margin-bottom: 40px;
   }
 
   .container {
     box-sizing: border-box;
+    grid-template-areas:
+      "intro"
+      "profile"
+      "aside"
+      "contact"
+      "experience";
     grid-template-columns: 1fr;
     padding: 10px;
-    display: inline-block;
+    display: grid;
+    grid-gap: 0;
   }
 
-  .container main {
+  .container {
     margin-right: 0;
     padding: 0;
     margin: 0;
   }
 
-  .container main h1 {
+  .container aside h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .container h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .container .intro h1 {
     font-size: 2rem;
   }
 
-  .container main h2 {
-    font-size: 1.1rem;
+  .container .intro h2 {
+    font-size: 1.3rem;
   }
 
   .container .experience header h2 {
