@@ -6,7 +6,7 @@ import Experience from "./components/Experience";
 
 function App() {
   return (
-    <div className="container">
+    <div className="resume-container">
       <Aside />
       <Intro />
       <Profile />

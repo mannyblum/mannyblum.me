@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -21,7 +23,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* body { background: red } */
+body {
+  margin: 8px;
+}
 
 a {
   font-weight: 500;
@@ -44,7 +48,11 @@ h6 {
   font-style: normal;
 }
 
-.container {
+ul {
+  padding-inline-start: 40px;
+}
+
+.resume-container {
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-gap: 1rem;
@@ -56,11 +64,11 @@ h6 {
     "aside experience";
 }
 
-.container .card.intro {
+.resume-container .card.intro {
   background-color: #7fbc8c;
 }
 
-.container aside {
+.resume-container aside {
   grid-area: aside;
   /* margin: 10px; */
   padding: 20px;
@@ -72,34 +80,35 @@ h6 {
   box-shadow: 5px 5px;
 }
 
-.container aside ul {
+.resume-container aside ul {
   /* margin: 10px;
   padding: 0; */
   padding-left: 20px;
+  margin: 18px 0;
 }
 
-.container aside ul li {
+.resume-container aside ul li {
   font-size: 0.9rem;
   line-height: 1.2;
 }
 
-.container aside .education p {
+.resume-container aside .education p {
   font-size: 0.9rem;
 }
 
-.container aside .education p strong {
+.resume-container aside .education p strong {
   font-variation-settings: "wdth" 100;
   margin-right: 4px;
   display: block;
 }
 
-.container main {
+.resume-container main {
   margin: 10px;
   margin-right: 20px;
   grid-area: main;
 }
 
-.container .card {
+.resume-container .card {
   padding: 20px;
   background-color: #fff;
   border: 3px solid #000;
@@ -107,93 +116,93 @@ h6 {
   margin-bottom: 20px;
 }
 
-.container .card span.hilite {
+.resume-container .card span.hilite {
   /* background-color: #87ceeb; */
   background-color: #ff6b6b;
   padding: 2px 4px;
   border-radius: 5px;
 }
 
-.container .card.shadow {
+.resume-container .card.shadow {
   box-shadow: 5px 5px;
 }
 
-.container .card.contact {
+.resume-container .card.contact {
   background-color: #a388ee;
   position: relative;
 }
 
-.container .card.job {
+.resume-container .card.job {
   background-color: #fff;
 }
 
-.container .card.project {
+.resume-container .card.project {
   background-color: #e3dff2;
 }
 
-.container .intro {
+.resume-container .intro {
   grid-area: intro;
   position: relative;
 }
 
-.container .profile {
+.resume-container .profile {
   grid-area: profile;
 }
 
-.container .contact {
+.resume-container .contact {
   grid-area: contact;
 }
 
-.container .experience {
+.resume-container .experience {
   grid-area: experience;
 }
 
-.container .experience header {
+.resume-container .experience header {
   margin-bottom: 20px;
 }
-.container .experience header h2 {
+.resume-container .experience header h2 {
   color: #ff6b6b;
 }
 
-.container h1 {
+.resume-container h1 {
   font-size: 3rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-.container h2 {
+.resume-container h2 {
   font-size: 2.3rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-.container .skills h2 {
+.resume-container .skills h2 {
   font-size: 1.8rem;
 }
 
-.container h3 {
+.resume-container h3 {
   font-size: 2rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-.container .skills h3 {
+.resume-container .skills h3 {
   font-size: 1.2rem;
 }
 
-.container h4 {
+.resume-container h4 {
   font-size: 1.8rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-.container h5 {
+.resume-container h5 {
   font-size: 1.4rem;
   margin: 0;
   margin-bottom: 0;
 }
 
-.container h6 {
+.resume-container h6 {
   font-size: 1.2rem;
   margin: 0;
   margin-bottom: 0;
@@ -241,7 +250,7 @@ li::before {
   margin-right: 10px;
 }
 
-.container .card.contact ul {
+.resume-container .card.contact ul {
   list-style-type: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -250,15 +259,15 @@ li::before {
   padding: 0;
 }
 
-.container .card.contact ul li {
+.resume-container .card.contact ul li {
   display: block;
 }
 
-.container .card.contact ul li::before {
+.resume-container .card.contact ul li::before {
   display: none;
 }
 
-.container .card.contact a {
+.resume-container .card.contact a {
   color: #e3dff2;
   /* font-style: italic; */
   font-variation-settings: "wdth" 75;
@@ -287,7 +296,7 @@ li::before {
   transform-origin: center; */
 }
 
-.container .intro .download-btn {
+.resume-container .intro .download-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -301,11 +310,11 @@ li::before {
   box-shadow: 2px 2px #000;
 }
 
-.container .intro .download-btn:hover {
+.resume-container .intro .download-btn:hover {
   background-color: rgba(163, 136, 238, 0.8);
 }
 
-.container .intro .download-btn:active {
+.resume-container .intro .download-btn:active {
   transform: scale(0.98);
 }
 
@@ -337,12 +346,12 @@ li::before {
     font-size: 24px;
   }
 
-  .container aside {
+  .resume-container aside {
     margin: 0;
     margin-bottom: 40px;
   }
 
-  .container {
+  .resume-container {
     box-sizing: border-box;
     grid-template-areas:
       "intro"
@@ -356,29 +365,29 @@ li::before {
     grid-gap: 0;
   }
 
-  .container {
+  .resume-container {
     margin-right: 0;
     padding: 0;
     margin: 0;
   }
 
-  .container aside h2 {
+  .resume-container aside h2 {
     font-size: 1.6rem !important;
   }
 
-  .container h3 {
+  .resume-container h3 {
     font-size: 1.2rem !important;
   }
 
-  .container .intro h1 {
+  .resume-container .intro h1 {
     font-size: 2rem;
   }
 
-  .container .intro h2 {
+  .resume-container .intro h2 {
     font-size: 1.3rem;
   }
 
-  .container .experience header h2 {
+  .resume-container .experience header h2 {
     font-size: 2rem;
   }
 
@@ -400,7 +409,7 @@ li::before {
     margin-bottom: 10px;
   }
 
-  .container .card.contact ul {
+  .resume-container .card.contact ul {
     grid-template-columns: 1fr;
   }
 }
