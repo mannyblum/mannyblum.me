@@ -14,7 +14,7 @@ export default function Progress() {
             <div className="grid grid-cols-[1fr_2fr]">
               <div className="">
                 <div
-                  className="font-black text-black ring-indigo-100 rounded-full bg-white ring-8 shadow-lg font flex items-center justify-center"
+                  className="font-black text-black ring-indigo-100 rounded-full bg-white ring-8 shadow-lg flex items-center justify-center"
                   style={{ height: "118px", width: "118px", fontSize: "28px" }}
                 >
                   93%

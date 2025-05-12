@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { Conversions } from "./components/Conversions/";
 import { Progress } from "./components/Conversions/Progress";
+import { ProgressBar } from "./components/Conversions/ProgressBar";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
         <Route index element={<App />} />
         <Route path="conversions" element={<Conversions />}>
           <Route path="progress" element={<Progress />} />
+          <Route path="progress-bar" element={<ProgressBar />} />
         </Route>
       </Routes>
     </BrowserRouter>
