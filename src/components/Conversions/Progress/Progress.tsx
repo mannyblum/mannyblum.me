@@ -1,10 +1,14 @@
+import progress_ss from "@assets/images/conversions/progress.png";
+
+console.log("pro gress_ss", progress_ss);
+
 export default function Progress() {
   return (
     <div className="">
-      <h1 className="text-3xl font-bold ">Progress</h1>
-      {/* <div className="container mb-20 w-10/12 mx-auto p-4 py-8 border-[3px] shadow-[5px_5px] border-black rounded-2xl bg-violet-100">
-        test div
-      </div> */}
+      <h1 className="text-3xl font-bold">Progress</h1>
+      <div className="container w-10/12 mx-auto p-4 py-8 border-[3px] shadow-[5px_5px] border-black rounded-2xl bg-violet-100">
+        <img src={progress_ss} alt="Progress" />
+      </div>
       <div className="container w-10/12 mx-auto p-4 py-8 border-[3px] shadow-[5px_5px] border-black rounded-2xl bg-violet-100">
         <div className="progress bg-white p-[90px] mx-auto max-w-md box-content rounded-4xl font-['Inter']">
           <div className="grid grid-rows-[50px_1fr] gap-4">

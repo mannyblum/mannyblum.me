@@ -5,26 +5,57 @@ export default function Skills() {
         <h2>Skills</h2>
         <h3>Front-End Development</h3>
         <ul>
-          <li>HTML5, CSS3, Sass/LESS</li>
-          <li> JavaScript (ES6+), TypeScript, React, Redux, Vue, Next.js</li>
-          <li>
-            Responsive Design, Component Architecture, SPA Development, Material
-            UI, Tailwind CSS, Bootstrap
-          </li>
+          <li>React </li>
+          <li>Redux </li>
+          <li>Vue </li>
+          <li>Next.js </li>
+          <li>TypeScript </li>
+          <li>JavaScript (ES6+) </li>
+          <li>HTML5 </li>
+          <li>CSS3/Sass/LESS </li>
+          <li>Responsive & Mobile-First Design </li>
+          <li>SPA Development </li>
+          <li>Tailwind CSS </li>
+          <li>Material UI </li>
+          <li>Bootstrap </li>
         </ul>
 
         <h3>UI/UX &amp; Design</h3>
         <ul>
-          <li>Figma, Adobe XD, Sketch, Photoshop</li>
-          <li>Wireframing, Prototyping</li>
-          <li>Accessibility</li>
+          <li>Figma </li>
+          <li>Adobe XD </li>
+          <li>Sketch </li>
+          <li>Miro </li>
+          <li>Photoshop </li>
+          <li>Accessibility (WCAG) </li>
+          <li>Component Libraries </li>
+          <li>UX Wireframing </li>
+          <li>UX Prototyping </li>
+        </ul>
+
+        <h3>API, Middleware &amp; Backend</h3>
+        <ul>
+          <li>GraphQL (Apollo Client)</li>
+          <li>REST </li>
+          <li>APIs </li>
+          <li>Node.js </li>
+          <li>Express </li>
+          <li>Postgres </li>
+          <li>MongoDB </li>
         </ul>
 
         <h3>Tooling &amp; Workflow</h3>
         <ul>
-          <li>Git, VS Code, Linux/Unix, Agile/Scrum,</li>
-          <li>Apollo Client (GraphQL), REST APIs,</li>
-          <li>Node.js (basic)</li>
+          <li>Git </li>
+          <li>GitHub </li>
+          <li>Docker </li>
+          <li>GCP </li>
+          <li>CI/CD </li>
+          <li>Linux/Unix </li>
+          <li>Agile/Scrum </li>
+          <li>Jira </li>
+          <li>React Testing Library </li>
+          <li>Jest </li>
         </ul>
       </section>
       <section className="education">
