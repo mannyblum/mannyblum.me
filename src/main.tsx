@@ -8,7 +8,7 @@ import { Conversions } from "./components/Conversions/";
 import { Progress } from "./components/Conversions/Progress";
 import { ProgressBar } from "./components/Conversions/ProgressBar";
 import Projects from "./pages/projects/Projects.tsx";
-import Todo from "./pages/projects/small/todo/Todo.tsx";
+import Todo from "./pages/projects/small/tasks/Task.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
