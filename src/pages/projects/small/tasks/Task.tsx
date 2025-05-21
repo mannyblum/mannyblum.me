@@ -1,4 +1,6 @@
-import { TaskApp } from "@/components/submodules/task-app/src";
+// import { TaskApp } from "@/components/submodules/task-app/src";
+
+import TaskApp from "@/components/submodules/task-app/src/components/TaskApp";
 
 export default function TodoPage() {
   return (

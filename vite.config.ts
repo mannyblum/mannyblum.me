@@ -8,6 +8,7 @@ import path from "path";
 export default defineConfig({
   base: "/",
   optimizeDeps: {
+    force: true,
     include: ["./src/components/submodules/task-app"],
   },
   resolve: {
@@ -15,6 +16,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components"),
+      react: path.resolve("./node_modules/react"),
+      "react-dom": path.resolve("./node_modules/react-dom"),
     },
   },
   plugins: [react(), tailwindcss()],
