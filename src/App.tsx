@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { Routes, Route } from "react-router";
 
 import { Conversions } from "./components/Conversions/";
 import { Progress } from "./components/Conversions/Progress";
