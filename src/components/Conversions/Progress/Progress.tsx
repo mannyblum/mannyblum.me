@@ -1,7 +1,5 @@
 import progress_ss from "@assets/images/conversions/progress.png";
 
-console.log("pro gress_ss", progress_ss);
-
 export default function Progress() {
   return (
     <div className="">

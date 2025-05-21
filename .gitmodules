@@ -1,3 +1,3 @@
-[submodule "src/components/task-app"]
-	path = src/components/task-app
+[submodule "src/components/submodules/task-app"]
+	path = src/components/submodules/task-app
 	url = https://github.com/mannyblum/TaskApp.git
