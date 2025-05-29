@@ -1,11 +1,12 @@
-import { Routes, Route, useLocation } from "react-router";
+import { Route, Routes, useLocation } from 'react-router';
 
-import { Conversions } from "./components/Conversions/";
-import { Progress } from "./components/Conversions/Progress";
-import { ProgressBar } from "./components/Conversions/ProgressBar";
-import Projects from "./pages/projects/Projects.tsx";
-import Resume from "./pages/Resume.tsx";
-import Small from "./pages/projects/small/Small.tsx";
+import { Conversions } from './components/Conversions/';
+import { Progress } from './components/Conversions/Progress';
+import { ProgressBar } from './components/Conversions/ProgressBar';
+import Resume from './pages/Resume.tsx';
+import Projects from './pages/projects/Projects.tsx';
+import Small from './pages/projects/small/Small.tsx';
+import TaskApp from './pages/projects/small/task-app/TaskApp.tsx';
 
 function App() {
   const location = useLocation();
@@ -18,8 +19,8 @@ function App() {
       </Route>
       <Route path="projects" element={<Projects />}>
         <Route path="small" element={<Small />}>
-          {/* <Route path="todo" element={<Todo />} />
-          <Route path="recipe-book" element={<RecipeBook />} /> */}
+          <Route path="task-app" element={<TaskApp />} />
+          {/* <Route path="recipe-book" element={<RecipeBook />} /> */}
         </Route>
       </Route>
     </Routes>
