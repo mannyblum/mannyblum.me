@@ -1,3 +1,6 @@
 [submodule "src/components/submodules/task-app"]
 	path = src/components/submodules/task-app
 	url = https://github.com/mannyblum/TaskApp.git
+[submodule "src/components/submodules/recipe-book"]
+	path = src/components/submodules/recipe-book
+	url = https://github.com/mannyblum/RecipeBook.git
