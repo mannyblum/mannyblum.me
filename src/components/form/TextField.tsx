@@ -1,9 +1,12 @@
+import { XIcon } from '@primer/octicons-react';
+
 type TextFieldProps = {
-  label: string;
+  label?: string;
   placeholder?: string;
   value: string;
   autoFocus?: boolean;
   onChange: (val: string) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 const TextField = ({
@@ -11,21 +14,45 @@ const TextField = ({
   value,
   placeholder,
   onChange,
+  onKeyDown,
   ...rest
 }: TextFieldProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      onKeyDown(e);
+    }
+  };
+
+  const handleClearInput = () => {
+    onChange('');
+  };
+
   return (
-    <div className="py-2 px-6 pb-4 flex flex-col">
-      <label htmlFor={placeholder} className="text-sm py-1">
-        {label}
-      </label>
-      <input
-        type="text"
-        placeholder={placeholder}
-        value={value}
-        onChange={({ target: { value } }) => onChange(value)}
-        className="shadow-[2px_2px_0px_rgba(0,0,0,1)] border-2 border-black w-full rounded-sm py-2 px-4 focus:ring-2 focus:ring-offset-2 focus:ring-black focus:outline-hidden"
-        {...rest}
-      />
+    <div className="mx-8 py-2 w-full flex flex-col">
+      {label && (
+        <label htmlFor={placeholder} className="text-sm py-1">
+          {label}
+        </label>
+      )}
+      <div id="input-wrapper" className="relative">
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={value}
+          onKeyDown={handleKeyDown}
+          onChange={({ target: { value } }) => onChange(value)}
+          className="border-2 border-black w-full rounded-md py-4 md:py-2 px-4 focus:ring-2 focus:ring-offset-2 focus:ring-black focus:outline-hidden bg-white"
+          {...rest}
+        />
+        {value.length > 0 && (
+          <div
+            onClick={handleClearInput}
+            className="z-10 absolute sm:top-4 md:top-2 right-4 p-1 flex items-center justify-center bg-red-400 active:bg-red-500 hover:bg-red-500 border-2 rounded-full cursor-pointer"
+          >
+            <XIcon size={16} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
