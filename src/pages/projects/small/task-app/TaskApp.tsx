@@ -135,114 +135,120 @@ const TaskApp = () => {
   });
 
   return (
-    <div className="w-[500px] bg-white p-4 rounded-sm shadow-[5px_5px_0px_rgba(0,0,0,1)]">
-      <div className="mb-4 flex items-center justify-between">
-        <button
-          onClick={handleOpenTaskModal}
-          className="
+    <div className="bg-indigo-400 flex w-screen min-h-screen justify-center items-start">
+      <div className="w-[500px] mx-auto bg-white p-4 rounded-sm shadow-[5px_5px_0px_rgba(0,0,0,1)] mt-20">
+        <div className="mb-4 flex items-center justify-between">
+          <button
+            onClick={handleOpenTaskModal}
+            className="
                 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:border-black! hover:shadow-none hover:translate-0.5 
           text-black bg-indigo-200 border-2 border-black rounded-sm p-2 px-4 mr-2 "
-        >
-          Add Task
-        </button>
-        <CategorySelect
-          onSelectCategory={(categoryId) => handleSelectCategory(categoryId)}
-        />
-        {/* <button
+          >
+            Add Task
+          </button>
+          <CategorySelect
+            onSelectCategory={(categoryId) => handleSelectCategory(categoryId)}
+          />
+          {/* <button
           id="settings"
           className="text-black border-2 border-black hover:border-black! rounded-sm p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]"
         >
           <GearIcon size={24} />
         </button> */}
-      </div>
-      {tasks.length === 0 || availableItems.length === 0 ? (
-        <div className="text-center font-black border-2 text-black text-xs rounded-sm flex place-content-center p-2 px-4 mb-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-          No tasks Available
         </div>
-      ) : (
-        <div
-          id="task-list"
-          className="max-h-[350px] overflow-y-auto mb-4 border-black border-2 rounded-sm shadow-[2px_2px_0px_rgba(0,0,0,1)]"
-        >
-          <ul>
-            {[...tasks]
-              .filter((task) => {
-                if (selectedCategory.length) {
-                  return task.categoryId === selectedCategory;
-                }
+        {tasks.length === 0 || availableItems.length === 0 ? (
+          <div className="text-center font-black border-2 text-black text-xs rounded-sm flex place-content-center p-2 px-4 mb-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            No tasks Available
+          </div>
+        ) : (
+          <div
+            id="task-list"
+            className="max-h-[350px] overflow-y-auto mb-4 border-black border-2 rounded-sm shadow-[2px_2px_0px_rgba(0,0,0,1)]"
+          >
+            <ul>
+              {[...tasks]
+                .filter((task) => {
+                  if (selectedCategory.length) {
+                    return task.categoryId === selectedCategory;
+                  }
 
-                if (filterType === 'completed') {
-                  return task.completed;
-                }
+                  if (filterType === 'completed') {
+                    return task.completed;
+                  }
 
-                if (filterType === 'active') {
-                  return !task.completed;
-                }
+                  if (filterType === 'active') {
+                    return !task.completed;
+                  }
 
-                return task;
-              })
-              .reverse()
-              .map((tsk) => {
-                return (
-                  <TaskItem
-                    key={tsk.id}
-                    onUpdateTask={handleUpdateTask}
-                    onDeleteTask={handleDeleteTask}
-                    onEditTask={handleEditTask}
-                    task={tsk}
-                  />
-                );
-              })}
-          </ul>
-        </div>
-      )}
-      {tasks.length > 0 && (
-        <div className="border-2 text-black text-xs rounded-sm flex justify-between items-center p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-          <div>{tasks.filter((task) => !task.completed).length} items left</div>
-          <div>
-            <ul className="flex gap-4 cursor-pointer">
-              <li
-                className={`${
-                  filterType === 'all' ? 'text-green-800 font-black' : ''
-                } hover:font-black`}
-                onClick={() => handleFilter('all')}
-              >
-                All
-              </li>
-              <li
-                className={`${
-                  filterType === 'active' ? 'text-green-800 font-black' : ''
-                } hover:font-black`}
-                onClick={() => handleFilter('active')}
-              >
-                Active
-              </li>
-              <li
-                className={`${
-                  filterType === 'completed' ? 'text-green-800 font-black' : ''
-                } hover:font-black`}
-                onClick={() => handleFilter('completed')}
-              >
-                Completed
-              </li>
+                  return task;
+                })
+                .reverse()
+                .map((tsk) => {
+                  return (
+                    <TaskItem
+                      key={tsk.id}
+                      onUpdateTask={handleUpdateTask}
+                      onDeleteTask={handleDeleteTask}
+                      onEditTask={handleEditTask}
+                      task={tsk}
+                    />
+                  );
+                })}
             </ul>
           </div>
-          <div
-            className="hover:font-black cursor-pointer"
-            onClick={clearCompletedTasks}
-          >
-            Clear Completed
+        )}
+        {tasks.length > 0 && (
+          <div className="border-2 text-black text-xs rounded-sm flex justify-between items-center p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            <div>
+              {tasks.filter((task) => !task.completed).length} items left
+            </div>
+            <div>
+              <ul className="flex gap-4 cursor-pointer">
+                <li
+                  className={`${
+                    filterType === 'all' ? 'text-green-800 font-black' : ''
+                  } hover:font-black`}
+                  onClick={() => handleFilter('all')}
+                >
+                  All
+                </li>
+                <li
+                  className={`${
+                    filterType === 'active' ? 'text-green-800 font-black' : ''
+                  } hover:font-black`}
+                  onClick={() => handleFilter('active')}
+                >
+                  Active
+                </li>
+                <li
+                  className={`${
+                    filterType === 'completed'
+                      ? 'text-green-800 font-black'
+                      : ''
+                  } hover:font-black`}
+                  onClick={() => handleFilter('completed')}
+                >
+                  Completed
+                </li>
+              </ul>
+            </div>
+            <div
+              className="hover:font-black cursor-pointer"
+              onClick={clearCompletedTasks}
+            >
+              Clear Completed
+            </div>
           </div>
-        </div>
-      )}
-      {isTaskModalOpen && (
-        <TaskModal
-          task={task}
-          onClose={() => handleCloseTaskModal()}
-          onSubmit={(task) => handleTaskModalSubmit(task)}
-          onCancel={() => handleCloseTaskModal()}
-        />
-      )}
+        )}
+        {isTaskModalOpen && (
+          <TaskModal
+            task={task}
+            onClose={() => handleCloseTaskModal()}
+            onSubmit={(task) => handleTaskModalSubmit(task)}
+            onCancel={() => handleCloseTaskModal()}
+          />
+        )}
+      </div>
     </div>
   );
 };

@@ -20,14 +20,14 @@ const TaskItem = ({
   onDeleteTask,
   onEditTask,
 }: TodoItemProps) => {
-  const [deleteMode, setDeleteMode] = useState<boolean>(false);
+  const [deleteMode, setDeleteMode] = useState<boolean>(true);
   const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
     setChecked(task.completed);
   }, [task]);
 
-  const handleDeleteTask = () => {
+  const toggleDeleteTask = () => {
     setDeleteMode((prevState) => !prevState);
   };
 
@@ -57,15 +57,37 @@ const TaskItem = ({
         ${task.completed ? 'opacity-50 bg-zinc-200 ' : ''}
       `}
     >
+      {deleteMode && (
+        <div className="absolute top-0 left-0 bottom-0 right-0 bg-red-300">
+          <div className="h-full flex justify-between items-center">
+            <p className="text-white ml-2 mb-0! font-bold">Delete for sure?</p>
+            <div className="">
+              <button
+                onClick={toggleDeleteTask}
+                className="border-2 border-black p-1 rounded-md mr-2
+                shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-0.5 ext-sm font-black text-black text-sm bg-white focus:outline-none bg-none  hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmDelete}
+                className="border-2 border-black p-1 rounded-md mr-2 text-sm"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="grow-4">
-        {deleteMode && (
+        {/* {deleteMode && (
           <button
             onClick={handleConfirmDelete}
-            className="px-4 py-1 border rounded-sm bg-red-300 text-black"
+            className="h-full px-4 py-1 border rounded-sm bg-red-300 text-black"
           >
             Delete
           </button>
-        )}
+        )} */}
 
         {!deleteMode && (
           <div className="mr-4 flex items-center">
@@ -100,11 +122,7 @@ const TaskItem = ({
       </button>
       <button
         disabled={task.completed}
-        onClick={(e) => {
-          e.stopPropagation();
-
-          handleDeleteTask();
-        }}
+        onClick={toggleDeleteTask}
         className={`disabled:bg-gray-50 border-black hover:border-black! disabled:text-gray-500 disabled:cursor-not-allowed! border-2 rounded-sm p-2 text-white bg-red-600 hover:bg-red-800 active:bg-red-400 hover:text-white shadow-[2px_2px_0px_rgba(0,0,0,1)]`}
       >
         {deleteMode ? <XIcon size={24} /> : <TrashIcon size={24} />}

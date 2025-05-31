@@ -70,18 +70,20 @@ const TaskModal = ({ onClose, onSubmit, task }: TaskModalProps) => {
         className="bg-black/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 z-50 flex justify-center items-center w-full md:inset-0 h-full max-h-full"
       >
         <div className="relative p-4 m-w-[400] min-w-md max-h-full">
-          <div className="relative shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-white rounded-sm border-2 border-black">
-            <div className="flex items-center justify-between py-2 px-6">
+          <div className="py-2 relative shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-white rounded-sm border-2 border-black">
+            <div className="flex items-center justify-start py-2 px-6">
               <h3 className="text-xl font-semibold text-gray-900">
                 {isNew ? 'Add' : 'Edit'} Task
               </h3>
             </div>
-            <TextField
-              onChange={(val) => setInputValue(val)}
-              value={inputValue}
-              label="Name"
-              placeholder="Task"
-            />
+            <div className="px-6 pb-4">
+              <TextField
+                onChange={(val) => setInputValue(val)}
+                value={inputValue}
+                label="Name"
+                placeholder="Task"
+              />
+            </div>
             <div className="py-2 px-6 pb-4 flex flex-col">
               <CategorySelect
                 full

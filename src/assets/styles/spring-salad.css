@@ -1,0 +1,501 @@
+:root {
+  --spoiler-color: #000;
+
+  --font-family: 'Karla', sans-serif;
+  --body-bg: #1e1f25;
+  --btn-bg: #000;
+  --btn-color: #cbcbcb;
+  --btn-color-hover: #fff;
+  --grad-color1: #eeaf61;
+  --grad-color2: #fb9062;
+  --grad-color3: #ee5d6c;
+  --grad-color4: #ce4993;
+  --grad-color5: #6a0d83;
+
+  --search-border: #bbb;
+  --search-focus-border: #3a71ca;
+
+  --font-main: 'Noto Sans', sans-serif;
+  --bg-main: #131417;
+  --bg-card: #1e1f26;
+  --bg-stats: #131417;
+  --username: #b7bbc8;
+
+  --color-light: lightgray;
+  --color-dark: darkgray;
+
+  --black: #282828;
+  --blue: #2892f9;
+  --red: #fb2f27;
+  --yellow: #fdfe29;
+
+  --bg-word: #5134ff;
+
+  --flag-red: #ed2938;
+  --flag-white: #fff;
+  --flag-blue: #002495;
+  --flag-height: 150px;
+
+  --flag-german-black: #000000;
+  --flag-german-red: #de0002;
+  --flag-german-yellow: #ffce00;
+
+  --flag-madagascar-white: #ffffff;
+  --flag-madagascar-red: #fc3e32;
+  --flag-madagascar-green: #007e39;
+
+  --flag-swiss-white: #fff;
+  --flag-swiss-red: #ff0002;
+}
+
+body {
+  /* background: #fefefe; */
+  color: black;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  background: var(--body-bg);
+
+  display: flex;
+  justify-content: center;
+}
+
+/* SpoilerReveal */
+
+.post {
+  background: lightgrey;
+  padding: 20px 15px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  width: 500px;
+}
+
+.post p {
+  font-weight: medium;
+}
+
+.spoiler {
+  background-color: var(--spoiler-color);
+  color: var(--spoiler-color);
+  margin: 0 4px;
+  border-radius: 5px;
+
+  transition: background-color 0.5s ease-out 0.1s;
+}
+
+.spoiler:hover {
+  background-color: transparent;
+}
+
+/* ColorfulButton */
+
+.button-border {
+  background: linear-gradient(
+    115deg,
+    var(--grad-color1),
+    var(--grad-color2),
+    var(--grad-color3),
+    var(--grad-color4),
+    var(--grad-color5)
+  );
+
+  padding: 0.2em;
+}
+
+.button-border:hover {
+  transform: scale(102%);
+  background: linear-gradient(
+    230deg,
+    var(--grad-color1),
+    var(--grad-color2),
+    var(--grad-color3),
+    var(--grad-color4),
+    var(--grad-color5)
+  );
+}
+
+.button {
+  padding: 30px 40px;
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  font-family: var(--font-family);
+  font-size: 24px;
+  cursor: pointer;
+  border: 0;
+}
+
+.button-border:hover .button {
+  color: var(--btn-color-hover);
+}
+
+/* Expanding Search Bar */
+
+.container-2 {
+  width: 80%;
+  margin: 0px auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+input.search-bar {
+  width: 30%;
+  border: 1px solid var(--search-border);
+  background: white;
+  color: grey;
+  padding: 0.5em 0.5em;
+  border-radius: 5px;
+  font-size: 20px;
+
+  /* transition: width, opacity 0.25s ease-out; */
+  transition-property: width, opacity;
+  transition-duration: 0.35s;
+  transition-timing-function: ease-out;
+}
+
+input.search-bar:focus {
+  width: 100%;
+}
+
+input.search-bar:focus::placeholder {
+  opacity: 0;
+}
+
+.visually_hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* Codepen Tile */
+
+.codepen-tile {
+  background: var(--bg-main);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 20px;
+}
+
+.codepen-card {
+  background-color: var(--bg-card);
+  width: 500px;
+  padding: 1em 1em;
+  border-radius: 1em;
+  margin-top: 1em;
+}
+
+.codepen-card .card-thumbnail {
+  margin-bottom: 1em;
+}
+
+.codepen-card .card-thumbnail img {
+  border-radius: 1em;
+  width: 500px;
+  max-width: 500px;
+  height: 300px;
+}
+
+.codepen-card .card-body {
+  color: white;
+  display: flex;
+  align-items: start;
+  gap: 1em;
+}
+
+.codepen-card .card-avatar img {
+  height: 64px;
+  width: 64px;
+  border-radius: 0.5em;
+}
+
+.codepen-card .card-details {
+  font-family: var(--font-main);
+}
+
+.codepen-card .card-details h3 {
+  margin: 0;
+}
+
+.codepen-card .card-details p {
+  margin: 0;
+  color: var(--username);
+}
+
+.codepen-card .card-stats {
+  color: white;
+  list-style-type: none;
+  gap: 12px;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  display: none;
+}
+
+.codepen-card:hover .card-stats {
+  display: flex;
+}
+
+.codepen-card .card-stats li {
+  background-color: var(--bg-stats);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Loading Animation 1 */
+
+.circle-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+}
+
+.circles {
+  display: flex;
+}
+
+.circle {
+  background-color: var(--color-dark);
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 100%;
+
+  animation-name: pulse;
+  animation-timing-function: ease;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes pulse {
+  100% {
+    background-color: var(--color-light);
+    scale: 1.3;
+  }
+}
+
+/* Loading Animation 2 */
+
+.square-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square {
+  width: 1.6em;
+  height: 1.6em;
+  background: black;
+  margin: 0.5em;
+
+  transform: rotate(45deg);
+
+  animation-name: spin;
+  animation-duration: 1.4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: both;
+}
+
+.square1 {
+  background-color: red;
+}
+.square2 {
+  background-color: blue;
+}
+.square3 {
+  background-color: orange;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+/* Archery Target */
+.rings {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring-1 {
+  background: var(--black);
+  width: 300px;
+  height: 300px;
+}
+.ring-2 {
+  background: var(--blue);
+  width: 225px;
+  height: 225px;
+  z-index: 2;
+}
+.ring-3 {
+  background: var(--red);
+  width: 150px;
+  height: 150px;
+}
+.bullseye {
+  background: var(--yellow);
+  width: 75px;
+  height: 75px;
+}
+
+/* Word Carousel */
+
+.word-carousel h1:after {
+  content: '';
+  background: var(--bg-word);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 0.5rem;
+  margin-left: 4px;
+
+  animation: 6s swap infinite;
+}
+
+@keyframes swap {
+  0% {
+    content: 'Sif';
+  }
+  25% {
+    content: 'LEGO';
+  }
+  50% {
+    content: 'Star Wars';
+  }
+  75% {
+    content: 'Dune';
+  }
+  100% {
+    content: 'Sif';
+  }
+}
+
+/* French Flag */
+
+.flag-france {
+  width: calc(var(--flag-height) * (3 / 2));
+  height: var(--flag-height);
+  background-color: black;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  margin: 2em auto;
+}
+
+.stripe {
+  flex-grow: 1;
+}
+
+.blue {
+  background-color: var(--flag-blue);
+}
+.white {
+  background-color: var(--flag-white);
+}
+.red {
+  background-color: var(--flag-red);
+}
+
+/* German Flag */
+
+.flag-germany {
+  display: grid;
+  width: calc(var(--flag-height) * (5 / 3));
+  height: var(--flag-height);
+  background-color: black;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  margin: 2em auto;
+}
+
+.flag-germany .black {
+  background-color: var(--flag-german-black);
+}
+
+.flag-germany .red {
+  background-color: var(--flag-german-red);
+}
+
+.flag-germany .yellow {
+  background-color: var(--flag-german-yellow);
+}
+
+.flag-madagascar {
+  display: grid;
+
+  grid-template-columns: 1fr 2fr;
+  width: calc(var(--flag-height) * (3 / 2));
+  height: var(--flag-height);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  margin: 2em auto;
+}
+
+.flag-madagascar .white {
+  background-color: var(--flag-madagascar-white);
+}
+
+.flag-madagascar .white + div {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.flag-madagascar .red {
+  background-color: var(--flag-madagascar-red);
+}
+.flag-madagascar .green {
+  background-color: var(--flag-madagascar-green);
+}
+
+/* Swiss Flag */
+.flag-swiss {
+  width: 150px;
+  height: 150px;
+  background: var(--flag-swiss-red);
+  margin: 20px auto;
+  position: relative;
+}
+
+.flag-swiss .cross1 {
+  background: var(--flag-swiss-white);
+  width: calc(150px / 5);
+  height: calc(150px / 5 * 3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.flag-swiss .cross2 {
+  background: var(--flag-swiss-white);
+  height: calc(150px / 5);
+  width: calc(150px / 5 * 3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}

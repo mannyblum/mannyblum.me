@@ -6,7 +6,7 @@ type TextFieldProps = {
   value: string;
   autoFocus?: boolean;
   onChange: (val: string) => void;
-  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 const TextField = ({
@@ -18,7 +18,7 @@ const TextField = ({
   ...rest
 }: TextFieldProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (onKeyDown && e.key === 'Enter') {
       onKeyDown(e);
     }
   };
@@ -28,13 +28,13 @@ const TextField = ({
   };
 
   return (
-    <div className="mx-8 py-2 w-full flex flex-col">
+    <div className=" py-2 w-full flex flex-col items-start">
       {label && (
         <label htmlFor={placeholder} className="text-sm py-1">
           {label}
         </label>
       )}
-      <div id="input-wrapper" className="relative">
+      <div id="input-wrapper" className="w-full relative">
         <input
           type="text"
           placeholder={placeholder}

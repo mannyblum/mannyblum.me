@@ -1,21 +1,16 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400; */
-  font-family: "Archivo", sans-serif;
+  font-family: 'Archivo', sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-variation-settings: "wdth" 100;
+  font-variation-settings: 'wdth' 100;
   font-size: 18px;
 
   color-scheme: light dark;
   color: #000;
   background-color: #f8d6b3;
-
-  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,6 +20,10 @@
 
 body {
   margin: 8px;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
@@ -42,13 +41,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-}
-
-ul {
 }
 
 .resume-container {
@@ -57,10 +53,11 @@ ul {
   grid-gap: 1rem;
   width: 100%;
   grid-template-areas:
-    "aside intro"
-    "aside profile"
-    "aside contact"
-    "aside experience";
+    'aside intro'
+    'aside profile'
+    'aside contact'
+    'aside experience';
+  background-color: #f8d6b3;
 }
 
 .resume-container .card.intro {
@@ -69,7 +66,6 @@ ul {
 
 .resume-container aside {
   grid-area: aside;
-  /* margin: 10px; */
   padding: 20px;
   padding-bottom: 0px;
   margin-bottom: 20px;
@@ -80,8 +76,6 @@ ul {
 }
 
 .resume-container aside ul {
-  /* margin: 10px;
-  padding: 0; */
   padding-left: 20px;
   margin: 18px 0;
   padding-inline-start: 40px;
@@ -97,7 +91,7 @@ ul {
 }
 
 .resume-container aside .education p strong {
-  font-variation-settings: "wdth" 100;
+  font-variation-settings: 'wdth' 100;
   margin-right: 4px;
   display: block;
 }
@@ -117,7 +111,6 @@ ul {
 }
 
 .resume-container .card span.hilite {
-  /* background-color: #87ceeb; */
   background-color: #ff6b6b;
   padding: 2px 4px;
   border-radius: 5px;
@@ -168,6 +161,7 @@ ul {
   font-size: 3rem;
   margin: 0;
   margin-bottom: 0;
+  text-align: left;
 }
 
 .resume-container h2 {
@@ -211,6 +205,7 @@ ul {
 .card.job .title {
   display: block;
   font-size: 1.35rem;
+  text-align: left;
 }
 
 .card.job .company {
@@ -239,12 +234,11 @@ p {
 }
 
 .resume-container ul li::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  /* background-color: #ff4911; */
   background-color: #ff6b6b;
   box-shadow: 2px 2px #000;
   margin-left: -20px;
@@ -280,14 +274,12 @@ p {
 
 .resume-container .card.contact a {
   color: #e3dff2;
-  /* font-style: italic; */
-  font-variation-settings: "wdth" 75;
+  font-variation-settings: 'wdth' 75;
 }
 
 .icon {
   position: absolute;
   top: -32px;
-  /* left: 100px; */
   left: calc(100% - 100px);
 }
 
@@ -299,12 +291,6 @@ p {
 }
 
 .contact:hover .icon.phone {
-  /* -webkit-animation: ring 4s 0.7s ease-in-out infinite;
-  -webkit-transform-origin: 50% 4px;
-  -moz-animation: ring 4s 0.7s ease-in-out infinite;
-  -moz-transform-origin: 50% 4px; */
-  /* animation: ring 2s linear infinite;
-  transform-origin: center; */
 }
 
 .resume-container .intro .download-btn {
@@ -312,7 +298,6 @@ p {
   top: 10px;
   right: 10px;
   border: 3px solid black;
-  /* background-color: #a388ee; */
   background-color: rgba(163, 136, 238, 1);
   font-size: 0.7rem;
   padding: 6px 15px;
@@ -365,15 +350,16 @@ p {
   .resume-container {
     box-sizing: border-box;
     grid-template-areas:
-      "intro"
-      "profile"
-      "aside"
-      "contact"
-      "experience";
+      'intro'
+      'profile'
+      'aside'
+      'contact'
+      'experience';
     grid-template-columns: 1fr;
     padding: 10px;
     display: grid;
     grid-gap: 0;
+    background: #f8d6b3;
   }
 
   .resume-container {
@@ -388,6 +374,10 @@ p {
 
   .resume-container h3 {
     font-size: 1.2rem !important;
+  }
+
+  .resume-container .intro header h1 {
+    text-align: left;
   }
 
   .resume-container .intro h1 {
