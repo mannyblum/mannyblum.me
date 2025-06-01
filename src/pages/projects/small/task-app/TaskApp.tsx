@@ -98,6 +98,18 @@ const TaskApp = () => {
     setLSTasks(updatedTasks);
   };
 
+  // const handleDeleteTask = (taskId: string): Promise<boolean> => {
+  //   return new Promise((resolve) => {
+  //     // const updatedTasks = tasks.filter((task) => task.id !== taskId);
+  //     // setLSTasks(updatedTasks);
+
+  //     // Resolve after next tick to simulate update completion
+  //     requestAnimationFrame(() => {
+  //       resolve(true);
+  //     });
+  //   });
+  // };
+
   const handleEditTask = (task: Task) => {
     setTask(task);
     setTaskModalOpen(true);

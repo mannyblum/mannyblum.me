@@ -5,12 +5,12 @@ import {
   TrashIcon,
   XIcon,
 } from '@primer/octicons-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type TodoItemProps = {
   task: Task;
   onUpdateTask: (task: Task) => void;
-  onDeleteTask: (taskId: string) => void;
+  onDeleteTask: (taskId: string) => Promise<boolean>;
   onEditTask: (task: Task) => void;
 };
 
@@ -20,20 +20,78 @@ const TaskItem = ({
   onDeleteTask,
   onEditTask,
 }: TodoItemProps) => {
-  const [deleteMode, setDeleteMode] = useState<boolean>(true);
+  const [deleteMode, setDeleteMode] = useState<boolean>(false);
   const [checked, setChecked] = useState<boolean>(false);
+  const [isDeleting, setDeleting] = useState<boolean>(false);
 
   useEffect(() => {
     setChecked(task.completed);
   }, [task]);
 
+  const liElementRef = useRef<HTMLLIElement | null>(null);
+
+  useEffect(() => {
+    // const element = liElementRef.current;
+    // if (element) {
+    //   const handleTransitionEnd = (e: TransitionEvent) => {
+    //     console.log('Transition finished!', element);
+    //     console.log('transitionEvent name', e.propertyName);
+    //   };
+
+    //   element.addEventListener('transitionend', handleTransitionEnd);
+
+    //   return () => {
+    //     element.removeEventListener('transitionend', handleTransitionEnd);
+    //   };
+
+    // }
+    const element = liElementRef.current;
+    if (!element) return;
+
+    const propertiesToWatch = new Set(['opacity', 'translate', 'max-height']);
+    const completedProperties = new Set<string>();
+
+    const handleTransitionEnd = (event: TransitionEvent) => {
+      if (propertiesToWatch.has(event.propertyName)) {
+        completedProperties.add(event.propertyName);
+
+        if (completedProperties.size === propertiesToWatch.size) {
+          console.log('all transitions completed!');
+          onDeleteTask(task.id);
+          // Trigger your logic here (e.g., set state, remove DOM node, etc.)
+        }
+      }
+    };
+
+    element.addEventListener('transitionend', handleTransitionEnd);
+    return () => {
+      element.removeEventListener('transitionend', handleTransitionEnd);
+    };
+  }, []);
+
   const toggleDeleteTask = () => {
     setDeleteMode((prevState) => !prevState);
   };
 
-  const handleConfirmDelete = () => {
-    onDeleteTask(task.id);
-    setDeleteMode(false);
+  const handleConfirmDelete = async () => {
+    setDeleting(true);
+    // await onDeleteTask(task.id);
+
+    // onDeleteTask(task.id).then((response) => {
+    //   console.log('response', response);
+
+    //   if (response) {
+    //     setDeleting(true);
+
+    //     setTimeout(() => {
+    //       console.log('wait 1 second');
+    //       setDeleteMode(false);
+    //     }, 1000);
+    //   }
+    // });
+
+    // console.log('delete task', deleteTask);
+    // setDeleteMode(false);
   };
 
   const handleEdit = () => {
@@ -51,44 +109,52 @@ const TaskItem = ({
 
   return (
     <li
+      ref={liElementRef}
       key={task.id}
+      // className={`relative
+      //   text-black border-b-2 border-b-black last:border-b-0 p-2
+      //   transition-all duration-300 ease-out
+      //   ${task.completed ? 'opacity-50 bg-zinc-200 ' : ''}
+      //     ${deleted ? 'h-0 opacity-0 hidden' : 'flex justify-between items-center'}
+      // `}
       className={`relative
-        text-black border-b-2 border-b-black last:border-b-0 p-2  flex justify-between items-center 
+        text-black border-b-2 border-b-black last:border-b-0 p-2 
         ${task.completed ? 'opacity-50 bg-zinc-200 ' : ''}
+        transition-all duration-500 ease-out overflow-hidden
+        ${
+          isDeleting
+            ? 'max-h-0 opacity-0 -translate-y-2'
+            : 'flex justify-between items-center max-h-40 translate-y-0'
+        }
       `}
     >
-      {deleteMode && (
-        <div className="absolute top-0 left-0 bottom-0 right-0 bg-red-300">
-          <div className="h-full flex justify-between items-center">
-            <p className="text-white ml-2 mb-0! font-bold">Delete for sure?</p>
-            <div className="">
-              <button
-                onClick={toggleDeleteTask}
-                className="border-2 border-black p-1 rounded-md mr-2
-                shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-0.5 ext-sm font-black text-black text-sm bg-white focus:outline-none bg-none  hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleConfirmDelete}
-                className="border-2 border-black p-1 rounded-md mr-2 text-sm"
-              >
-                Delete
-              </button>
-            </div>
+      <div
+        className={`transition-all duration-300 ease-out 
+          ${!deleteMode ? 'right-[200%] -left-[100%]' : 'right-0 left-0'}
+        absolute top-0 bottom-0   bg-red-300
+        overflow-hidden w-full
+        `}
+      >
+        <div className="h-full flex justify-between items-center">
+          <p className="text-white ml-2 mb-0! font-bold">Delete for sure?</p>
+          <div className="">
+            <button
+              onClick={toggleDeleteTask}
+              className="border-2 border-black p-1 rounded-md mr-2
+                shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-0.5 font-black text-black text-sm bg-white focus:outline-none bg-none  hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleConfirmDelete}
+              className="border-2 border-black p-1 rounded-md mr-2 text-sm"
+            >
+              Delete
+            </button>
           </div>
         </div>
-      )}
+      </div>
       <div className="grow-4">
-        {/* {deleteMode && (
-          <button
-            onClick={handleConfirmDelete}
-            className="h-full px-4 py-1 border rounded-sm bg-red-300 text-black"
-          >
-            Delete
-          </button>
-        )} */}
-
         {!deleteMode && (
           <div className="mr-4 flex items-center">
             <div className="flex items-center cursor-pointer mr-4">
