@@ -98,18 +98,6 @@ const TaskApp = () => {
     setLSTasks(updatedTasks);
   };
 
-  // const handleDeleteTask = (taskId: string): Promise<boolean> => {
-  //   return new Promise((resolve) => {
-  //     // const updatedTasks = tasks.filter((task) => task.id !== taskId);
-  //     // setLSTasks(updatedTasks);
-
-  //     // Resolve after next tick to simulate update completion
-  //     requestAnimationFrame(() => {
-  //       resolve(true);
-  //     });
-  //   });
-  // };
-
   const handleEditTask = (task: Task) => {
     setTask(task);
     setTaskModalOpen(true);
@@ -161,12 +149,6 @@ const TaskApp = () => {
           <CategorySelect
             onSelectCategory={(categoryId) => handleSelectCategory(categoryId)}
           />
-          {/* <button
-          id="settings"
-          className="text-black border-2 border-black hover:border-black! rounded-sm p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]"
-        >
-          <GearIcon size={24} />
-        </button> */}
         </div>
         {tasks.length === 0 || availableItems.length === 0 ? (
           <div className="text-center font-black border-2 text-black text-xs rounded-sm flex place-content-center p-2 px-4 mb-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]">

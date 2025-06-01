@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 type TodoItemProps = {
   task: Task;
   onUpdateTask: (task: Task) => void;
-  onDeleteTask: (taskId: string) => Promise<boolean>;
+  onDeleteTask: (taskId: string) => void;
   onEditTask: (task: Task) => void;
 };
 
@@ -31,20 +31,6 @@ const TaskItem = ({
   const liElementRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
-    // const element = liElementRef.current;
-    // if (element) {
-    //   const handleTransitionEnd = (e: TransitionEvent) => {
-    //     console.log('Transition finished!', element);
-    //     console.log('transitionEvent name', e.propertyName);
-    //   };
-
-    //   element.addEventListener('transitionend', handleTransitionEnd);
-
-    //   return () => {
-    //     element.removeEventListener('transitionend', handleTransitionEnd);
-    //   };
-
-    // }
     const element = liElementRef.current;
     if (!element) return;
 
@@ -56,9 +42,7 @@ const TaskItem = ({
         completedProperties.add(event.propertyName);
 
         if (completedProperties.size === propertiesToWatch.size) {
-          console.log('all transitions completed!');
           onDeleteTask(task.id);
-          // Trigger your logic here (e.g., set state, remove DOM node, etc.)
         }
       }
     };
@@ -75,23 +59,6 @@ const TaskItem = ({
 
   const handleConfirmDelete = async () => {
     setDeleting(true);
-    // await onDeleteTask(task.id);
-
-    // onDeleteTask(task.id).then((response) => {
-    //   console.log('response', response);
-
-    //   if (response) {
-    //     setDeleting(true);
-
-    //     setTimeout(() => {
-    //       console.log('wait 1 second');
-    //       setDeleteMode(false);
-    //     }, 1000);
-    //   }
-    // });
-
-    // console.log('delete task', deleteTask);
-    // setDeleteMode(false);
   };
 
   const handleEdit = () => {
@@ -111,12 +78,6 @@ const TaskItem = ({
     <li
       ref={liElementRef}
       key={task.id}
-      // className={`relative
-      //   text-black border-b-2 border-b-black last:border-b-0 p-2
-      //   transition-all duration-300 ease-out
-      //   ${task.completed ? 'opacity-50 bg-zinc-200 ' : ''}
-      //     ${deleted ? 'h-0 opacity-0 hidden' : 'flex justify-between items-center'}
-      // `}
       className={`relative
         text-black border-b-2 border-b-black last:border-b-0 p-2 
         ${task.completed ? 'opacity-50 bg-zinc-200 ' : ''}
