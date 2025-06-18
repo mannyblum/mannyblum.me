@@ -32,11 +32,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       <div className="relative aspect-video w-full bg-gray-200 border-4 border-black mb-4">
         <img
-          src={
-            project.thumbnail
-              ? `/src/assets/images/${project.thumbnail}`
-              : placeholder
-          }
+          src={project.thumbnail ? `/images/${project.thumbnail}` : placeholder}
           alt="thumbnail"
           className="w-full h-full object-cover"
         />

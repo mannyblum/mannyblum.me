@@ -147,7 +147,7 @@ header h1 {
 @keyframes grow {
   from {
     width: 100px;
-    heihgt: 100px;
+    height: 100px;
     background: blue;
   }
   to {
@@ -157,7 +157,7 @@ header h1 {
   }
   /* from {
     width: 50px;
-    heihgt: 50px;
+    height: 50px;
     background: red;
   }
   to {
@@ -167,7 +167,7 @@ header h1 {
   } */
   /* 0% {
     width: 50px;
-    heihgt: 50px;
+    height: 50px;
     background: red;
   }
   50% {
