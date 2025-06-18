@@ -9,7 +9,7 @@ const Home = () => {
   const { meal, setMeal } = useMeal();
 
   return (
-    <div className="bg-amber-50 h-screen py-2 pb-4 ">
+    <div className="bg-amber-50 h-[90vh] my-4 mb-20 py-4 border-4 shadow-[4px_4px_0px_rgba(0,0,0,1)] border-black relative overflow-y-scroll">
       <RecipeBook />
       <AnimatePresence mode="wait">
         {!isEmpty(meal) && (

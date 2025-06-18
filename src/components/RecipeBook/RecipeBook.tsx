@@ -8,9 +8,9 @@ import { ClipLoader } from 'react-spinners';
 
 import RecipeList from './RecipeList';
 
-function timeout(delay: number) {
-  return new Promise((res) => setTimeout(res, delay));
-}
+// function timeout(delay: number) {
+// return new Promise((res) => setTimeout(res, delay));
+// }
 
 const RecipeBook = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -70,29 +70,29 @@ const RecipeBook = () => {
   };
 
   return (
-    <motion.div>
-      <div className="flex justify-center w-full md:w-[75%] flex-col grow mx-auto">
-        <header className="mx-4 mb-2 flex flex-row items-center justify-between">
-          <h1 className="antonio mx-auto text-center">RecipeBook</h1>
-        </header>
-        <div className="flex justify-center">
-          <TextField
-            value={inputValue}
-            onChange={(val) => setInputValue(val)}
-            onKeyDown={handleSearchSubmit}
-            placeholder="Search"
-          />
-        </div>
-        <div className="overflow-y-auto">
-          {isFetching ? (
-            <div className="mx-8 mt-4  mb-2  py-4 px-2 text-center">
-              <ClipLoader speedMultiplier={0.6} />
-            </div>
-          ) : (
-            renderRecipeList()
-          )}
-        </div>
+    // <motion.div>
+    <motion.div className="flex justify-center py-4 w-full md:w-[75%] flex-col grow mx-auto">
+      <header className="mx-4 mb-2 flex flex-row items-center justify-between">
+        <h1 className="antonio mx-auto text-center">RecipeBook</h1>
+      </header>
+      <div className="flex justify-center">
+        <TextField
+          value={inputValue}
+          onChange={(val) => setInputValue(val)}
+          onKeyDown={handleSearchSubmit}
+          placeholder="Search"
+        />
       </div>
+      <div className="overflow-y-auto">
+        {isFetching ? (
+          <div className="mx-8 mt-4  mb-2  py-4 px-2 text-center">
+            <ClipLoader speedMultiplier={0.6} />
+          </div>
+        ) : (
+          renderRecipeList()
+        )}
+      </div>
+      {/* </div> */}
     </motion.div>
   );
 };

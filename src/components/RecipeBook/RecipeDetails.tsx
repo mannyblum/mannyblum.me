@@ -39,7 +39,7 @@ const RecipeDetails = ({ onClose }: { onClose: () => void }) => {
   return (
     <motion.div
       key="recipe-details"
-      className="z-50 fixed h-full w-full top-0 left-0 bg-amber-50"
+      className="z-50 absolute h-full w-full top-0 left-0 bg-amber-50"
       initial={{ x: '100vw' }}
       animate={{ x: 0 }}
       exit={{ x: '100vw' }}
@@ -71,7 +71,7 @@ const RecipeDetails = ({ onClose }: { onClose: () => void }) => {
         <TabGroup onTabChange={setSelectedTab} />
         <div
           id="tabs-content"
-          className="m-4 px-3 py-4 rounded-md text-md bg-white border-2 border-black text-black shadow-[2px_2px_0px_rgba(0,0,0,1)]"
+          className="m-4 px-3 py-4 rounded-md text-left text-md bg-white border-2 border-black text-black shadow-[2px_2px_0px_rgba(0,0,0,1)]"
         >
           <div
             id="tab_1_content"
@@ -203,7 +203,7 @@ const Tab = React.forwardRef<HTMLLIElement, TabProps>(
         onClick={() => setSelectedTab(name)}
       >
         <p
-          className={`relative uppercase py-1 text-sm z-10 text-center block text-black ${
+          className={`relative mb-0! uppercase py-1 text-sm z-10 text-center block text-black ${
             name === selectedTab ? 'font-bold' : ''
           }`}
         >

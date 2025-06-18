@@ -1,9 +1,10 @@
-import { Outlet } from "react-router";
+import ProjectHeader from '@/components/projects/Header';
+import { Outlet } from 'react-router';
 
 export default function Projects() {
   return (
-    <div className="text-center">
-      <h1 className="text-3xl font-bold ">Projects</h1>
+    <div className="my-4 py-4 container h-screen mx-auto font-['Inter']">
+      <ProjectHeader />
       <Outlet />
     </div>
   );

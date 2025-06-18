@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@primer/octicons-react": "^19.15.2",
     "@tailwindcss/vite": "^4.1.5",
     "@tanstack/react-query": "^5.79.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "antd": "^5.25.4",
+    "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "motion": "^12.15.0",
     "react": "^19.0.0",
@@ -22,6 +25,7 @@
     "react-router": "^7.6.0",
     "react-spinners": "^0.17.0",
     "short-uuid": "^5.2.0",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.5"
   },
   "devDependencies": {

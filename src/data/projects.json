@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Task App",
+    "thumbnail": "task-app-thumb.png",
+    "shortDescription": "This is going to be a description of sorts",
+    "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac magna ac lectus cursus feugiat et ut velit. Maecenas suscipit porta consequat. Donec feugiat ultrices tempor. Phasellus egestas tempus est eget dignissim. Duis eros arcu, ornare a lacinia interdum, porta vel orci. Proin eget risus quis ligula tristique placerat. Nam eget pellentesque ipsum, sed ornare eros. Sed vitae urna posuere, congue felis in, aliquam eros.",
+    "type": "app",
+    "githubUrl": "http://github.com",
+    "demoUrl": "/projects/small/task-app",
+    "techStack": [
+      {
+        "name": "d3js",
+        "url": "https://github.com"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Recipe Book",
+    "thumbnail": "recipe-book-thumb.png",
+    "shortDescription": "This is going to be a description of sorts",
+    "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac magna ac lectus cursus feugiat et ut velit. Maecenas suscipit porta consequat. Donec feugiat ultrices tempor. Phasellus egestas tempus est eget dignissim. Duis eros arcu, ornare a lacinia interdum, porta vel orci. Proin eget risus quis ligula tristique placerat. Nam eget pellentesque ipsum, sed ornare eros. Sed vitae urna posuere, congue felis in, aliquam eros.",
+    "type": "app",
+    "githubUrl": "http://github.com",
+    "demoUrl": "/projects/small/recipe-book",
+    "techStack": [
+      {
+        "name": "d3js",
+        "url": "https://github.com"
+      }
+    ]
+  }
+]
