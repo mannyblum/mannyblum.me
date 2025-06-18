@@ -1,12 +1,12 @@
 import { queryOptions, useQuery } from '@tanstack/react-query';
-import { Button, Select } from 'antd';
+import { Select } from 'antd';
 
-type SearchParams = {
-  amount: number;
-  category: number;
-  difficulty: string;
-  type: string;
-};
+// type SearchParams = {
+//   amount: number;
+//   category: number;
+//   difficulty: string;
+//   type: string;
+// };
 
 function categoryQueryOptions() {
   return queryOptions({
