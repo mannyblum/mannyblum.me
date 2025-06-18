@@ -7,7 +7,7 @@ export default function Intro() {
       </header>
       <a
         className="download-btn"
-        href="./assets/manny-blum-2025-resume-v5.pdf"
+        href="./assets/manny-blum-2025-resume-v9.pdf"
         download
       >
         Download Resume

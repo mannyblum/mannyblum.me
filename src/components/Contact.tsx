@@ -1,4 +1,4 @@
-import ContactIcon from "./icons/Contact";
+import ContactIcon from './icons/Contact';
 
 export default function Contact() {
   return (
@@ -12,7 +12,7 @@ export default function Contact() {
         <li>Atlanta, GA</li>
         <li>
           <a href="www.linkedin.com/in/manny-blum-16a66a143">
-            http://linkedin.com
+            http://www.linkedin.com/in/manny-blum-16a66a143
           </a>
         </li>
       </ul>

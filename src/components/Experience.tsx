@@ -22,29 +22,40 @@ export default function Experience() {
 
           <ul>
             <li>
-              Built and maintained a complex, modular dashboard using{" "}
-              <span className="hilite">Next.js</span>,{" "}
-              <span className="hilite">Apollo Client (GraphQL)</span>, and{" "}
+              Built and maintained a complex, modular dashboard using{' '}
+              <span className="hilite">Next</span>,{' '}
+              <span className="hilite">Apollo Client (GraphQL)</span>, and{' '}
               <span className="hilite">Material UI</span>, enabling real-time
               visibility into vehicles, sites, users, assets, and routes.
             </li>
             <li>
-              Collaborated closely with backend and middleware teams to
-              integrate <span className="hilite">APIs</span> and optimize data
-              flow through <span className="hilite">Apollo</span> client-side
-              cache.
+              Integrated <span className="hilite">APIs</span> and optimized data
+              handling through tight collaboration with backend and middleware
+              teams, improving efficiency via{' '}
+              <span className="hilite">Apollo's</span> client-side caching
+              strategies.
             </li>
             <li>
-              Worked directly with product managers and stakeholders to
-              translate business requirements into intuitive{" "}
-              <span className="hilite">UX</span> flows and features.
+              Translated complex business requirements into user-centric
+              interfaces and intuitive <span className="hilite">UX</span> flows
+              through close partnership with product managers and stakeholders.
             </li>
             <li>
-              Participated in daily Agile ceremonies, conducted code and design
-              reviews, and proactively addressed performance bottlenecks and
-              scalability issues. Frequently prototyped and validated UI
-              enhancements to improve the usability and efficiency of the
-              platform.
+              Actively participated in Agile ceremonies (stand-ups, sprint
+              planning, retrospectives), conducted rigorous code and design
+              reviews, and resolved scalability and performance challenges
+              across the stack.
+            </li>
+            <li>
+              Prototyped and validated UI enhancements with iterative feedback
+              loops, improving platform usability, system responsiveness, and
+              operator productivity.
+            </li>
+            <li>
+              Contributed to engineering research and development efforts at
+              AutonomOS, driving innovation in autonomous system management
+              through thoughtful UI architecture and cross-functional
+              collaboration.
             </li>
           </ul>
         </section>
@@ -61,30 +72,46 @@ export default function Experience() {
           <h6>EMS (Enterprise Mobility Security) Portal</h6>
           <ul>
             <li>
-              One of Bluefletch’s main offerings, EMS, is a service used to
-              provide enterprise level security to employees devices. My main
-              task is to oversee and develop various existing and up new
-              features for the portal. We leveraged React/Redux on the front for
-              this purpose.
+              Led feature development and enhancement for the Enterprise
+              Mobility Security (EMS) Portal, a flagship Bluefletch product
+              providing enterprise-grade device security and management.
             </li>
             <li>
-              It uses a variety of technologies such as{" "}
-              <span className="hilite">React/Redux</span>,{" "}
-              <span className="hilite">Node.js</span>,
-              <span className="hilite">Postgres</span>,{" "}
-              <span className="hilite">MQTT</span>,{" "}
-              <span className="hilite">GCP</span>,{" "}
-              <span className="hilite">Twilio</span> and others to best provide
-              solutions for our customers.
+              Built and maintained scalable front-end components using{' '}
+              <span className="hilite">React</span> and
+              <span className="hilite">Redux</span>, improving user experience
+              and delivering responsive, intuitive UI solutions aligned with
+              business goals.
             </li>
             <li>
-              I work along side Business Analysts and Designers to review
-              feature changes or new ideas that can be used to further help our
-              customers succeed.
+              Collaborated cross-functionally with Business Analysts and
+              Designers to evaluate and implement feature requests, ensuring
+              customer-centric solutions and successful delivery.
             </li>
             <li>
-              I would also help with mentoring Interns and Junior Developers
-              that worked on both Portal and Android features.
+              Worked across a modern full-stack environment including{' '}
+              <span className="hilite">Node</span>,
+              <span className="hilite">PostgreSQL</span>,{' '}
+              <span className="hilite">MQTT</span>,{' '}
+              <span className="hilite">Twilio</span>, and{' '}
+              <span className="hilite">Google Cloud Platform (GCP)</span> to
+              build secure, reliable, and efficient systems.
+            </li>
+            <li>
+              Participated in end-to-end feature planning and development, from
+              requirements review through deployment, including backend service
+              coordination and data integration.
+            </li>
+            <li>
+              Provided mentorship to{' '}
+              <span className="hilite">Interns and Junior Developers</span>,
+              offering code guidance, architecture insights, and support for
+              both portal and Android development projects.
+            </li>
+            <li>
+              Contributed to Bluefletch's mission to deliver secure enterprise
+              mobility solutions by actively improving platform functionality,
+              reducing technical debt, and promoting engineering excellence.
             </li>
           </ul>
         </section>
@@ -92,21 +119,30 @@ export default function Experience() {
           <h6>Contractor Tablet Application</h6>
           <ul>
             <li>
-              This client was looking to leverage Windows tablets and an
-              application to help their techs be more efficient at fulfilling
-              work orders they have throughout the day. We decided on a solution
-              using <span className="hilite">Angular</span> and{" "}
-              <span className="hilite">Cordova</span> to create an application
-              that, while technically could be used from any browser, would feel
-              native and easy to use for the techs.
+              Developed a cross-platform field service application using{' '}
+              <span className="hilite">Angular</span> and{' '}
+              <span className="hilite">Cordova</span>, enabling technicians to
+              efficiently manage and complete daily work orders on{' '}
+              <span className="hilite">Windows tablets</span> with a native
+              app-like experience.
             </li>
             <li>
-              After the success of this application, they decided they wanted to
-              update other applications in their suite to follow this update in
-              technology. We worked alongside them to deliver a new suite of
-              applications built using <span className="hilite">Vue</span>that
-              can be used in their existing Windows tablets or in new updated
-              Android tablets.
+              Designed the solution for browser accessibility while optimizing
+              usability for mobile hardware, enhancing technician productivity
+              and on-site task execution.
+            </li>
+            <li>
+              Collaborated with the client to modernize their broader
+              application suite, leading development efforts using{' '}
+              <span className="hilite">Vue</span> to create scalable,
+              tablet-compatible apps for both{' '}
+              <span className="hilite">Windows</span> and{' '}
+              <span className="hilite">Android</span> devices.
+            </li>
+            <li>
+              Contributed to long-term digital transformation initiatives by
+              aligning application architecture with evolving hardware platforms
+              and client-specific operational workflows.
             </li>
           </ul>
         </section>
@@ -114,21 +150,25 @@ export default function Experience() {
           <h6>Retail Inventory Management Services</h6>
           <ul>
             <li>
-              One of our clients is a large retail company that has been using
-              our Android service offerings to help them create various tools
-              their employees could use to manage their inventory at stores. The
-              client was looking to update a series of old devices that were
-              being used in their stores very inefficiently.
+              Partnered with a major retail client to modernize inventory
+              management tools for store employees by supporting the backend
+              development of Android-based solutions.
             </li>
             <li>
-              I joined this team for this project to help them put together a
-              set of <span className="hilite">APIs</span>, built in{" "}
-              <span className="hilite">JAVA</span>, that would work alongside
-              their previous <span className="hilite">APIs</span>. I worked
-              alongside an Android Developer and together we would figure out
-              what services this <span className="hilite">API</span> needed to
-              provide and how it would interact seamlessly with the Android
-              application.
+              Designed and implemented new{' '}
+              <span className="hilite">Java-based APIs</span> to integrate
+              seamlessly with existing backend systems, improving data flow and
+              operational efficiency across retail locations.
+            </li>
+            <li>
+              Collaborated closely with an Android Developer to define service
+              requirements, ensure compatibility, and deliver robust API
+              functionality tailored to mobile device interactions.
+            </li>
+            <li>
+              Supported the transition from legacy hardware to updated Android
+              platforms by delivering scalable, maintainable services that
+              enhanced inventory tracking and store performance.
             </li>
           </ul>
         </section>
@@ -147,7 +187,7 @@ export default function Experience() {
           <ul>
             <li>
               Joined this team to attempt to build a platform for Developers to
-              have access and use various <span className="hilite">APIs</span>{" "}
+              have access and use various <span className="hilite">APIs</span>{' '}
               and <span className="hilite">SDKs</span> being built by the Ionic
               team.
             </li>
@@ -179,7 +219,7 @@ export default function Experience() {
             </li>
             <li>
               This was an effort to help not have to write the config files by
-              hand. The application needed to run offline so{" "}
+              hand. The application needed to run offline so{' '}
               <span className="hilite">Angular</span> was used with LocalStorage
               to leverage data manipulation.
             </li>
@@ -194,14 +234,15 @@ export default function Experience() {
           <ul>
             <li>
               Was part of the team involved in building a modular dashboard
-              application powered by various{" "}
-              <span className="hilite">APIs</span> using{" "}
-              <span className="hilite">Angular.js</span>.
+              application powered by various{' '}
+              <span className="hilite">APIs</span> using{' '}
+              <span className="hilite">Angular</span>.
             </li>
             <li>
               Helped develop and maintain the task runners necessary to power
-              the build process of the dashboard, using tools such as Grunt and
-              Gulp.
+              the build process of the dashboard, using tools such as{' '}
+              <span className="hilite">Grunt</span> and{' '}
+              <span className="hilite">Gulp</span>.
             </li>
             <li>
               Helped standardize specific code practices within the UI team.
@@ -245,8 +286,8 @@ export default function Experience() {
               power some areas of content within the sites.
             </li>
             <li>
-              Improved site performance by implementing various{" "}
-              <span className="hilite">CSS</span> and
+              Improved site performance by implementing various{' '}
+              <span className="hilite">CSS</span> and{' '}
               <span className="hilite">Javascript</span> performance tweaks.
             </li>
             <li>
@@ -258,9 +299,8 @@ export default function Experience() {
               implement new features required by the markets.
             </li>
             <li>
-              Was an advocate for clean, semantic markup; Modular{" "}
-              <span className="hilite">HTML/CSS</span>
-              and Performance.
+              Was an advocate for clean, semantic markup; Modular{' '}
+              <span className="hilite">HTML/CSS</span> and Performance.
             </li>
             <li>
               Experimented with new technologies to determine if they could fit

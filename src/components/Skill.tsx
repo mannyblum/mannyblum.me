@@ -6,40 +6,48 @@ export default function Skills() {
         <h3>Front-End Development</h3>
         <ul>
           <li>React </li>
-          <li>Redux </li>
+          <li>Redux/Redux Toolkit </li>
           <li>Vue </li>
-          <li>Next.js </li>
+          <li>Next/SSR </li>
           <li>TypeScript </li>
           <li>JavaScript (ES6+) </li>
           <li>HTML5 </li>
           <li>CSS3/Sass/LESS </li>
-          <li>Responsive & Mobile-First Design </li>
+          <li>Responsive</li>
+          <li>Mobile-First Design </li>
+          <li>Progressive Web Apps</li>
           <li>SPA Development </li>
-          <li>Tailwind CSS </li>
-          <li>Material UI </li>
+          <li>TailwindCSS </li>
+          <li>Material Design/UI </li>
           <li>Bootstrap </li>
+          <li>Bulma</li>
+          <li>Antd</li>
         </ul>
 
         <h3>UI/UX &amp; Design</h3>
         <ul>
           <li>Figma </li>
-          <li>Adobe XD </li>
+
           <li>Sketch </li>
           <li>Miro </li>
+          <li>Adobe XD </li>
           <li>Photoshop </li>
+          <li>Illustrator </li>
+          <li>Storybook</li>
           <li>Accessibility (WCAG) </li>
           <li>Component Libraries </li>
           <li>UX Wireframing </li>
           <li>UX Prototyping </li>
         </ul>
 
-        <h3>API, Middleware &amp; Backend</h3>
+        <h3>Middleware &amp; Backend</h3>
         <ul>
           <li>GraphQL (Apollo Client)</li>
           <li>REST </li>
           <li>APIs </li>
-          <li>Node.js </li>
+          <li>Node </li>
           <li>Express </li>
+          <li>MySQL</li>
           <li>Postgres </li>
           <li>MongoDB </li>
         </ul>
@@ -47,7 +55,8 @@ export default function Skills() {
         <h3>Tooling &amp; Workflow</h3>
         <ul>
           <li>Git </li>
-          <li>GitHub </li>
+          <li>GitHub/Bitbucket</li>
+          <li>CRA/Vite/Webpack</li>
           <li>Docker </li>
           <li>GCP </li>
           <li>CI/CD </li>
@@ -71,15 +80,6 @@ export default function Skills() {
           Georgia College &amp; State University
         </p>
       </section>
-      {/* <section className="other">
-      <h2>Interests</h2>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </section> */}
     </>
   );
 }
