@@ -61,7 +61,7 @@ const TaskModal = ({ onClose, onSubmit, task }: TaskModalProps) => {
   };
 
   return (
-    <div className="text-black">
+    <div className="text-black relative">
       <div
         id="static-modal"
         data-modal-backdrop="static"

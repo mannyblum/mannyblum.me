@@ -15,14 +15,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const openDemoLink = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    console.log('open demo');
     navigate(project.demoUrl);
   };
 
   const openCodeLink = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
-    console.log('open github');
   };
 
   return (

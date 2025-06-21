@@ -101,7 +101,7 @@ export default function TaskApp() {
     return task;
   });
   return (
-    <div className="bg-indigo-400 h-full my-4 mb-8 py-4 border-5 border-black relative">
+    <div className="bg-indigo-400 h-full w-full py-8 relative flex justify-center items-start">
       <div className="w-[500px] mx-auto bg-white p-4 rounded-sm shadow-[5px_5px_0px_rgba(0,0,0,1)] mt-2">
         <div className="mb-4 flex items-center justify-between">
           <button
