@@ -71,29 +71,28 @@ const RecipeBook = () => {
 
   return (
     // <motion.div>
-    <motion.div className="flex justify-center py-4 w-full md:w-[75%] flex-col grow mx-auto">
-      <header className="mx-4 mb-2 flex flex-row items-center justify-between">
-        <h1 className="antonio mx-auto text-center">RecipeBook</h1>
-      </header>
-      <div className="flex justify-center">
-        <TextField
-          value={inputValue}
-          onChange={(val) => setInputValue(val)}
-          onKeyDown={handleSearchSubmit}
-          placeholder="Search"
-        />
-      </div>
-      <div className="overflow-y-auto">
-        {isFetching ? (
-          <div className="mx-8 mt-4  mb-2  py-4 px-2 text-center">
-            <ClipLoader speedMultiplier={0.6} />
-          </div>
-        ) : (
-          renderRecipeList()
-        )}
-      </div>
-      {/* </div> */}
-    </motion.div>
+    <div className="bg-amber-50 h-full w-full py-8 relative overflow-y-scroll">
+      <motion.div className="flex justify-center py-4 w-full md:w-[75%] flex-col grow mx-auto">
+        <div className="flex justify-center">
+          <TextField
+            value={inputValue}
+            onChange={(val) => setInputValue(val)}
+            onKeyDown={handleSearchSubmit}
+            placeholder="Search"
+          />
+        </div>
+        <div className="overflow-y-auto">
+          {isFetching ? (
+            <div className="mx-8 mt-4  mb-2  py-4 px-2 text-center">
+              <ClipLoader speedMultiplier={0.6} />
+            </div>
+          ) : (
+            renderRecipeList()
+          )}
+        </div>
+        {/* </div> */}
+      </motion.div>
+    </div>
   );
 };
 

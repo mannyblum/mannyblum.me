@@ -66,6 +66,7 @@ const TaskAppPage = () => {
         <ul className="flex flex-row justify-start items-center mb-8 gap-4">
           <li className="px-2 py-1 bg-green-400">React</li>
           <li className="px-2 py-1 bg-purple-400">TailwindCSS</li>
+          <li className="px-2 py-1 bg-purple-400">Typescript</li>
         </ul>
       </div>
       <hr className="border-2 mb-8 border-black" />
