@@ -1,0 +1,122 @@
+:root {
+  --spoiler-color: #000;
+
+  --font-family: 'Karla', sans-serif;
+  --body-bg: #1e1f25;
+  --btn-bg: #000;
+  --btn-color: #cbcbcb;
+  --btn-color-hover: #fff;
+  --grad-color1: #eeaf61;
+  --grad-color2: #fb9062;
+  --grad-color3: #ee5d6c;
+  --grad-color4: #ce4993;
+  --grad-color5: #6a0d83;
+
+  --search-border: #bbb;
+  --search-focus-border: #3a71ca;
+
+  --font-main: 'Noto Sans', sans-serif;
+  --bg-main: #131417;
+  --bg-card: #1e1f26;
+  --bg-stats: #131417;
+  --username: #b7bbc8;
+
+  --color-light: lightgray;
+  --color-dark: darkgray;
+
+  --black: #282828;
+  --blue: #2892f9;
+  --red: #fb2f27;
+  --yellow: #fdfe29;
+
+  --bg-word: #5134ff;
+
+  --flag-red: #ed2938;
+  --flag-white: #fff;
+  --flag-blue: #002495;
+  --flag-height: 150px;
+
+  --flag-german-black: #000000;
+  --flag-german-red: #de0002;
+  --flag-german-yellow: #ffce00;
+
+  --flag-madagascar-white: #ffffff;
+  --flag-madagascar-red: #fc3e32;
+  --flag-madagascar-green: #007e39;
+
+  --flag-swiss-white: #fff;
+  --flag-swiss-red: #ff0002;
+
+  --flag-japan-white: #fff;
+  --flag-japan-red: #bc002c;
+  --flag-japan-height: 200px;
+
+  --flag-sweden-height: 150px;
+  --flag-sweden-width: calc(var(--flag-sweden-height) * (8 / 5));
+  --flag-sweden-blue: #0269a6;
+  --flag-sweden-yellow: #fecc00;
+
+  --flag-niger-height: 200px;
+  --flag-niger-orange: #e15307;
+  --flag-niger-white: #ffffff;
+  --flag-niger-green: #10af2a;
+
+  --profile-font-main: 'Noto Sans', sans-serif;
+  --profile-main-bg: #000;
+  --profile-bg: #0d1117;
+  --profile-color: #c9d1d9;
+  --profile-img-border: #2e343b;
+  --profile-username-font-color: #8b949e;
+  --profile-username-font-weight: 400;
+  --profile-btn-bg: #21262d;
+  --profile-btn-color: #c9d1d9;
+  --profile-btn-bg-hover: #30363d;
+  --profile-btn-border: #373b43;
+  --profile-btn-border-hover: #8c949e;
+
+  --toggle-switch-bg: #232428;
+  --toggle-border: #232428;
+  --toggle-bg: #fff;
+  --toggle-circle-size: 40px;
+  --toggle-width: 100px;
+
+  --playing-card-height: 200px;
+
+  --stage-1: 25%;
+  --stage-2: 50%;
+  --stage-3: 75%;
+  --stage-4: 100%;
+  --progbar-bg: lightgray;
+  --stage-1-bg: red;
+  --stage-2-bg: orangered;
+  --stage-3-bg: greenyellow;
+  --stage-4-bg: green;
+
+  --jeopardy-blue: #060ce9;
+  --jeopardy-font-color: #fff;
+
+  --loading-spinner: #f3f3f3;
+  --loading-spinner-active: purple;
+
+  --ig-menu-font: 'Karla', sans-serif;
+  --ig-menu-font-color: #fff;
+  --ig-menu-grad1: #feda75;
+  --ig-menu-grad2: #fa7e1e;
+  --ig-menu-grad3: #d62976;
+  --ig-menu-grad4: #962fbf;
+  --ig-menu-grad5: #4f5bd5;
+  --ig-menu-viewed: gray;
+  --ig-menu-bg-main: #000;
+  --ig-menu-bg-live: red;
+
+  --progressbar-bg: lightgrey;
+  --progressbar-start: red;
+  --progressbar-middle: blue;
+  --progressbar-finish: green;
+
+  --graph-bg: #333;
+  --default-square-bg: #161b22;
+  --level3: darkblue;
+  --level5: blue;
+  --level10: lightskyblue;
+}
