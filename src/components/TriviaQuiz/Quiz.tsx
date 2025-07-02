@@ -1,69 +1,26 @@
-import { Button, Radio, RadioChangeEvent } from 'antd';
+import { Button } from 'antd';
 import { decode } from 'html-entities';
-import { shuffle } from 'lodash';
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import type { QuizEntry } from '../../pages/projects/trivia-quiz/TriviaQuiz';
-
-const indexToLetter = (index: number) => String.fromCharCode(97 + index);
-
-function QuizEntry({
-  entry,
-  step,
-  activeStep,
-}: {
-  entry: QuizEntry;
-  activeStep: number;
-  step: number;
-}) {
-  const [selected, setSelected] = useState();
-
-  const answers = useMemo(() => {
-    return shuffle([...entry.incorrect_answers, entry.correct_answer]);
-  }, []);
-
-  const onChange = (e: RadioChangeEvent) => {
-    setSelected(e.target.value);
-  };
-
-  if (step !== activeStep) return null;
-
-  return (
-    <div className="p-4 mx-4">
-      <h1 className="text-white text-2xl mb-4">
-        {step + 1}. {decode(entry.question)}
-      </h1>
-      <Radio.Group
-        className="quiz-options"
-        value={selected}
-        onChange={onChange}
-      >
-        {answers.map((answer, index) => {
-          return (
-            <Radio key={indexToLetter(index)} value={answer}>
-              <span className="font-black uppercase mr-1">
-                {indexToLetter(index)}.
-              </span>
-              {answer}
-            </Radio>
-          );
-        })}
-      </Radio.Group>
-    </div>
-  );
-}
+import QuizEntry from './QuizEntry';
+import type { QuizEntryProps } from './QuizEntry';
 
 export default function Quiz({
-  data,
+  quiz,
   onQuit,
 }: {
-  data: QuizEntry[];
+  quiz: QuizEntryProps[];
   onQuit: (difficulty: string) => void;
 }) {
   const [activeStep, setActiveStep] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string>();
+
+  const [answers, setAnswers] = useState<boolean[]>([]);
 
   const onNextQuestion = () => {
     if (activeStep === 9) return;
+
+    setSelectedAnswer(undefined);
 
     setActiveStep((prev) => prev + 1);
   };
@@ -75,24 +32,43 @@ export default function Quiz({
   };
 
   const handleQuit = () => {
-    onQuit(data[0].difficulty);
+    onQuit(quiz[0].difficulty);
   };
+
+  useEffect(() => {
+    if (selectedAnswer) {
+      const answer = quiz[activeStep].correct_answer === selectedAnswer;
+
+      setAnswers((answers) => {
+        return [...answers, answer];
+      });
+    }
+  }, [selectedAnswer]);
+
+  console.log('selectedAnswer', selectedAnswer);
 
   return (
     <div className="bg-indigo-400 pt-5 w-full h-full rounded-2xl">
       <div className="text-xs quiz-meta w-[80%] mx-auto flex justify-between">
-        <div>{decode(data[activeStep].category)}</div>
+        <div>{decode(quiz[activeStep].category)}</div>
         <div>
-          {activeStep + 1} of {data.length}
+          {activeStep + 1} of {quiz.length}
         </div>
       </div>
-      {data.map((entry, index) => {
+      <div className="text-xs  quiz-meta w-[80%] mx-auto ">
+        Difficulty:{' '}
+        <span className="font-black capitalize">{quiz[0].difficulty}</span>
+      </div>
+      <hr className="border-b-2 border-black my-2 w-[80%] mx-auto" />
+
+      {quiz.map((entry, index) => {
         return (
           <QuizEntry
             key={entry.question}
             entry={entry}
             step={index}
             activeStep={activeStep}
+            onSelectAnswer={(answer) => setSelectedAnswer(answer)}
           />
         );
       })}
@@ -100,7 +76,9 @@ export default function Quiz({
       <div className="footer flex justify-between p-2">
         <Button onClick={onPrevQuestion}>Previous</Button>
         <Button onClick={handleQuit}>X</Button>
-        <Button onClick={onNextQuestion}>Next</Button>
+        <Button disabled={!selectedAnswer} onClick={onNextQuestion}>
+          Next
+        </Button>
       </div>
     </div>
   );
