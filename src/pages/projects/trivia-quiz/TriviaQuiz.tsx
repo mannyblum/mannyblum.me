@@ -16,29 +16,28 @@ function categoryQueryOptions() {
   });
 }
 
-function easyCategoryQueryOptions() {
+function easyCategoryQueryOptions(categoryId: number) {
   return queryOptions({
     queryKey: ['easy'],
-    queryFn: () => {
-      return fetchEasyQuiz();
-    },
+    queryFn: () => fetchEasyQuiz(categoryId),
     enabled: false,
   });
 }
-function mediumCategoryQueryOptions() {
+
+function mediumCategoryQueryOptions(categoryId: number) {
   return queryOptions({
     queryKey: ['medium'],
     queryFn: () => {
-      return fetchMediumQuiz();
+      return fetchMediumQuiz(categoryId);
     },
     enabled: false,
   });
 }
-function hardCategoryQueryOptions() {
+function hardCategoryQueryOptions(categoryId: number) {
   return queryOptions({
     queryKey: ['hard'],
     queryFn: () => {
-      return fetchHardQuiz();
+      return fetchHardQuiz(categoryId);
     },
     enabled: false,
   });
@@ -48,37 +47,30 @@ export default function TriviaQuiz() {
   const { data: categories, isFetching } = useQuery(categoryQueryOptions());
   const queryClient = useQueryClient();
 
-  // TODO: REFACTOR THIS LATER
-  const {
-    isLoading: easyIsLoading,
-    data: easyData,
-    isError: easyIsError,
-    error: easyError,
-    isFetching: easyIsFetching,
-    refetch: easyRefetch,
-  } = useQuery(easyCategoryQueryOptions());
-  const {
-    isLoading: mediumIsLoading,
-    data: mediumData,
-    isError: mediumIsError,
-    error: mediumError,
-    isFetching: mediumIsFetching,
-    refetch: mediumRefetch,
-  } = useQuery(mediumCategoryQueryOptions());
-  const {
-    isLoading: hardIsLoading,
-    data: hardData,
-    isError: hardIsError,
-    error: hardError,
-    isFetching: hardIsFetching,
-    refetch: hardRefetch,
-  } = useQuery(hardCategoryQueryOptions());
-
-  const [value, setValue] = useState('All');
+  const [selectedId, setSelectedId] = useState<number>(0);
   const [difficulty, setDifficulty] = useState<string>();
 
-  const onChange = (e: RadioChangeEvent) => {
-    setValue(e.target.value);
+  // TODO: REFACTOR THIS LATER
+  const {
+    data: easyData,
+    isFetching: easyIsFetching,
+    refetch: easyRefetch,
+  } = useQuery(easyCategoryQueryOptions(selectedId));
+
+  const {
+    data: mediumData,
+    isFetching: mediumIsFetching,
+    refetch: mediumRefetch,
+  } = useQuery(mediumCategoryQueryOptions(selectedId));
+
+  const {
+    data: hardData,
+    isFetching: hardIsFetching,
+    refetch: hardRefetch,
+  } = useQuery(hardCategoryQueryOptions(selectedId));
+
+  const onCategoryChange = (e: RadioChangeEvent) => {
+    setSelectedId(e.target.value);
   };
 
   const fetchQuestions = (difficulty: string) => {
@@ -99,10 +91,10 @@ export default function TriviaQuiz() {
 
   if (!categories) return;
 
-  console.log('data', categories);
-
-  const handleQuit = (difficulty: string) => {
-    queryClient.removeQueries({ queryKey: [difficulty] });
+  const handleQuit = () => {
+    queryClient.resetQueries({ queryKey: ['easy'], exact: true });
+    queryClient.resetQueries({ queryKey: ['medium'], exact: true });
+    queryClient.resetQueries({ queryKey: ['hard'], exact: true });
     setDifficulty(undefined);
   };
 
@@ -129,19 +121,19 @@ export default function TriviaQuiz() {
           <h4 className="mx-1 mb-2">Category</h4>
           <div className="trivia-categories overflow-auto no-scrollbar flex ">
             <Radio.Group
-              value={value}
-              onChange={onChange}
+              value={selectedId}
+              onChange={onCategoryChange}
               className="radio-custom overflow-auto mx-2 no-scrollbar flex!"
             >
-              <Radio key="all" value={'All'} className="m-1! items-start!">
+              <Radio key={0} value={0} className="m-1! items-start!">
                 All
               </Radio>
 
               {categories.trivia_categories.map((category: Category) => {
                 return (
                   <Radio
-                    key={category.name}
-                    value={category.name}
+                    key={category.id}
+                    value={category.id}
                     className="m-1! items-start!"
                   >
                     {category.name}
@@ -199,28 +191,31 @@ const fetchCategories = async (): Promise<CategoriesResponse> => {
 //   return await response.json();
 // };
 
-const fetchEasyQuiz = async (): Promise<QuizResponse> => {
+const fetchEasyQuiz = async (categoryId: number): Promise<QuizResponse> => {
+  console.log('meta', categoryId);
+
   await new Promise((resolve) => setTimeout(resolve, 500));
+
   const response = await fetch(
-    'https://opentdb.com/api.php?amount=10&difficulty=easy',
+    `https://opentdb.com/api.php?amount=10&difficulty=easy&category=${categoryId}`,
   );
 
   return await response.json();
 };
 
-const fetchMediumQuiz = async (): Promise<QuizResponse> => {
+const fetchMediumQuiz = async (categoryId: number): Promise<QuizResponse> => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   const response = await fetch(
-    'https://opentdb.com/api.php?amount=10&difficulty=medium',
+    `https://opentdb.com/api.php?amount=10&difficulty=medium&category=${categoryId}`,
   );
 
   return await response.json();
 };
 
-const fetchHardQuiz = async (): Promise<QuizResponse> => {
+const fetchHardQuiz = async (categoryId: number): Promise<QuizResponse> => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   const response = await fetch(
-    'https://opentdb.com/api.php?amount=10&difficulty=hard',
+    `https://opentdb.com/api.php?amount=10&difficulty=hard&category=${categoryId}`,
   );
 
   return await response.json();
