@@ -964,14 +964,15 @@ main.codepen-container {
 .progress-bar-container {
   width: 100%;
   padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .animated-progress-bar {
   height: 40px;
   width: 80%;
-  margin: 0px auto;
   border-radius: 20px;
-  background-color: var(--progessbar-bg);
+  background-color: var(--progressbar-bg);
 }
 
 .progress-status {

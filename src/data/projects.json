@@ -3,14 +3,22 @@
     "id": 1,
     "name": "Task App",
     "thumbnail": "task-app-thumb.png",
-    "shortDescription": "This is going to be a description of sorts",
+    "shortDescription": "Your standard todo app",
     "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac magna ac lectus cursus feugiat et ut velit. Maecenas suscipit porta consequat. Donec feugiat ultrices tempor. Phasellus egestas tempus est eget dignissim. Duis eros arcu, ornare a lacinia interdum, porta vel orci. Proin eget risus quis ligula tristique placerat. Nam eget pellentesque ipsum, sed ornare eros. Sed vitae urna posuere, congue felis in, aliquam eros.",
     "type": "app",
     "githubUrl": "http://github.com",
     "demoUrl": "/projects/small/task-app",
     "techStack": [
       {
-        "name": "d3js",
+        "name": "react",
+        "url": "https://github.com"
+      },
+      {
+        "name": "TailwindCSS",
+        "url": "https://github.com"
+      },
+      {
+        "name": "Typescript",
         "url": "https://github.com"
       }
     ]
@@ -19,14 +27,54 @@
     "id": 2,
     "name": "Recipe Book",
     "thumbnail": "recipe-book-thumb.png",
-    "shortDescription": "This is going to be a description of sorts",
+    "shortDescription": "Simple search UI for themealdb.com API",
     "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac magna ac lectus cursus feugiat et ut velit. Maecenas suscipit porta consequat. Donec feugiat ultrices tempor. Phasellus egestas tempus est eget dignissim. Duis eros arcu, ornare a lacinia interdum, porta vel orci. Proin eget risus quis ligula tristique placerat. Nam eget pellentesque ipsum, sed ornare eros. Sed vitae urna posuere, congue felis in, aliquam eros.",
+    "demoUrl": "/projects/small/recipe-book",
     "type": "app",
     "githubUrl": "http://github.com",
-    "demoUrl": "/projects/small/recipe-book",
     "techStack": [
       {
-        "name": "d3js",
+        "name": "React",
+        "url": "https://github.com"
+      },
+      {
+        "name": "react-query",
+        "url": "https://github.com"
+      },
+      {
+        "name": "react-router",
+        "url": "https://github.com"
+      },
+      {
+        "name": "TailwindCSS",
+        "url": "https://github.com"
+      },
+      {
+        "name": "motion",
+        "url": "https://github.com"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "CSS Challenges",
+    "thumbnail": "css-challenges.png",
+    "shortDescription": "Various CSS Exercises",
+    "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac magna ac lectus cursus feugiat et ut velit. Maecenas suscipit porta consequat. Donec feugiat ultrices tempor. Phasellus egestas tempus est eget dignissim. Duis eros arcu, ornare a lacinia interdum, porta vel orci. Proin eget risus quis ligula tristique placerat. Nam eget pellentesque ipsum, sed ornare eros. Sed vitae urna posuere, congue felis in, aliquam eros.",
+    "type": "css",
+    "githubUrl": "http://github.com",
+    "demoUrl": "/projects/css-challenges",
+    "techStack": [
+      {
+        "name": "TailwindCSS",
+        "url": "https://github.com"
+      },
+      {
+        "name": "CSS",
+        "url": "https://github.com"
+      },
+      {
+        "name": "Animations",
         "url": "https://github.com"
       }
     ]

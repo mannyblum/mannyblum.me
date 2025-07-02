@@ -13,7 +13,7 @@ import DndKitPage from './pages/projects/dnd-kit/index.tsx';
 import Small from './pages/projects/small/Small.tsx';
 import RecipeBook from './pages/projects/small/recipe-book/RecipeBook.tsx';
 import TaskApp from './pages/projects/small/task-app/TaskApp.tsx';
-import TriviaApp from './pages/projects/small/trivia/TriviaApp.tsx';
+import TriviaQuizPage from './pages/projects/trivia-quiz/index.tsx';
 
 function App() {
   const location = useLocation();
@@ -31,8 +31,8 @@ function App() {
           <Route path="small" element={<Small />}>
             <Route path="task-app" element={<TaskApp />} />
             <Route path="recipe-book" element={<RecipeBook />} />
-            <Route path="trivia" element={<TriviaApp />} />
           </Route>
+          <Route path="trivia" element={<TriviaQuizPage />} />
           <Route path="dnd-kit" element={<DndKitPage />} />
         </Route>
       </Routes>
