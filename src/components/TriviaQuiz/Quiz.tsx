@@ -32,7 +32,7 @@ export default function Quiz({
   };
 
   const handleQuit = () => {
-    onQuit(quiz[0].difficulty);
+    onQuit(quiz[activeStep].difficulty);
   };
 
   useEffect(() => {
@@ -45,7 +45,34 @@ export default function Quiz({
     }
   }, [selectedAnswer]);
 
-  console.log('selectedAnswer', selectedAnswer);
+  const renderEndScreen = () => {
+    let correctAnswers = 0;
+
+    answers.map((answer: boolean) => {
+      if (answer) {
+        correctAnswers += 1;
+      }
+    });
+
+    return (
+      <div className="w-full h-[50%] bg-amber-400 rounded-lg flex flex-col justify-center items-center">
+        <h1 className="mb-4 text-5xl">Congrats!!</h1>
+        <p className="text-md!">
+          You scored {correctAnswers} / {quiz.length}
+        </p>
+        <Button className="uppercase" onClick={handleQuit}>
+          Restart
+        </Button>
+      </div>
+    );
+  };
+
+  console.log('activeStep', activeStep);
+
+  if (activeStep === 3) {
+    console.log('rendersEndScreen');
+    return renderEndScreen();
+  }
 
   return (
     <div className="bg-indigo-400 pt-5 w-full h-full rounded-2xl">
@@ -57,7 +84,9 @@ export default function Quiz({
       </div>
       <div className="text-xs  quiz-meta w-[80%] mx-auto ">
         Difficulty:{' '}
-        <span className="font-black capitalize">{quiz[0].difficulty}</span>
+        <span className="font-black capitalize">
+          {quiz[activeStep].difficulty}
+        </span>
       </div>
       <hr className="border-b-2 border-black my-2 w-[80%] mx-auto" />
 
@@ -73,10 +102,22 @@ export default function Quiz({
         );
       })}
       <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" />
-      <div className="footer flex justify-between p-2">
-        <Button onClick={onPrevQuestion}>Previous</Button>
-        <Button onClick={handleQuit}>X</Button>
-        <Button disabled={!selectedAnswer} onClick={onNextQuestion}>
+      <div className="footer w-[80%] mx-auto box-content flex justify-between gap-4">
+        <Button
+          color="danger"
+          variant="solid"
+          className="w-[30%] px-4! py-5! flex-none"
+          onClick={handleQuit}
+        >
+          <span className="block text-xl! uppercase font-black!">Quit</span>
+        </Button>
+        <Button
+          color="pink"
+          variant="solid"
+          className="flex-1 w-[70%] px-4 py-5! text-xl! uppercase font-black!"
+          disabled={!selectedAnswer}
+          onClick={onNextQuestion}
+        >
           Next
         </Button>
       </div>
