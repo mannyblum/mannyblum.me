@@ -1,8 +1,64 @@
 import Quiz from '@/components/TriviaQuiz/Quiz';
 import type { QuizEntryProps } from '@/components/TriviaQuiz/QuizEntry';
 import { queryOptions, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Card, Radio, RadioChangeEvent } from 'antd';
+import { Button, Card, Radio, RadioChangeEvent } from 'antd';
 import { useState } from 'react';
+
+import '../../../assets/styles/quiz.css';
+
+// 1. Core Features
+//  [x] Home Page
+//    [ ] App title and brief description
+//    [x] “Start Quiz” button
+//  [x] Question Interface
+//    [x] Display one question at a time
+//    [x] Multiple choice answers (radio buttons or buttons)
+//    [x] “Next” button (disabled until an answer is selected)
+//    [x] Question counter (e.g. “Question 3 of 10”)
+//  [ ] Score Tracking
+//    [x] Track correct/incorrect answers
+//    [x] Calculate final score
+//    [x] Store results in state
+//  [ ] Results Page
+//    [x] Final score summary
+//    [ ] Percentage or letter grade
+//    [x] Option to restart quiz
+
+// 2. Data Handling
+//  [x] Use local JSON or external API for question/answer data
+//  [x] Shuffle questions and/or answers
+//  [ ] Support multiple question types (optional):
+//    [x] Multiple choice
+//    [x] True/False
+//    [ ] Fill-in-the-blank (stretch goal)
+
+// 3. UI/UX
+//  [x] Mobile-first responsive layout
+//  [ ] Progress indicator (e.g., progress bar)
+//  [ ] Visual feedback on answer selection (e.g., highlight correct/wrong)
+//  [ ] Loading state (if fetching data)
+//  [ ] Transition animations between questions (optional)
+
+// 4. State Management
+//  [ ] Use useState and useEffect for managing:
+//    [x] Current question index
+//    [x] Selected answer
+//    [ ] Score
+//    [ ] Quiz completion status
+
+// 5. Bonus Features (Optional but Impressive)
+//  [x] Categories/Difficulty selection
+//  [ ] Timer for each question
+//  [ ] Leaderboard (localStorage or backend)
+//  [ ] User authentication (e.g., with Firebase)
+//  [ ] Dark mode toggle
+//  [ ] Accessibility (keyboard nav, ARIA labels)
+
+// 6. Tech Stack Highlights
+//  [x] React components for each screen (Home, Quiz, Result)
+//  [x] CSS Modules, Tailwind, or styled-components for styling
+//  [x] JavaScript logic for scoring and transitions
+//  [x] Optional: TypeScript for type safety
 
 function categoryQueryOptions() {
   return queryOptions({
@@ -50,6 +106,8 @@ export default function TriviaQuiz() {
   const [selectedId, setSelectedId] = useState<number>(0);
   const [difficulty, setDifficulty] = useState<string>();
 
+  const [isQuizActive, setQuizActive] = useState<boolean>(false);
+
   // TODO: REFACTOR THIS LATER
   const {
     data: easyData,
@@ -73,8 +131,8 @@ export default function TriviaQuiz() {
     setSelectedId(e.target.value);
   };
 
-  const fetchQuestions = (difficulty: string) => {
-    setDifficulty(difficulty);
+  const fetchQuestions = () => {
+    setQuizActive(true);
 
     if (difficulty === 'easy') {
       easyRefetch();
@@ -82,6 +140,14 @@ export default function TriviaQuiz() {
       mediumRefetch();
     } else if (difficulty === 'hard') {
       hardRefetch();
+    }
+  };
+
+  const handleSelectDifficulty = (diff: string) => {
+    if (diff === difficulty) {
+      setDifficulty(undefined);
+    } else {
+      setDifficulty(diff);
     }
   };
 
@@ -113,17 +179,21 @@ export default function TriviaQuiz() {
     }
   };
 
+  const startQuiz = () => {
+    fetchQuestions();
+  };
+
   return (
-    <div className="flex flex-col">
-      <div className="trivia-wrapper w-[393px] h-[852px] my-0 mx-auto">
+    <div className="flex flex-col text-quiz-base-content w-full bg-black p-10">
+      <div className="trivia-wrapper w-[393px] h-[852px] my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 pt-5 rounded-2xl">
         <h1 className="text-4xl my-4 mx-auto text-center ">TriviaQuiz</h1>
-        <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" />
+        {/* <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" /> */}
         <>
-          {difficulty ? (
+          {isQuizActive ? (
             renderQuiz()
           ) : (
             <>
-              <div className="flex flex-col mx-2">
+              <div className="flex flex-col w-[80%] mx-auto bg-quiz-base-100 border-quiz-base-300 mb-2 rounded-2xl p-5">
                 <h4 className="mx-1 mb-2">Category</h4>
                 <div className="trivia-categories overflow-auto no-scrollbar flex ">
                   <Radio.Group
@@ -131,7 +201,7 @@ export default function TriviaQuiz() {
                     onChange={onCategoryChange}
                     className="radio-custom overflow-auto mx-2 no-scrollbar flex!"
                   >
-                    <Radio key={0} value={0} className="m-1! items-start!">
+                    <Radio key={0} value={0} className="category-radio">
                       All
                     </Radio>
 
@@ -140,7 +210,7 @@ export default function TriviaQuiz() {
                         <Radio
                           key={category.id}
                           value={category.id}
-                          className="m-1! items-start!"
+                          className="category-radio"
                         >
                           {category.name}
                         </Radio>
@@ -149,32 +219,43 @@ export default function TriviaQuiz() {
                   </Radio.Group>
                 </div>
               </div>
-              <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" />
-              <div className="flex flex-col mx-2">
+              {/* <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" /> */}
+              <div className="flex flex-col w-[80%] mx-auto bg-quiz-base-100 border-quiz-base-300 mb-4 rounded-2xl p-5">
                 <h4 className="mx-1 mb-2">Quiz</h4>
                 <div className="quizes">
                   <Card
                     hoverable
-                    onClick={() => fetchQuestions('easy')}
-                    className="w-auto mb-2!"
+                    onClick={() => handleSelectDifficulty('easy')}
+                    className={`difficulty-card ${difficulty === 'easy' ? 'difficulty-card-selected' : ''}`}
                   >
                     Easy
                   </Card>
                   <Card
                     hoverable
-                    onClick={() => fetchQuestions('medium')}
-                    className="w-auto mb-2!"
+                    onClick={() => handleSelectDifficulty('medium')}
+                    className={`difficulty-card ${difficulty === 'medium' ? 'difficulty-card-selected' : ''}`}
                   >
                     Medium
                   </Card>
                   <Card
                     hoverable
-                    onClick={() => fetchQuestions('hard')}
-                    className="w-auto mb-2!"
+                    onClick={() => handleSelectDifficulty('hard')}
+                    className={`difficulty-card ${difficulty === 'hard' ? 'difficulty-card-selected' : ''}`}
                   >
                     Hard
                   </Card>
                 </div>
+              </div>
+              <div className="quiz-footer mx-auto w-[80%]">
+                <Button
+                  variant="solid"
+                  disabled={!difficulty}
+                  className="start-quiz-btn"
+                  block
+                  onClick={startQuiz}
+                >
+                  Start Quiz
+                </Button>
               </div>
             </>
           )}

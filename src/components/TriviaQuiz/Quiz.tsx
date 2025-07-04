@@ -25,12 +25,6 @@ export default function Quiz({
     setActiveStep((prev) => prev + 1);
   };
 
-  const onPrevQuestion = () => {
-    if (activeStep === 0) return;
-
-    setActiveStep((prev) => prev - 1);
-  };
-
   const handleQuit = () => {
     onQuit(quiz[activeStep].difficulty);
   };
@@ -67,15 +61,12 @@ export default function Quiz({
     );
   };
 
-  console.log('activeStep', activeStep);
-
-  if (activeStep === 3) {
-    console.log('rendersEndScreen');
+  if (activeStep === quiz.length) {
     return renderEndScreen();
   }
 
   return (
-    <div className="bg-indigo-400 pt-5 w-full h-full rounded-2xl">
+    <div className=" pt-5 w-full h-full rounded-2xl">
       <div className="text-xs quiz-meta w-[80%] mx-auto flex justify-between">
         <div>{decode(quiz[activeStep].category)}</div>
         <div>
@@ -104,17 +95,15 @@ export default function Quiz({
       <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" />
       <div className="footer w-[80%] mx-auto box-content flex justify-between gap-4">
         <Button
-          color="danger"
           variant="solid"
-          className="w-[30%] px-4! py-5! flex-none"
+          className="w-[30%] px-4! py-5! flex-none text-quiz-error-content! bg-quiz-error! border-0!"
           onClick={handleQuit}
         >
           <span className="block text-xl! uppercase font-black!">Quit</span>
         </Button>
         <Button
-          color="pink"
           variant="solid"
-          className="flex-1 w-[70%] px-4 py-5! text-xl! uppercase font-black!"
+          className="flex-1 w-[70%] px-4 py-5! text-xl! uppercase font-black! border-0! bg-quiz-accent! text-quiz-accent-content! disabled:bg-quiz-neutral! disabled:text-quiz-base-300! disabled:opacity-50"
           disabled={!selectedAnswer}
           onClick={onNextQuestion}
         >

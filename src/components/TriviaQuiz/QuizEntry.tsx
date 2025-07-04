@@ -23,7 +23,7 @@ export default function QuizEntry({
   entry: QuizEntryProps;
   activeStep: number;
   step: number;
-  onSelectAnswer: (selectedAnswer: string) => void;
+  onSelectAnswer: (selectedAnswer: string | undefined) => void;
 }) {
   const [selected, setSelected] = useState();
 
