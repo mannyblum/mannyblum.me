@@ -162,6 +162,7 @@ export default function TriviaQuiz() {
     queryClient.resetQueries({ queryKey: ['medium'], exact: true });
     queryClient.resetQueries({ queryKey: ['hard'], exact: true });
     setDifficulty(undefined);
+    setQuizActive(false);
   };
 
   const renderQuiz = () => {
@@ -174,9 +175,9 @@ export default function TriviaQuiz() {
         easyData?.results || mediumData?.results || hardData?.results;
 
       return <Quiz quiz={data!} onQuit={handleQuit} />;
-    } else {
-      console.error('bad data');
     }
+
+    return;
   };
 
   const startQuiz = () => {
@@ -187,7 +188,6 @@ export default function TriviaQuiz() {
     <div className="flex flex-col text-quiz-base-content w-full bg-black p-10">
       <div className="trivia-wrapper w-[393px] h-[852px] my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 pt-5 rounded-2xl">
         <h1 className="text-4xl my-4 mx-auto text-center ">TriviaQuiz</h1>
-        {/* <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" /> */}
         <>
           {isQuizActive ? (
             renderQuiz()

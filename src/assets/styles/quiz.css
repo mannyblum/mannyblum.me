@@ -199,3 +199,7 @@
   overflow: hidden;
   border-radius: 8px;
 }
+
+.quiz-progress-wrapper {
+  background-color: color-mix(in oklab, #fcf6f7 20%, transparent);
+}

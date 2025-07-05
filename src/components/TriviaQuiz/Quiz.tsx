@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import QuizEntry from './QuizEntry';
 import type { QuizEntryProps } from './QuizEntry';
+import QuizProgress from './QuizProgress';
 
 export default function Quiz({
   quiz,
@@ -79,7 +80,8 @@ export default function Quiz({
           {quiz[activeStep].difficulty}
         </span>
       </div>
-      <hr className="border-b-2 border-black my-2 w-[80%] mx-auto" />
+      {/* <hr className="border-b-2 border-black my-2 w-[80%] mx-auto" /> */}
+      <QuizProgress activeStep={activeStep} totalSteps={quiz.length} />
 
       {quiz.map((entry, index) => {
         return (
