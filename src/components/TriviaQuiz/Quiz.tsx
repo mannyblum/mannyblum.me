@@ -15,7 +15,6 @@ export default function Quiz({
 }) {
   const [activeStep, setActiveStep] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>();
-
   const [answers, setAnswers] = useState<boolean[]>([]);
 
   const onNextQuestion = () => {
@@ -67,7 +66,7 @@ export default function Quiz({
   }
 
   return (
-    <div className=" pt-5 w-full h-full rounded-2xl">
+    <div className=" pt-5 w-full h-full bg-violet-900 rounded-2xl">
       <div className="text-xs quiz-meta w-[80%] mx-auto flex justify-between">
         <div>{decode(quiz[activeStep].category)}</div>
         <div>
@@ -80,37 +79,40 @@ export default function Quiz({
           {quiz[activeStep].difficulty}
         </span>
       </div>
-      {/* <hr className="border-b-2 border-black my-2 w-[80%] mx-auto" /> */}
       <QuizProgress activeStep={activeStep} totalSteps={quiz.length} />
 
-      {quiz.map((entry, index) => {
-        return (
-          <QuizEntry
-            key={entry.question}
-            entry={entry}
-            step={index}
-            activeStep={activeStep}
-            onSelectAnswer={(answer) => setSelectedAnswer(answer)}
-          />
-        );
-      })}
-      <hr className="border-b-2 border-black my-4 w-[80%] mx-auto" />
-      <div className="footer w-[80%] mx-auto box-content flex justify-between gap-4">
-        <Button
-          variant="solid"
-          className="w-[30%] px-4! py-5! flex-none text-quiz-error-content! bg-quiz-error! border-0!"
-          onClick={handleQuit}
-        >
-          <span className="block text-xl! uppercase font-black!">Quit</span>
-        </Button>
-        <Button
-          variant="solid"
-          className="flex-1 w-[70%] px-4 py-5! text-xl! uppercase font-black! border-0! bg-quiz-accent! text-quiz-accent-content! disabled:bg-quiz-neutral! disabled:text-quiz-base-300! disabled:opacity-50"
-          disabled={!selectedAnswer}
-          onClick={onNextQuestion}
-        >
-          Next
-        </Button>
+      <div className="flex flex-col flex-wrap content-between">
+        <div className="grow">
+          {quiz.map((entry, index) => {
+            return (
+              <QuizEntry
+                key={entry.question}
+                entry={entry}
+                step={index}
+                activeStep={activeStep}
+                onSelectAnswer={(answer) => setSelectedAnswer(answer)}
+              />
+            );
+          })}
+        </div>
+        <hr className="border-b-2 border-black my-4 w-[80%] shrink mx-auto" />
+        <div className="footer w-[80%] mx-auto box-content shrink flex justify-between gap-4">
+          <Button
+            variant="solid"
+            className="w-[30%] px-4! py-5! flex-none text-quiz-error-content! bg-quiz-error! border-0!"
+            onClick={handleQuit}
+          >
+            <span className="block text-xl! uppercase font-black!">Quit</span>
+          </Button>
+          <Button
+            variant="solid"
+            className="flex-1 w-[70%] px-4 py-5! text-xl! uppercase font-black! border-0! bg-quiz-accent! text-quiz-accent-content! disabled:bg-quiz-neutral! disabled:text-quiz-base-300! disabled:opacity-50"
+            disabled={!selectedAnswer}
+            onClick={onNextQuestion}
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );
