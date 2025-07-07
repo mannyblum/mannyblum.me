@@ -73,7 +73,7 @@ export default function Quiz({
   }
 
   return (
-    <div className="flex flex-col pt-5 w-full h-full bg-violet-900 rounded-2xl">
+    <div className="flex flex-col w-full h-full rounded-2xl">
       <div className="text-xs quiz-meta w-[80%] mx-auto flex justify-between">
         <div>{decode(quiz[activeStep].category)}</div>
         <div>
@@ -105,7 +105,7 @@ export default function Quiz({
         <div className="flex-1"></div>
         <div className="flex flex-col">
           <hr className="border-b-2 border-black my-4 w-[80%] shrink mx-auto" />
-          <div className="mb-8 footer w-[80%] mx-auto box-content shrink flex justify-between gap-4">
+          <div className="mb-2 footer w-[80%] mx-auto box-content shrink flex justify-between gap-4">
             <Button
               variant="solid"
               className="w-[30%] px-4! py-5! flex-none text-quiz-error-content! bg-quiz-error! border-0!"

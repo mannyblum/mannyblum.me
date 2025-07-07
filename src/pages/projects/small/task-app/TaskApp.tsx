@@ -41,7 +41,7 @@ const TaskAppPage = () => {
           <span className="relative z-10 uppercase">Simple Task App</span>
           <div className="absolute -bottom-1 left-0 w-full h-3 bg-green-400 -rotate-1 z-0"></div>
         </h2>
-        <p className="absolute uppercase text-white font-black bg-red-400 text-[16px]! -top-0.5 -right-0.5 py-1.5 px-4 border-2 border-black rotate-3">
+        <p className="absolute z-10 uppercase text-white font-black bg-red-400 sm:-top-5 sm:-right-3 text-[16px]! -top-0.5 -right-0.5 py-1.5 px-4 border-2 border-black rotate-3">
           App
         </p>
       </div>
