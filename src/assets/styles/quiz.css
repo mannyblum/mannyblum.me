@@ -203,3 +203,7 @@
 .quiz-progress-wrapper {
   background-color: color-mix(in oklab, #fcf6f7 20%, transparent);
 }
+
+.quiz-progress {
+  transition: all 0.5s;
+}

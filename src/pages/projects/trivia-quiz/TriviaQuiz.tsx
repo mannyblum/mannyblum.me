@@ -143,7 +143,7 @@ export default function TriviaQuiz() {
     // if (true) {
     return (
       <div className="flex flex-col text-quiz-base-content w-full bg-black p-10">
-        <div className="trivia-wrapper flex items-center justify-center text-2xl text-white  w-[393px] h-[852px] max-h-[852px] my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl">
+        <div className="trivia-wrapper flex items-center justify-center text-2xl text-white  w-[393px] h-[652px] min-h-[652px] my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl">
           <div>Loading Quiz...</div>
         </div>
       </div>
@@ -185,7 +185,7 @@ export default function TriviaQuiz() {
 
   return (
     <div className="flex flex-col text-quiz-base-content w-full bg-black p-10">
-      <div className="trivia-wrapper w-[393px] h-[852px] max-h-[852px] my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl">
+      <div className="trivia-wrapper w-[393px] h-[652px] min-h-[652px] my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl">
         <>
           {isQuizActive ? (
             renderQuiz()
