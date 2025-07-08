@@ -110,6 +110,7 @@ export default function TaskApp() {
                 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:border-black! hover:shadow-none hover:translate-0.5 
           text-black bg-indigo-200 border-2 border-black rounded-sm p-2 px-4
           sm:text-xs sm:px-2 sm:py-1 sm:overscroll-x-none
+          md:text-md md:px-4 md:py-2 
           "
           >
             Add Task
@@ -160,11 +161,11 @@ export default function TaskApp() {
           </div>
         )}
         {tasks.length > 0 && (
-          <div className="border-2 text-black text-xs rounded-sm flex justify-between items-center sm:flex-wrap p-2 px-4 sm:p-1 sm:px-2 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            <div className="sm:w-1/3">
+          <div className="border-2 text-black text-xs rounded-sm flex justify-between items-center sm:flex-wrap md:flex-nowrap md:space-x-2 md:p-2 md:px-4 sm:p-1 sm:px-2 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            <div className="sm:w-1/3 md:w-auto shrink">
               {tasks.filter((task) => !task.completed).length} items left
             </div>
-            <div className="sm:w-2/3">
+            <div className="sm:w-2/3 md:w-1/3 grow">
               <ul className="flex gap-4 cursor-pointer">
                 <li
                   className={`${
@@ -195,7 +196,7 @@ export default function TaskApp() {
               </ul>
             </div>
             <div
-              className="hover:font-black cursor-pointer sm:w-full sm:mt-2 text-center"
+              className="hover:font-black cursor-pointer sm:w-full md:w-1/3 sm:mt-2 md:mt-0 text-center"
               onClick={clearCompletedTasks}
             >
               Clear Completed

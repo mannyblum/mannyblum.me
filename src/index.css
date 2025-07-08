@@ -295,7 +295,8 @@ p {
 .contact:hover .icon.phone {
 }
 
-.resume-container .intro .download-btn {
+.resume-container .intro .download-btn,
+.download-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -306,13 +307,25 @@ p {
   border-radius: 5px;
   color: black;
   box-shadow: 2px 2px #000;
+  cursor: pointer;
 }
 
-.resume-container .intro .download-btn:hover {
+.resume-container .intro .download-btn.projects {
+  top: 70px;
+  background-color: rgba(255, 107, 107, 1);
+}
+
+.resume-container .intro .download-btn:hover,
+.download-btn:hover {
   background-color: rgba(163, 136, 238, 0.8);
 }
 
-.resume-container .intro .download-btn:active {
+.resume-container .intro .download-btn.projects:hover {
+  background-color: rgba(255, 107, 107, 0.8);
+}
+
+.resume-container .intro .download-btn:active,
+.download-btn:active {
   transform: scale(0.98);
 }
 

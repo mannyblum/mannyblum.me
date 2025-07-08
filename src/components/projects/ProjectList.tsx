@@ -10,7 +10,7 @@ export default function ProjectList() {
           piece demonstrates different skills and techniques.
         </p>
       </div>
-      <div className="grid grid-cols-3 sm:grid-cols-2 gap-3">
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-3">
         {projects.map((project) => {
           return <ProjectCard project={project} />;
         })}

@@ -1,4 +1,14 @@
+import { MouseEvent } from 'react';
+import { useNavigate } from 'react-router';
+
 export default function Intro() {
+  const navigate = useNavigate();
+
+  const openProjectsLink = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    navigate('/projects/');
+  };
   return (
     <section className="intro card shadow">
       <header>
@@ -11,6 +21,9 @@ export default function Intro() {
         download
       >
         Download Resume
+      </a>
+      <a className="download-btn projects" onClick={openProjectsLink} download>
+        Projects
       </a>
     </section>
   );

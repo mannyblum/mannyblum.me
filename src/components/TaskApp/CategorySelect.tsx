@@ -62,7 +62,7 @@ const CategorySelect = ({
 
   return (
     <div
-      className={`min-w-48 sm:min-w-[65%]! ${full ? 'w-full' : ''} relative`}
+      className={`md:min-w-48 sm:min-w-[65%]! ${full ? 'w-full' : ''} relative`}
     >
       {activeCategory.length !== 0 && selectOnly ? (
         <label htmlFor="categories-button" className="text-sm py-1 text-black">
@@ -73,8 +73,9 @@ const CategorySelect = ({
         id="categories-button"
         data-dropdown-toggle="dropdown-states"
         onClick={toggleOpenDropdown}
-        className="flex items-center justify-between w-full hover:border-black! border-2 border-black text-black rounded-sm p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]
+        className="flex items-center justify-between w-full hover:border-black! border-2 border-black text-black rounded-sm shadow-[2px_2px_0px_rgba(0,0,0,1)]
         sm:text-xs sm:py-1 sm:px-2
+        md:text-sm md:py-2 md:px-4
         "
       >
         <>
@@ -87,7 +88,7 @@ const CategorySelect = ({
       </button>
       {isOpen && (
         <div ref={ref}>
-          <ul className="rounded-sm absolute top-3 left-0 bg-white mt-12 z-20 text-black w-full cursor-pointer border-2 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+          <ul className="rounded-sm absolute top-0 left-0 bg-white mt-12 z-20 text-black w-full cursor-pointer border-2 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
             {lsCategories &&
               lsCategories.map((category: Category) => {
                 return (
