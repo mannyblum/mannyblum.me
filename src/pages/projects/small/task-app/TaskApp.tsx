@@ -54,8 +54,10 @@ const TaskAppPage = () => {
           localStorage to save data.
         </p>
       </div>
-      <div className="border-5 border-black mb-8 h-[500px] min-h-[300px] flex grow justify-center items-center">
-        <TaskApp />
+      <div className="mb-8 flex grow justify-center items-center">
+        <div className="rounded-md border-5 flex justify-center items-start border-black bg-white h-full mx-auto">
+          <TaskApp />
+        </div>
       </div>
 
       <div>

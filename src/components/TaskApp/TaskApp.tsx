@@ -102,13 +102,15 @@ export default function TaskApp() {
   });
   return (
     <div className="bg-indigo-400 h-full w-full py-8 relative flex justify-center items-start">
-      <div className="w-[500px] mx-auto bg-white p-4 rounded-sm shadow-[5px_5px_0px_rgba(0,0,0,1)] mt-2">
-        <div className="mb-4 flex items-center justify-between">
+      <div className="mx-auto sm:w-[90%] bg-white p-4 rounded-sm shadow-[5px_5px_0px_rgba(0,0,0,1)] mt-2">
+        <div className="mb-4 flex items-center justify-between gap-2">
           <button
             onClick={handleOpenTaskModal}
             className="
                 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:border-black! hover:shadow-none hover:translate-0.5 
-          text-black bg-indigo-200 border-2 border-black rounded-sm p-2 px-4 mr-2 "
+          text-black bg-indigo-200 border-2 border-black rounded-sm p-2 px-4
+          sm:text-xs sm:px-2 sm:py-1 sm:overscroll-x-none
+          "
           >
             Add Task
           </button>
@@ -158,11 +160,11 @@ export default function TaskApp() {
           </div>
         )}
         {tasks.length > 0 && (
-          <div className="border-2 text-black text-xs rounded-sm flex justify-between items-center p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            <div>
+          <div className="border-2 text-black text-xs rounded-sm flex justify-between items-center sm:flex-wrap p-2 px-4 sm:p-1 sm:px-2 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            <div className="sm:w-1/3">
               {tasks.filter((task) => !task.completed).length} items left
             </div>
-            <div>
+            <div className="sm:w-2/3">
               <ul className="flex gap-4 cursor-pointer">
                 <li
                   className={`${
@@ -193,7 +195,7 @@ export default function TaskApp() {
               </ul>
             </div>
             <div
-              className="hover:font-black cursor-pointer"
+              className="hover:font-black cursor-pointer sm:w-full sm:mt-2 text-center"
               onClick={clearCompletedTasks}
             >
               Clear Completed

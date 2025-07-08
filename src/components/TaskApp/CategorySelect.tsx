@@ -61,7 +61,9 @@ const CategorySelect = ({
   const ref = useClickOutside<HTMLDivElement>(() => toggleOpen(false));
 
   return (
-    <div className={`min-w-48 ${full ? 'w-full' : ''} relative`}>
+    <div
+      className={`min-w-48 sm:min-w-[65%]! ${full ? 'w-full' : ''} relative`}
+    >
       {activeCategory.length !== 0 && selectOnly ? (
         <label htmlFor="categories-button" className="text-sm py-1 text-black">
           Categories
@@ -71,7 +73,9 @@ const CategorySelect = ({
         id="categories-button"
         data-dropdown-toggle="dropdown-states"
         onClick={toggleOpenDropdown}
-        className="mb-2 flex items-center mt-2 justify-between w-full hover:border-black! border-2 border-black text-black rounded-sm p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]"
+        className="flex items-center justify-between w-full hover:border-black! border-2 border-black text-black rounded-sm p-2 px-4 shadow-[2px_2px_0px_rgba(0,0,0,1)]
+        sm:text-xs sm:py-1 sm:px-2
+        "
       >
         <>
           {activeCategory?.length

@@ -42,7 +42,7 @@ const TriviaQuizPage = () => {
           </p>
         </div>
         <div className="mb-8 flex grow justify-center items-center">
-          <div className="rounded-md border-5 flex justify-center items-start border-black p-2 bg-white h-full mx-auto">
+          <div className="rounded-md border-5 flex justify-center items-start border-black bg-white h-full mx-auto">
             <TriviaQuiz />
           </div>
         </div>

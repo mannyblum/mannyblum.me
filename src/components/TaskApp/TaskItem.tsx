@@ -80,6 +80,7 @@ const TaskItem = ({
       key={task.id}
       className={`relative
         text-black border-b-2 border-b-black last:border-b-0 p-2 
+        text-xs
         ${task.completed ? 'opacity-50 bg-zinc-200 ' : ''}
         transition-all duration-500 ease-out overflow-hidden
         ${
@@ -118,16 +119,16 @@ const TaskItem = ({
       <div className="grow-4">
         {!deleteMode && (
           <div className="mr-4 flex items-center">
-            <div className="flex items-center cursor-pointer mr-4">
+            <div className="flex items-center cursor-pointer mr-4 sm:mr-2">
               <input
                 type="checkbox"
-                className="appearance-none cursor-pointer checked:shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] checked:bg-green-400 w-5 h-5 rounded-full border-2 border-black bg-white"
+                className="appearance-none cursor-pointer checked:shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] checked:bg-green-400 w-5 h-5 sm:w-4 sm:h-4 rounded-full border-2 border-black bg-white"
                 onChange={handleToggleCheck}
                 checked={checked}
               />
               {checked && (
                 <CheckIcon
-                  className="absolute w-3 h-3 mx-1 pointer-events-none"
+                  className="absolute w-2 h-2 mx-1 pointer-events-none"
                   size={16}
                 />
               )}
@@ -143,14 +144,14 @@ const TaskItem = ({
           handleEdit();
         }}
         disabled={deleteMode || task.completed}
-        className={`disabled:bg-gray-50 border-black hover:border-black! disabled:text-gray-500 disabled:cursor-not-allowed! border-2 mr-2 rounded-sm p-2 hover:bg-indigo-400 active:bg-indigo-600 hover:text-white shadow-[2px_2px_0px_rgba(0,0,0,1)]`}
+        className={`sm:p-1 disabled:bg-gray-50 border-black hover:border-black! disabled:text-gray-500 disabled:cursor-not-allowed! border-2 mr-2 rounded-sm p-2 hover:bg-indigo-400 active:bg-indigo-600 hover:text-white shadow-[2px_2px_0px_rgba(0,0,0,1)]`}
       >
         <PencilIcon size={24} />
       </button>
       <button
         disabled={task.completed}
         onClick={toggleDeleteTask}
-        className={`disabled:bg-gray-50 border-black hover:border-black! disabled:text-gray-500 disabled:cursor-not-allowed! border-2 rounded-sm p-2 text-white bg-red-600 hover:bg-red-800 active:bg-red-400 hover:text-white shadow-[2px_2px_0px_rgba(0,0,0,1)]`}
+        className={`sm:p-1 disabled:bg-gray-50 border-black hover:border-black! disabled:text-gray-500 disabled:cursor-not-allowed! border-2 rounded-sm p-2 text-white bg-red-600 hover:bg-red-800 active:bg-red-400 hover:text-white shadow-[2px_2px_0px_rgba(0,0,0,1)]`}
       >
         {deleteMode ? <XIcon size={24} /> : <TrashIcon size={24} />}
       </button>
