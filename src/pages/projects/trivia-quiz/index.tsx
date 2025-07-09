@@ -1,10 +1,5 @@
 import Button from '@/components/Button';
 import { BorderOutlined, CheckSquareOutlined } from '@ant-design/icons';
-import {
-  CheckboxIcon,
-  SquareFillIcon,
-  SquareIcon,
-} from '@primer/octicons-react';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -62,7 +57,8 @@ const TriviaQuizPage = () => {
           <h4>About this project</h4>
           <p className="mb-2">
             I queried some generative AI and asked it to provide me with
-            checklist to achieve an MVP. This is what it gave me.
+            checklist to achieve an MVP. This is what it gave me. Eventual goal
+            is to have completed all of these items.
           </p>
           <ul className="list-decimal ml-4 text-sm">
             <li>
@@ -122,7 +118,7 @@ const TriviaQuizPage = () => {
                 </li>
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     Score Tracking
                   </span>
                   <ul className="ml-4">
@@ -209,7 +205,7 @@ const TriviaQuizPage = () => {
                         True/False
                       </span>
                     </li>
-                    <li>
+                    <li className="line-through">
                       <span className="flex flex-row items-start">
                         <BorderOutlined className="mr-2 mt-1" />
                         Fill-in-the-blank (stretch goal)

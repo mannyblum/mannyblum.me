@@ -12,7 +12,7 @@ export default function ProjectList() {
       </div>
       <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-3">
         {projects.map((project) => {
-          return <ProjectCard project={project} />;
+          return <ProjectCard key={project.id} project={project} />;
         })}
       </div>
     </>

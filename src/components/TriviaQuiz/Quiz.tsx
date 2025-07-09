@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import { decode } from 'html-entities';
+import { AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 import QuizEntry from './QuizEntry';
@@ -16,15 +17,11 @@ export default function Quiz({
   const [activeStep, setActiveStep] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>();
   const [answers, setAnswers] = useState<boolean[]>([]);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const onNextQuestion = () => {
-    // if (activeStep === 9) return;
-
     setSelectedAnswer(undefined);
 
     setActiveStep((prev) => prev + 1);
-    setCurrentIndex((prev) => prev + 1);
   };
 
   const handleQuit = () => {
@@ -76,31 +73,30 @@ export default function Quiz({
     <div className="flex flex-col w-full h-full rounded-2xl">
       <div className="text-xs quiz-meta w-[80%] mx-auto flex justify-between">
         <div>{decode(quiz[activeStep].category)}</div>
+      </div>
+      <div className="text-xs  quiz-meta w-[80%] mx-auto flex justify-between">
+        <div>
+          Difficulty:{' '}
+          <span className="font-black capitalize">
+            {quiz[activeStep].difficulty}
+          </span>
+        </div>
         <div>
           {activeStep + 1} of {quiz.length}
         </div>
-      </div>
-      <div className="text-xs  quiz-meta w-[80%] mx-auto ">
-        Difficulty:{' '}
-        <span className="font-black capitalize">
-          {quiz[activeStep].difficulty}
-        </span>
       </div>
       <QuizProgress activeStep={activeStep} totalSteps={quiz.length} />
 
       <div className="flex flex-col flex-wrap h-full">
         <div className=" overflow-hidden mx-auto">
-          {quiz.map((entry, index) => {
-            return (
-              <QuizEntry
-                key={entry.question}
-                entry={entry}
-                step={index}
-                activeStep={activeStep}
-                onSelectAnswer={(answer) => setSelectedAnswer(answer)}
-              />
-            );
-          })}
+          <AnimatePresence mode="wait">
+            <QuizEntry
+              key={quiz[activeStep].question}
+              entry={quiz[activeStep]}
+              step={activeStep}
+              onSelectAnswer={(answer) => setSelectedAnswer(answer)}
+            />
+          </AnimatePresence>
         </div>
         <div className="flex-1"></div>
         <div className="flex flex-col">

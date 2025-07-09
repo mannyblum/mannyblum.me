@@ -148,6 +148,7 @@ export default function TriviaQuiz() {
         </div>
       </div>
     );
+    // }
   }
 
   const handleQuit = () => {
