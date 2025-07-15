@@ -1,6 +1,6 @@
 import CategorySelector from '@/components/TriviaQuiz/CategorySelector';
 import DifficultySelector from '@/components/TriviaQuiz/DifficultySelector';
-import Quiz from '@/components/TriviaQuiz/Quiz';
+import Quiz, { QUESTION_COUNT } from '@/components/TriviaQuiz/Quiz';
 import {
   fetchEasyQuiz,
   fetchHardQuiz,
@@ -14,43 +14,43 @@ import '../../../assets/styles/quiz.css';
 
 // 1. Core Features
 //  [x] Home Page
-//    [ ] App title and brief description
+//    [x] App title and brief description
 //    [x] “Start Quiz” button
 //  [x] Question Interface
 //    [x] Display one question at a time
 //    [x] Multiple choice answers (radio buttons or buttons)
 //    [x] “Next” button (disabled until an answer is selected)
 //    [x] Question counter (e.g. “Question 3 of 10”)
-//  [ ] Score Tracking
+//  [x] Score Tracking
 //    [x] Track correct/incorrect answers
 //    [x] Calculate final score
 //    [x] Store results in state
-//  [ ] Results Page
+//  [x] Results Page
 //    [x] Final score summary
-//    [ ] Percentage or letter grade
+//    [x] Percentage or letter grade
 //    [x] Option to restart quiz
 
 // 2. Data Handling
 //  [x] Use local JSON or external API for question/answer data
 //  [x] Shuffle questions and/or answers
-//  [ ] Support multiple question types (optional):
+//  [x] Support multiple question types (optional):
 //    [x] Multiple choice
 //    [x] True/False
 //    [ ] Fill-in-the-blank (stretch goal)
 
 // 3. UI/UX
 //  [x] Mobile-first responsive layout
-//  [ ] Progress indicator (e.g., progress bar)
-//  [ ] Visual feedback on answer selection (e.g., highlight correct/wrong)
-//  [ ] Loading state (if fetching data)
-//  [ ] Transition animations between questions (optional)
+//  [x] Progress indicator (e.g., progress bar)
+//  [x] Visual feedback on answer selection (e.g., highlight correct/wrong)
+//  [x] Loading state (if fetching data)
+//  [x] Transition animations between questions (optional)
 
 // 4. State Management
-//  [ ] Use useState and useEffect for managing:
+//  [x] Use useState and useEffect for managing:
 //    [x] Current question index
 //    [x] Selected answer
-//    [ ] Score
-//    [ ] Quiz completion status
+//    [x] Score
+//    [x] Quiz completion status
 
 // 5. Bonus Features (Optional but Impressive)
 //  [x] Categories/Difficulty selection
@@ -110,15 +110,6 @@ export default function TriviaQuiz() {
   const mediumQuiz = useQuery(mediumQuizQueryOptions(selectedId));
   const hardQuiz = useQuery(hardQuizQueryOptions(selectedId));
 
-  // useEffect(() => {
-  //   console.log('isError', isError);
-  //   console.log('error', error);
-
-  //   if (error) {
-  //     console.log('something went wrong', error);
-  //   }
-  // }, [error, isError]);
-
   const fetchQuestions = () => {
     setQuizActive(true);
 
@@ -140,15 +131,13 @@ export default function TriviaQuiz() {
   };
 
   if (easyQuiz.isFetching || mediumQuiz.isFetching || hardQuiz.isFetching) {
-    // if (true) {
     return (
-      <div className="flex flex-col text-quiz-base-content w-full bg-black p-10">
-        <div className="trivia-wrapper flex items-center justify-center text-2xl text-white  w-[393px] h-[652px] min-h-[652px] my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl">
+      <div className="text-quiz-base-content h-full w-full bg-black p-5">
+        <div className="trivia-wrapper w-[393px] h-full my-0 py-4 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl flex justify-center items-center">
           <div>Loading Quiz...</div>
         </div>
       </div>
     );
-    // }
   }
 
   const handleQuit = () => {
@@ -161,9 +150,9 @@ export default function TriviaQuiz() {
 
   const renderQuiz = () => {
     if (
-      easyQuiz.data?.results?.length === 10 ||
-      mediumQuiz.data?.results?.length === 10 ||
-      hardQuiz.data?.results?.length === 10
+      easyQuiz.data?.results?.length === QUESTION_COUNT ||
+      mediumQuiz.data?.results?.length === QUESTION_COUNT ||
+      hardQuiz.data?.results?.length === QUESTION_COUNT
     ) {
       const data =
         easyQuiz.data?.results ||
@@ -185,13 +174,13 @@ export default function TriviaQuiz() {
   };
 
   return (
-    <div className="flex flex-col text-quiz-base-content w-full bg-black p-5">
-      <div className="trivia-wrapper w-[393px] h-full my-0 py-4 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl">
+    <div className="flex flex-col text-quiz-base-content w-full h-full bg-black p-5">
+      <div className="trivia-wrapper w-[393px] h-full my-0 mx-auto bg-quiz-base-200 border-quiz-base-300 rounded-2xl">
         <>
           {isQuizActive ? (
             renderQuiz()
           ) : (
-            <>
+            <div className="py-4">
               <h1 className="text-4xl mb-4 mx-auto text-center ">TriviaQuiz</h1>
               <CategorySelector
                 onSelectCategory={handleSelectCategory}
@@ -212,7 +201,7 @@ export default function TriviaQuiz() {
                   Start Quiz
                 </Button>
               </div>
-            </>
+            </div>
           )}
         </>
       </div>

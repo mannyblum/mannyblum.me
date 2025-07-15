@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+import Button from '@/components/Resume/Button';
 import { MouseEvent } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 

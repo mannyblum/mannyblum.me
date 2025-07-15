@@ -1,6 +1,6 @@
+import Button from '@/components/Resume/Button';
 import { Project } from '@/types/Project';
 import placeholder from '@assets/images/placeholder.svg';
-import Button from '@components/Button';
 import { ArrowUpRightIcon, MarkGithubIcon } from '@primer/octicons-react';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';

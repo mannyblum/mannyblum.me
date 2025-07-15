@@ -1,11 +1,13 @@
 import { Button } from 'antd';
-import { decode } from 'html-entities';
 import { AnimatePresence } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import QuizEntry from './QuizEntry';
 import type { QuizEntryProps } from './QuizEntry';
+import QuizEntry from './QuizEntry';
+import QuizHeader from './QuizHeader';
 import QuizProgress from './QuizProgress';
+
+export const QUESTION_COUNT: number = 2;
 
 export default function Quiz({
   quiz,
@@ -18,6 +20,8 @@ export default function Quiz({
   const [selectedAnswer, setSelectedAnswer] = useState<string>();
   const [answers, setAnswers] = useState<boolean[]>([]);
 
+  const [score, setScore] = useState<number>(0);
+
   const onNextQuestion = () => {
     setSelectedAnswer(undefined);
 
@@ -25,18 +29,20 @@ export default function Quiz({
   };
 
   const handleQuit = () => {
-    onQuit(quiz[activeStep - 1].difficulty);
+    onQuit(quiz[0].difficulty);
   };
 
-  useEffect(() => {
-    if (selectedAnswer) {
-      const answer = quiz[activeStep].correct_answer === selectedAnswer;
+  const checkAnswer = (answer: string, answerState: string | undefined) => {
+    setSelectedAnswer(answer);
 
-      setAnswers((answers) => {
-        return [...answers, answer];
-      });
+    if (answerState === 'correct') {
+      setScore((score) => score + 1);
     }
-  }, [selectedAnswer]);
+
+    setAnswers((answers) => {
+      return [...answers, answerState === 'correct' ? true : false];
+    });
+  };
 
   const renderEndScreen = () => {
     let correctAnswers = 0;
@@ -47,21 +53,53 @@ export default function Quiz({
       }
     });
 
+    const scorePercentage = score / QUESTION_COUNT;
+
     return (
-      <div className="w-full h-full bg-amber-400 rounded-lg flex flex-col justify-center items-center">
-        <h1 className="mb-4 text-5xl">Congrats!!</h1>
-        <p className="text-md!">
-          You scored {correctAnswers} / {quiz.length}
-        </p>
-        <Button
-          className="px-4 py-5! text-xl! uppercase font-black! border-0! bg-quiz-base-100! hover:bg-gray-600! text-quiz-base-content!"
-          variant="solid"
-          color="primary"
-          onClick={handleQuit}
-        >
-          Restart
-        </Button>
-      </div>
+      <>
+        <QuizHeader score={score} activeStep={activeStep} quiz={quiz} />
+        <div className="w-full h-full rounded-lg flex flex-col justify-start items-center">
+          <div className="bg-slate-600 border-2 border-slate-500 w-[80%] mb-4 p-4 rounded-md">
+            <h4 className="text-2xl text-center mb-2">
+              You scored {correctAnswers} / {quiz.length}
+            </h4>
+
+            <p className="text-md! text-center mb-0!">
+              {scorePercentage > 5 ? (
+                <>
+                  Congratulations! You have{' '}
+                  <span className="text-green-600">passed</span>
+                </>
+              ) : (
+                <>
+                  Oh no! You have <span className="text-red-600">failed</span>
+                </>
+              )}{' '}
+              the test with {scorePercentage}%.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 w-[80%] mb-4 text-sm">
+            <div className=" p-2 bg-green-600 border-2 rounded-md border-green-500 w-full">
+              <span className="font-black block text-2xl">{score}</span>
+              <span className="text-">Correct Answers</span>
+            </div>
+            <div className="px-4 py-2 bg-red-600 border-2 border-red-500 rounded-md">
+              <span className="font-black block text-2xl">
+                {QUESTION_COUNT - score}
+              </span>
+              <span className="text-xs">Wrong Answers</span>
+            </div>
+          </div>
+          <Button
+            className="px-4 py-5! text-xl! w-[80%] uppercase font-black! border-2! border-sky-500! bg-sky-600! hover:bg-sky-800! text-quiz-base-content!"
+            variant="solid"
+            color="primary"
+            onClick={handleQuit}
+          >
+            Restart
+          </Button>
+        </div>
+      </>
     );
   };
 
@@ -69,39 +107,28 @@ export default function Quiz({
     return renderEndScreen();
   }
 
+  // return renderEndScreen();
+
   return (
     <div className="flex flex-col w-full h-full rounded-2xl">
-      <div className="text-xs quiz-meta w-[80%] mx-auto flex justify-between">
-        <div>{decode(quiz[activeStep].category)}</div>
-      </div>
-      <div className="text-xs  quiz-meta w-[80%] mx-auto flex justify-between">
-        <div>
-          Difficulty:{' '}
-          <span className="font-black capitalize">
-            {quiz[activeStep].difficulty}
-          </span>
-        </div>
-        <div>
-          {activeStep + 1} of {quiz.length}
-        </div>
-      </div>
+      <QuizHeader score={score} activeStep={activeStep} quiz={quiz} />
       <QuizProgress activeStep={activeStep} totalSteps={quiz.length} />
 
-      <div className="flex flex-col flex-wrap h-full">
+      <div className="flex mt-2 flex-col flex-wrap h-full">
         <div className=" overflow-hidden mx-auto">
           <AnimatePresence mode="wait">
             <QuizEntry
               key={quiz[activeStep].question}
               entry={quiz[activeStep]}
               step={activeStep}
-              onSelectAnswer={(answer) => setSelectedAnswer(answer)}
+              onSelectAnswer={checkAnswer}
             />
           </AnimatePresence>
         </div>
         <div className="flex-1"></div>
         <div className="flex flex-col">
           <hr className="border-b-2 border-black my-4 w-[80%] shrink mx-auto" />
-          <div className="mb-2 footer w-[80%] mx-auto box-content shrink flex justify-between gap-4">
+          <div className="mb-8 footer w-[80%] mx-auto box-content shrink flex justify-between gap-4">
             <Button
               variant="solid"
               className="w-[30%] px-4! py-5! flex-none text-quiz-error-content! bg-quiz-error! border-0!"

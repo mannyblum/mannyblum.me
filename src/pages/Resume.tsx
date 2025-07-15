@@ -1,8 +1,8 @@
-import Aside from "../components/Aside";
-import Intro from "../components/Intro";
-import Profile from "../components/Profile";
-import Contact from "../components/Contact";
-import Experience from "../components/Experience";
+import Aside from '../components/Resume/Aside';
+import Contact from '../components/Resume/Contact';
+import Experience from '../components/Resume/Experience';
+import Intro from '../components/Resume/Intro';
+import Profile from '../components/Resume/Profile';
 
 const Resume = () => {
   return (

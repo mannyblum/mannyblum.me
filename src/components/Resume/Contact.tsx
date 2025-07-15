@@ -1,4 +1,4 @@
-import ContactIcon from './icons/Contact';
+import ContactIcon from '../icons/Contact';
 
 export default function Contact() {
   return (

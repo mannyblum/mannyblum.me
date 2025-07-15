@@ -1,12 +1,19 @@
 import { CategoriesResponse, QuizResponse } from '@/types/Quiz';
 
+import { QUESTION_COUNT } from './Quiz';
+
+interface FetchError extends Error {
+  name: string;
+  status: number;
+}
+
 export const fetchCategories = async (): Promise<CategoriesResponse> => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   const response = await fetch('https://opentdb.com/api_category.php');
 
   if (!response.ok) {
     const error = new Error('Error Fetching Categories');
-    (error as any).status = response.status;
+    (error as FetchError).status = response.status;
 
     throw error;
   }
@@ -29,12 +36,12 @@ export const fetchEasyQuiz = async (
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   const response = await fetch(
-    `https://opentdb.com/api.php?amount=10&difficulty=easy&category=${categoryId}`,
+    `https://opentdb.com/api.php?amount=${QUESTION_COUNT}&difficulty=easy&category=${categoryId}`,
   );
 
   if (!response.ok) {
     const error = new Error('Error Fetching Categories');
-    (error as any).status = response.status;
+    (error as FetchError).status = response.status;
 
     throw error;
   }
@@ -47,12 +54,12 @@ export const fetchMediumQuiz = async (
 ): Promise<QuizResponse> => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   const response = await fetch(
-    `https://opentdb.com/api.php?amount=10&difficulty=medium&category=${categoryId}`,
+    `https://opentdb.com/api.php?amount=${QUESTION_COUNT}&difficulty=medium&category=${categoryId}`,
   );
 
   if (!response.ok) {
     const error = new Error('Error Fetching Categories');
-    (error as any).status = response.status;
+    (error as FetchError).status = response.status;
 
     throw error;
   }
@@ -65,12 +72,12 @@ export const fetchHardQuiz = async (
 ): Promise<QuizResponse> => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   const response = await fetch(
-    `https://opentdb.com/api.php?amount=10&difficulty=hard&category=${categoryId}`,
+    `https://opentdb.com/api.php?amount=${QUESTION_COUNT}&difficulty=hard&category=${categoryId}`,
   );
 
   if (!response.ok) {
     const error = new Error('Error Fetching Categories');
-    (error as any).status = response.status;
+    (error as FetchError).status = response.status;
 
     throw error;
   }

@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+import Button from '@/components/Resume/Button';
 import { BorderOutlined, CheckSquareOutlined } from '@ant-design/icons';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
@@ -37,7 +37,7 @@ const TriviaQuizPage = () => {
           </p>
         </div>
         <div className="mb-8 flex grow justify-center items-center">
-          <div className="rounded-md border-5 flex justify-center items-start border-black bg-white h-full mx-auto">
+          <div className="rounded-md border-5 flex justify-center items-start border-black bg-white min-h-[800px] h-[800px] max-h-[800px] mx-auto">
             <TriviaQuiz />
           </div>
         </div>
@@ -72,7 +72,7 @@ const TriviaQuizPage = () => {
                   <ul className="ml-4">
                     <li>
                       <span className="flex flex-row items-start">
-                        <BorderOutlined className="mr-2 mt-1" />
+                        <CheckSquareOutlined className="mr-2 mt-1" />
                         App title and brief description
                       </span>
                     </li>
@@ -144,7 +144,7 @@ const TriviaQuizPage = () => {
                 </li>
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     App title and brief description Results Page
                   </span>
                   <ul className="ml-4">
@@ -189,7 +189,7 @@ const TriviaQuizPage = () => {
                 </li>
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     Support multiple question types (optional):
                   </span>
                   <ul className="ml-4">
@@ -226,26 +226,26 @@ const TriviaQuizPage = () => {
                 </li>
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     Progress indicator (e.g., progress bar)
                   </span>
                 </li>
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     Visual feedback on answer selection (e.g., highlight
                     correct/wrong)
                   </span>
                 </li>
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     Loading state (if fetching data)
                   </span>
                 </li>
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     Transition animations between questions (optional)
                   </span>
                 </li>
@@ -256,7 +256,7 @@ const TriviaQuizPage = () => {
               <ul className="ml-4">
                 <li>
                   <span className="flex flex-row items-start">
-                    <BorderOutlined className="mr-2 mt-1" />
+                    <CheckSquareOutlined className="mr-2 mt-1" />
                     Use useState and useEffect for managing:
                   </span>
                   <ul className="ml-4">
@@ -280,7 +280,7 @@ const TriviaQuizPage = () => {
                     </li>
                     <li>
                       <span className="flex flex-row items-start">
-                        <BorderOutlined className="mr-2 mt-1" />
+                        <CheckSquareOutlined className="mr-2 mt-1" />
                         Quiz completion status
                       </span>
                     </li>
