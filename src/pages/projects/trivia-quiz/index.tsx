@@ -157,7 +157,7 @@ const TriviaQuizPage = () => {
 
                     <li>
                       <span className="flex flex-row items-start">
-                        <BorderOutlined className="mr-2 mt-1" />
+                        <CheckSquareOutlined className="mr-2 mt-1" />
                         Percentage or letter grade
                       </span>
                     </li>
@@ -274,7 +274,7 @@ const TriviaQuizPage = () => {
                     </li>
                     <li>
                       <span className="flex flex-row items-start">
-                        <BorderOutlined className="mr-2 mt-1" />
+                        <CheckSquareOutlined className="mr-2 mt-1" />
                         Score
                       </span>
                     </li>
