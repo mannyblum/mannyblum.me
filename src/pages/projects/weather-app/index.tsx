@@ -1,7 +1,7 @@
 // ✅ 1. Core Features
 // [ j Search
-//  [ ] Input field for searching weather by city name
-//  [ ] Submit button or search-on-type (with debounce)
+//  [x] Input field for searching weather by city name
+//  [x] Submit button or search-on-type (with debounce)
 //  [ ] Show validation or error for invalid city input
 //  [ ] Optional: Use current geolocation for weather
 //

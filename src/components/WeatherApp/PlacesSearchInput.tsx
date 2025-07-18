@@ -3,7 +3,8 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { XCircleIcon } from '@primer/octicons-react';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
-import { FormEvent, useCallback, useState } from 'react';
+import { debounce } from 'lodash';
+import { FormEvent, useCallback, useMemo, useState } from 'react';
 
 type PlaceSearchInputProps = {
   onPlaceSelect: (place: google.maps.Place) => void;
@@ -100,17 +101,28 @@ export default function PlacesSearchInput({
   const [focused, setFocused] = useState<boolean>(false);
 
   const [inputValue, setInputValue] = useState<string>('');
-  const [submitValue, setSubmitValue] = useState<string>('');
+  const [acsValue, setAcsValue] = useState<string>('');
   const [showList, setShowList] = useState<boolean>(false);
   const [hasUserTyped, setHasUserTyped] = useState<boolean>(false);
 
-  const { suggestions, resetSession } = useAutocompleteSuggestions(inputValue);
+  const { suggestions, resetSession } = useAutocompleteSuggestions(acsValue);
 
-  const handleInput = useCallback((event: FormEvent<HTMLInputElement>) => {
-    setInputValue((event.target as HTMLInputElement).value);
-    setHasUserTyped(true);
-    setShowList(true);
+  const handleSearch = useMemo(() => {
+    return debounce((searchTerm) => {
+      setAcsValue(searchTerm);
+      setShowList(true);
+    }, 300); // Debounce for 300 milliseconds
   }, []);
+
+  const handleInputChange = useCallback(
+    (event: FormEvent<HTMLInputElement>) => {
+      const searchValue = (event.target as HTMLInputElement).value;
+      setInputValue(searchValue);
+      setHasUserTyped(true);
+      handleSearch(searchValue);
+    },
+    [],
+  );
 
   const handleSuggestionClick = useCallback(
     async (suggestion: google.maps.places.AutocompleteSuggestion) => {
@@ -125,7 +137,6 @@ export default function PlacesSearchInput({
 
       const pl: google.maps.Place & { displayName?: string } = place.toJSON();
 
-      setSubmitValue(pl.displayName || '');
       setInputValue(suggestion.placePrediction.text.text);
 
       setShowList(false);
@@ -148,7 +159,6 @@ export default function PlacesSearchInput({
 
   const handleClearInput = useCallback(() => {
     setInputValue('');
-    setSubmitValue('');
     setShowList(false);
     setHasUserTyped(false);
     resetSession();
@@ -159,7 +169,7 @@ export default function PlacesSearchInput({
       <div id="input-wrapper">
         <Input
           onChange={(evt) => {
-            handleInput(evt);
+            handleInputChange(evt);
           }}
           value={inputValue}
           onFocus={handleFocus}
@@ -168,9 +178,12 @@ export default function PlacesSearchInput({
           type="text"
           placeholder="search city ..."
         />
-        <button className="input-clear" onClick={handleClearInput}>
-          <XCircleIcon size={24} />
-        </button>
+        {inputValue.length > 0 && (
+          <button className="input-clear" onClick={handleClearInput}>
+            <XCircleIcon size={24} />
+          </button>
+        )}
+
         {showList && suggestions.length > 0 && (
           <Results>
             <ul className="custom-list">
@@ -189,7 +202,7 @@ export default function PlacesSearchInput({
           </Results>
         )}
       </div>
-      <Button>Search</Button>
+      {/* <Button>Search</Button> */}
     </div>
   );
 }
