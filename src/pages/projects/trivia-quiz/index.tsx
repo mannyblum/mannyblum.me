@@ -46,10 +46,13 @@ const TriviaQuizPage = () => {
             <span className="relative z-10 uppercase">Tech Stack</span>
             <div className="absolute -bottom-0 left-0 w-full h-2 bg-purple-400 -rotate-1 z-0"></div>
           </h3>
-          <ul className="flex flex-row justify-start items-center mb-8 gap-4">
+          <ul className="sm:text-xs flex flex-row justify-start items-center flex-wrap mb-4 gap-4">
             <li className="px-2 py-1 bg-green-400">React</li>
             <li className="px-2 py-1 bg-red-400">TailwindCSS</li>
             <li className="px-2 py-1 bg-blue-400">CSS</li>
+            <li className="px-2 py-1 bg-orange-400">motion</li>
+            <li className="px-2 py-1 bg-indigo-400">antd</li>
+            <li className="px-2 py-1 bg-purple-400">react-query</li>
           </ul>
         </div>
         <hr className="border-2 mb-8 border-black" />

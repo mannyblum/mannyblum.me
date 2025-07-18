@@ -39,7 +39,7 @@ const RecipeBookPage = () => {
           <span className="relative z-10 uppercase">Tech Stack</span>
           <div className="absolute -bottom-0 left-0 w-full h-2 bg-purple-400 -rotate-1 z-0"></div>
         </h3>
-        <ul className="sm:text-xs flex flex-row justify-start items-center flex-wrap mb-8 gap-4">
+        <ul className="sm:text-xs flex flex-row justify-start items-center flex-wrap mb-4 gap-4">
           <li className="px-2 py-1 bg-green-400">React</li>
           <li className="px-2 py-1 bg-indigo-400">Typescript</li>
           <li className="px-2 py-1 bg-purple-400">TailwindCSS</li>

@@ -14,6 +14,7 @@ import Small from './pages/projects/small/Small.tsx';
 import RecipeBook from './pages/projects/small/recipe-book/RecipeBook.tsx';
 import TaskApp from './pages/projects/small/task-app/TaskApp.tsx';
 import TriviaQuizPage from './pages/projects/trivia-quiz/index.tsx';
+import WeatherAppPage from './pages/projects/weather-app/index.tsx';
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
           </Route>
           <Route path="trivia" element={<TriviaQuizPage />} />
           <Route path="dnd-kit" element={<DndKitPage />} />
+          <Route path="weather" element={<WeatherAppPage />} />
         </Route>
       </Routes>
     </BookProvider>
