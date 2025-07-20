@@ -15,7 +15,8 @@ const Input = styled.input`
   border-radius: 4px;
   background-color: #f4f6f8;
   color: #111;
-  padding: 4px;
+  padding: 8px 4px;
+  height: 45px;
   width: 100%;
   font-size: 16px;
   padding-right: 40px;
@@ -46,6 +47,9 @@ const Results = styled.div`
   border-radius: 4px;
   font-size: 16px;
   box-shadow: 8px 8px 20px -6px rgba(100, 100, 100, 0.4);
+  position: absolute;
+  left: 0;
+  right: 0;
   ul {
     li {
       padding: 8px;
@@ -74,13 +78,12 @@ const searchComponent = css`
 
   & > div {
     flex-grow: 2;
-    margin-right: 8px;
     position: relative;
 
     & > .input-clear {
       position: absolute;
-      top: 6px;
-      right: 4px;
+      top: 10px;
+      right: 8px;
 
       &:hover svg {
         color: var(--color-red-600);
@@ -105,7 +108,9 @@ export default function PlacesSearchInput({
   const [showList, setShowList] = useState<boolean>(false);
   const [hasUserTyped, setHasUserTyped] = useState<boolean>(false);
 
-  const { suggestions, resetSession } = useAutocompleteSuggestions(acsValue);
+  const { suggestions, resetSession } = useAutocompleteSuggestions(acsValue, {
+    includedPrimaryTypes: ['locality', 'administrative_area_level_1'],
+  });
 
   const handleSearch = useMemo(() => {
     return debounce((searchTerm) => {
@@ -132,7 +137,7 @@ export default function PlacesSearchInput({
       const place = suggestion.placePrediction.toPlace();
 
       await place.fetchFields({
-        fields: ['displayName', 'location'],
+        fields: ['displayName', 'location', 'formattedAddress'],
       });
 
       const pl: google.maps.Place & { displayName?: string } = place.toJSON();
@@ -161,7 +166,7 @@ export default function PlacesSearchInput({
     setInputValue('');
     setShowList(false);
     setHasUserTyped(false);
-    resetSession();
+    // resetSession();
   }, [resetSession]);
 
   return (
