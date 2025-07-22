@@ -89,7 +89,7 @@ const WeatherAppPage = () => {
           <p className="text-xl max-w-2xl mt-6 mb-8!">A simple weather app.</p>
         </div>
         <div className="mb-8 flex grow justify-center items-center">
-          <div className="w-11/12 rounded-md border-5 flex justify-stretch items-start border-black bg-white min-h-[800px] h-[800px] max-h-[800px]">
+          <div className="w-11/12 pt-4 rounded-md border-5 flex justify-stretch items-start border-black bg-white min-h-[800px] h-[800px] max-h-[800px]">
             <WeatherApp />
           </div>
         </div>

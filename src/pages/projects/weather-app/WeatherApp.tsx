@@ -7,6 +7,11 @@ import { APIProvider } from '@vis.gl/react-google-maps';
 import { useEffect, useState } from 'react';
 import { PiSpinnerBallBold } from 'react-icons/pi';
 
+import CurrentWeatherCard from './CurrentWeatherCard';
+
+const count = 7;
+const units = 'imperial';
+
 interface FetchError extends Error {
   name: string;
   status: number;
@@ -48,7 +53,7 @@ const fetchWeather = async (
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${weatherApiKey}`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=${units}&appid=${weatherApiKey}`,
   );
 
   if (!response.ok) {
@@ -67,10 +72,8 @@ const featchForecast = async (
   const { lat, lng } = location as google.maps.LatLng;
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  const count = 7;
-
   const response = await fetch(
-    ` https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lng}&cnt=${count}&appid=${weatherApiKey}`,
+    ` https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lng}&cnt=${count}&units=${units}&appid=${weatherApiKey}`,
   );
 
   if (!response.ok) {
@@ -122,7 +125,6 @@ export default function WeatherApp() {
   const [locationName, setLocationName] = useState<string>('');
 
   const handlePlaceSelect = (place: PlaceRedux) => {
-    console.log('selected', place);
     if (place?.location) {
       setLocation(place.location as google.maps.LatLng);
     }
@@ -135,15 +137,20 @@ export default function WeatherApp() {
   const weather = useQuery(weatherQueryOptions(location));
   const forecast = useQuery(forecastQueryOptions(location));
 
-  console.log('weather', weather.data);
-  console.log('forecast', forecast.data);
-
   useEffect(() => {
     if (location) {
       weather.refetch();
       forecast.refetch();
     }
   }, [location]);
+
+  if (weather.isFetching && !weather.data) {
+    return (
+      <LoadingIcon>
+        <PiSpinnerBallBold />
+      </LoadingIcon>
+    );
+  }
 
   return (
     <APIProvider
@@ -152,10 +159,11 @@ export default function WeatherApp() {
     >
       <WeatherAppWrapper>
         <PlacesSearchInput onPlaceSelect={handlePlaceSelect} />
-        {weather.isFetching && (
-          <LoadingIcon>
-            <PiSpinnerBallBold />
-          </LoadingIcon>
+        {weather.data !== null && weather.data !== undefined && (
+          <CurrentWeatherCard
+            weather={weather.data}
+            locationName={locationName}
+          />
         )}
       </WeatherAppWrapper>
     </APIProvider>

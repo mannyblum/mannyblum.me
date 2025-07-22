@@ -18,10 +18,17 @@ export type ForecastDay = {
 };
 
 export type CurrentWeatherResponse = {
+  coord: { lat: number; lon: number };
   weather: Weather[];
-  // coord: "",
-  // base: "",
-  // main: "",
+  base: 'main';
+  main: {
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    humidity: number;
+  };
   // visibility: "",
   // wind: "",
   // clouds: "",
