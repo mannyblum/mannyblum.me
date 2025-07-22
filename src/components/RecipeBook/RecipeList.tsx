@@ -1,5 +1,5 @@
 import type { Meal } from '@/queryOptions/searchQueryOptions';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import { AnimatePresence } from 'motion/react';
 import React from 'react';
 

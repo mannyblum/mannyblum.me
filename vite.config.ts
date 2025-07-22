@@ -6,6 +6,27 @@ import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          '@emotion/react': ['@emotion/react', '@emotion/styled'],
+          '@dnd-kit': [
+            '@dnd-kit/core',
+            '@dnd-kit/sortable',
+            '@dnd-kit/helpers',
+            '@dnd-kit/react',
+          ],
+          '@tanstack/react-query': [
+            '@tanstack/react-query',
+            '@tanstack/react-query-persist-client',
+            '@tanstack/query-sync-storage-persister',
+          ],
+        },
+      },
+    },
+  },
   server: {
     proxy: {
       '/mealdb': {

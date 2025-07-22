@@ -2,7 +2,7 @@ import { useMeal } from '@/context/RecipeBookContext';
 import type { Meal } from '@/queryOptions/searchQueryOptions';
 import RecipeBook from '@components/RecipeBook/RecipeBook';
 import RecipeDetails from '@components/RecipeBook/RecipeDetails';
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 import { AnimatePresence } from 'motion/react';
 
 const RecipeBookPage = () => {

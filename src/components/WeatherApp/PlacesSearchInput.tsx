@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { XCircleIcon } from '@primer/octicons-react';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
-import { debounce } from 'lodash';
+import { debounce } from 'lodash-es';
 import { FormEvent, useCallback, useMemo, useState } from 'react';
 
 type PlaceSearchInputProps = {

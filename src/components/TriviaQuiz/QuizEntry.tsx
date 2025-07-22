@@ -1,7 +1,7 @@
 import { Radio, RadioChangeEvent } from 'antd';
 import classNames from 'classnames';
 import { decode } from 'html-entities';
-import { shuffle } from 'lodash';
+import { shuffle } from 'lodash-es';
 import { motion } from 'motion/react';
 import { useMemo, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
