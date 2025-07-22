@@ -1,10 +1,9 @@
 import { CollisionPriority } from '@dnd-kit/abstract';
-import { UniqueIdentifier } from '@dnd-kit/core';
+// import { UniqueIdentifier } from '@dnd-kit/core';
 // import { DragOverlay } from '@dnd-kit/core';
 import { move } from '@dnd-kit/helpers';
 import {
   DragDropProvider,
-  DragOverlay,
   useDragDropMonitor,
   useDroppable,
 } from '@dnd-kit/react';
@@ -16,7 +15,7 @@ import React, { useState } from 'react';
 import './index.css';
 
 function Column({ children, id }: { children: React.ReactNode; id: string }) {
-  const { isDropTarget, ref, droppable } = useDroppable({
+  const { isDropTarget, ref } = useDroppable({
     id,
     type: 'column',
     accept: 'item',
@@ -79,7 +78,7 @@ export function DnDKit() {
     C: [],
   });
 
-  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+  // const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
 
   useDragDropMonitor({
     onDragOver(event, manager) {
@@ -95,7 +94,7 @@ export function DnDKit() {
       }}
       onDragStart={({ operation }) => {
         console.log('Started dragging', operation.source?.id);
-        setActiveId(operation.source?.id || null);
+        // setActiveId(operation.source?.id || null);
       }}
     >
       <div className="Root">

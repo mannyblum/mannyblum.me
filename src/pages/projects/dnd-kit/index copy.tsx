@@ -1,10 +1,4 @@
-import {
-  DndContext,
-  DragEndEvent,
-  closestCenter,
-  useDraggable,
-  useDroppable,
-} from '@dnd-kit/core';
+import { DndContext, DragEndEvent, closestCenter } from '@dnd-kit/core';
 import {
   SortableContext,
   arrayMove,

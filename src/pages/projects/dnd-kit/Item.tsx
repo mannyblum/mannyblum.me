@@ -2,13 +2,11 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 import styles from './item.module.css';
-import { useMountStatus } from './useMountStatus';
+
+// import { useMountStatus } from './useMountStatus';
 
 export default function Item({
   id,
-  index,
-  column,
-  disabled,
 }: {
   id: string | number;
   index: number;
@@ -17,7 +15,6 @@ export default function Item({
 }) {
   const {
     isDragging,
-    isSorting,
     attributes,
     listeners,
     setNodeRef,
@@ -25,8 +22,8 @@ export default function Item({
     transition,
   } = useSortable({ id });
 
-  const mounted = useMountStatus();
-  const mountedWhileDragging = isDragging && !mounted;
+  // const mounted = useMountStatus();
+  // const mountedWhileDragging = isDragging && !mounted;
 
   const style = {
     transform: CSS.Transform.toString(transform),

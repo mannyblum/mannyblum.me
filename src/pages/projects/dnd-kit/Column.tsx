@@ -12,16 +12,7 @@ export default function Column({
   id: string | number;
   items: UniqueIdentifier[];
 }) {
-  const {
-    active,
-    attributes,
-    isDragging,
-    listeners,
-    over,
-    setNodeRef,
-    transition,
-    transform,
-  } = useSortable({
+  const { setNodeRef } = useSortable({
     id,
     data: {
       type: 'container',
@@ -29,10 +20,10 @@ export default function Column({
     },
   });
 
-  const isOverContainer = over
-    ? (id === over.id && active?.data.current?.type !== 'container') ||
-      items.includes(over.id)
-    : false;
+  // const isOverContainer = over
+  //   ? (id === over.id && active?.data.current?.type !== 'container') ||
+  //     items.includes(over.id)
+  //   : false;
 
   return (
     <div className={`Column ${styles.Column}`} ref={setNodeRef}>

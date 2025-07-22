@@ -31,13 +31,13 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
-  color: #f4f6f8;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: var(--color-indigo-600);
-`;
+// const Button = styled.button`
+//   color: #f4f6f8;
+//   padding: 6px 10px;
+//   border-radius: 4px;
+//   font-size: 16px;
+//   background-color: var(--color-indigo-600);
+// `;
 
 const Results = styled.div`
   border: 2px solid #333;
@@ -101,12 +101,9 @@ export default function PlacesSearchInput({
 }: PlaceSearchInputProps) {
   const places = useMapsLibrary('places');
 
-  const [focused, setFocused] = useState<boolean>(false);
-
   const [inputValue, setInputValue] = useState<string>('');
   const [acsValue, setAcsValue] = useState<string>('');
   const [showList, setShowList] = useState<boolean>(false);
-  const [hasUserTyped, setHasUserTyped] = useState<boolean>(false);
 
   const { suggestions, resetSession } = useAutocompleteSuggestions(acsValue, {
     includedPrimaryTypes: ['locality', 'administrative_area_level_1'],
@@ -123,7 +120,6 @@ export default function PlacesSearchInput({
     (event: FormEvent<HTMLInputElement>) => {
       const searchValue = (event.target as HTMLInputElement).value;
       setInputValue(searchValue);
-      setHasUserTyped(true);
       handleSearch(searchValue);
     },
     [],
@@ -145,8 +141,8 @@ export default function PlacesSearchInput({
       setInputValue(suggestion.placePrediction.text.text);
 
       setShowList(false);
-      setHasUserTyped(false);
-      setFocused(false);
+      // setHasUserTyped(false);
+      // setFocused(false);
       resetSession();
 
       onPlaceSelect(pl);
@@ -154,18 +150,18 @@ export default function PlacesSearchInput({
     [places],
   );
 
-  const handleFocus = useCallback(() => {
-    setFocused(true);
-  }, []);
+  // const handleFocus = useCallback(() => {
+  //   setFocused(true);
+  // }, []);
 
-  const handleBlur = useCallback(() => {
-    setFocused(false);
-  }, []);
+  // const handleBlur = useCallback(() => {
+  //   setFocused(false);
+  // }, []);
 
   const handleClearInput = useCallback(() => {
     setInputValue('');
     setShowList(false);
-    setHasUserTyped(false);
+    // setHasUserTyped(false);
     // resetSession();
   }, [resetSession]);
 
@@ -177,8 +173,8 @@ export default function PlacesSearchInput({
             handleInputChange(evt);
           }}
           value={inputValue}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          // onFocus={handleFocus}
+          // onBlur={handleBlur}
           name="search"
           type="text"
           placeholder="search city ..."

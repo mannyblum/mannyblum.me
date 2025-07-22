@@ -1,18 +1,16 @@
 import {
-  CollisionDetection,
   DndContext,
   KeyboardSensor,
   MouseSensor,
   PointerSensor,
   TouchSensor,
   UniqueIdentifier,
-  closestCenter,
   pointerWithin,
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { unstable_batchedUpdates } from 'react-dom';
 
 import Column from './Column';
@@ -26,8 +24,8 @@ type Items = Record<UniqueIdentifier, UniqueIdentifier[]>;
 
 export default function DnDKit() {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-  const [clonedItems, setClonedItems] = useState<Items | null>(null);
-  const lastOverId = useRef<UniqueIdentifier | null>(null);
+  // const [clonedItems, setClonedItems] = useState<Items | null>(null);
+  // const lastOverId = useRef<UniqueIdentifier | null>(null);
 
   const recentlyMovedToNewContainer = useRef(false);
 
@@ -68,7 +66,7 @@ export default function DnDKit() {
       sensors={sensors}
       onDragStart={({ active }) => {
         setActiveId(active.id);
-        setClonedItems(items);
+        // setClonedItems(items);
       }}
       collisionDetection={pointerWithin}
       // collisionDetection={closestCenter}

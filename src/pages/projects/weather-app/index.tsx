@@ -54,7 +54,7 @@
 //  [ ] Empty input
 //  [ ] Nonexistent cities
 import Button from '@/components/Resume/Button';
-import { BorderOutlined, CheckSquareOutlined } from '@ant-design/icons';
+import { BorderOutlined } from '@ant-design/icons';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
 

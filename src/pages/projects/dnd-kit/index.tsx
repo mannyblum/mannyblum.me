@@ -1,4 +1,4 @@
-import DndKit from './DndKit';
+// import DndKit from './DndKit';
 import { DnDKit as DnDKitReact } from './DndKitReact';
 import './index.css';
 
