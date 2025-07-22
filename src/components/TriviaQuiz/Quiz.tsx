@@ -7,7 +7,7 @@ import QuizEntry from './QuizEntry';
 import QuizHeader from './QuizHeader';
 import QuizProgress from './QuizProgress';
 
-export const QUESTION_COUNT: number = 2;
+export const QUESTION_COUNT: number = 10;
 
 export default function Quiz({
   quiz,
