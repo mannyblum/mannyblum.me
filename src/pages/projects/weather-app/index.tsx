@@ -5,18 +5,18 @@
 //  [ ] Show validation or error for invalid city input
 //  [ ] Optional: Use current geolocation for weather
 //
-// [ ] Current Weather Display
+// [x] Current Weather Display
 //  [x] City name and country
 //  [x] Temperature (Celsius and/or Fahrenheit)
 //  [x] Weather description (e.g. “light rain”)
 //  [x] Weather icon (from API)
-//  [ ] Feels like temperature
-//  [ ] Humidity
-//  [ ] Wind speed
+//  [x] Feels like temperature
+//  [x] Humidity
+//  [x] Wind speed
 //
 // [ ] API Integration
-//  [ ] Use a weather API (e.g. OpenWeatherMap)
-//  [ ] Handle loading state
+//  [x] Use a weather API (e.g. OpenWeatherMap)
+//  [x] Handle loading state
 //  [ ] Handle error state (e.g. "City not found")
 //
 // ⚙️ 2. State & Data Management

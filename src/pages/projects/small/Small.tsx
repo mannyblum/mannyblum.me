@@ -16,7 +16,7 @@ export default function Small() {
       <Button variant="vanilla" onClick={handleGoBack}>
         Back to Gallery
       </Button>
-      <div className="bg-white h-[100%] mt-4 border-4  border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] py-4 px-8">
+      <div className="bg-white h-[100%] mt-4 border-4  border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
         <Outlet />
       </div>
     </div>

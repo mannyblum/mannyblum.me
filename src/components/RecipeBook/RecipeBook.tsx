@@ -1,7 +1,12 @@
+import RecipeDetails from '@/components/RecipeBook/RecipeDetails';
+import { useMeal } from '@/context/RecipeBookContext';
 import searchQueryOptions from '@/queryOptions/searchQueryOptions';
+import type { Meal } from '@/queryOptions/searchQueryOptions';
 import TextField from '@components/form/TextField';
 import { useQuery } from '@tanstack/react-query';
+import { isEmpty } from 'lodash-es';
 import { motion } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { ClipLoader } from 'react-spinners';
@@ -20,6 +25,8 @@ const RecipeBook = () => {
   const { isFetching, isSuccess, isError, data, error, refetch } = useQuery(
     searchQueryOptions(searchTerm),
   );
+
+  const { meal, setMeal } = useMeal();
 
   const term = searchParams.get('term') || '';
 
@@ -70,9 +77,8 @@ const RecipeBook = () => {
   };
 
   return (
-    // <motion.div>
     <div className="bg-amber-50 h-full w-full py-8 relative overflow-y-scroll">
-      <motion.div className="flex justify-center py-4 w-full md:w-[75%] flex-col grow mx-auto">
+      <motion.div className="flex justify-center py-4 w-full md:w-[95%] flex-col grow mx-auto">
         <div className="flex justify-center">
           <TextField
             value={inputValue}
@@ -90,8 +96,13 @@ const RecipeBook = () => {
             renderRecipeList()
           )}
         </div>
-        {/* </div> */}
       </motion.div>
+
+      <AnimatePresence mode="wait">
+        {!isEmpty(meal) && (
+          <RecipeDetails key="details" onClose={() => setMeal({} as Meal)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -10,7 +10,9 @@ const RecipeBookContext = createContext<RecipeBookContextType | undefined>(
   undefined,
 );
 
-const BookProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const RecipeBookProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [meal, setMeal] = useState<Meal>({} as Meal);
 
   return (
@@ -23,9 +25,9 @@ const BookProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 export const useMeal = () => {
   const context = useContext(RecipeBookContext);
   if (context === undefined) {
-    throw new Error('useMeal must be used within a MealProvider');
+    throw new Error('useMeal must be used within a RecipeBookProvider');
   }
   return context;
 };
 
-export default BookProvider;
+export default RecipeBookProvider;
