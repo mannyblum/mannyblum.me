@@ -73,8 +73,7 @@ const searchComponent = css`
   justify-content: flex-center;
   align-items: flex-start;
   width: 90%;
-  margin: 0px auto;
-  padding: 8px 0;
+  margin: 12px 24px;
 
   & > div {
     flex-grow: 2;

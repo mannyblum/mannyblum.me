@@ -6,10 +6,10 @@
 //  [ ] Optional: Use current geolocation for weather
 //
 // [ ] Current Weather Display
-//  [ ] City name and country
-//  [ ] Temperature (Celsius and/or Fahrenheit)
-//  [ ] Weather description (e.g. “light rain”)
-//  [ ] Weather icon (from API)
+//  [x] City name and country
+//  [x] Temperature (Celsius and/or Fahrenheit)
+//  [x] Weather description (e.g. “light rain”)
+//  [x] Weather icon (from API)
 //  [ ] Feels like temperature
 //  [ ] Humidity
 //  [ ] Wind speed

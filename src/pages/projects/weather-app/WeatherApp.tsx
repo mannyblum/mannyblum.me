@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { PiSpinnerBallBold } from 'react-icons/pi';
 
 import CurrentWeatherCard from './CurrentWeatherCard';
+import ForecastWeatherCard from './ForecastWeatherCard';
 
 const count = 7;
 const units = 'imperial';
@@ -152,6 +153,9 @@ export default function WeatherApp() {
     );
   }
 
+  console.log('forecast', forecast);
+  console.log('forecast.data', forecast.data);
+
   return (
     <APIProvider
       version="beta"
@@ -164,6 +168,9 @@ export default function WeatherApp() {
             weather={weather.data}
             locationName={locationName}
           />
+        )}
+        {forecast.data !== null && forecast.data !== undefined && (
+          <ForecastWeatherCard forecast={forecast.data} />
         )}
       </WeatherAppWrapper>
     </APIProvider>

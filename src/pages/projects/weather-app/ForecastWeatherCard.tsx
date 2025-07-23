@@ -1,0 +1,33 @@
+import { ForecastDay, ForecastResponse } from '@/types/Weather';
+import { css } from '@emotion/react';
+
+import ForecastDayCard from './ForecastDayCard';
+
+const forecastCard = css`
+  margin: 12px 24px;
+  overflow: auto;
+`;
+
+const forecastDaysList = css`
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+`;
+
+export default function ForecastWeatherCard({
+  forecast,
+}: {
+  forecast: ForecastResponse;
+}) {
+  return (
+    <div css={forecastCard}>
+      <div css={forecastDaysList}>
+        {forecast.list.map((dayForecast: ForecastDay) => {
+          return (
+            <ForecastDayCard dayForecast={dayForecast} key={dayForecast.dt} />
+          );
+        })}
+      </div>
+    </div>
+  );
+}

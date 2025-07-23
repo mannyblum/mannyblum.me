@@ -6,6 +6,7 @@ export type Weather = {
 };
 
 export type ForecastDay = {
+  dt: number;
   temp: {
     day: number;
     eve: number;
@@ -19,8 +20,13 @@ export type ForecastDay = {
 
 export type CurrentWeatherResponse = {
   coord: { lat: number; lon: number };
+  dt: number;
   weather: Weather[];
   base: 'main';
+  wind: {
+    speed: number;
+    deg: number;
+  };
   main: {
     temp: number;
     feels_like: number;
