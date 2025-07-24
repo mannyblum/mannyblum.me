@@ -2,6 +2,7 @@ import { useDayOrNight } from '@/hooks/useDayOrNight';
 import { CurrentWeatherResponse } from '@/types/Weather';
 import { css } from '@emotion/react';
 import { LocationIcon } from '@primer/octicons-react';
+import { isEmpty } from 'lodash-es';
 
 import '../../../css/weather-icons-wind.css';
 import '../../../css/weather-icons.css';
@@ -111,6 +112,8 @@ export default function CurrentWeatherCard({
   locationName,
 }: CurrentWeatherCardProps) {
   const timeOfDay = useDayOrNight(weather.dt);
+
+  if (isEmpty(weather)) return;
 
   return (
     <div css={weatherCardWrapper}>

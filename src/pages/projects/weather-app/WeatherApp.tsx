@@ -1,9 +1,11 @@
 import PlacesSearchInput from '@/components/WeatherApp/PlacesSearchInput';
+import { useWeather } from '@/context/WeatherContext';
 import { CurrentWeatherResponse, ForecastResponse } from '@/types/Weather';
-import { keyframes } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { queryOptions, useQuery } from '@tanstack/react-query';
 import { APIProvider } from '@vis.gl/react-google-maps';
+import { isEmpty } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { PiSpinnerBallBold } from 'react-icons/pi';
 
@@ -42,6 +44,17 @@ const LoadingIcon = styled.div`
     width: 64px;
     height: 64px;
     animation: ${spin} 3s linear infinite;
+  }
+`;
+
+const startMessage = css`
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 12px 24px;
+  padding: 12px;
+
+  & > p {
+    margin-bottom: 0;
   }
 `;
 
@@ -116,27 +129,57 @@ function forecastQueryOptions(location: google.maps.LatLng | null) {
 }
 
 export interface PlaceRedux extends google.maps.Place {
-  displayName?: string;
-  formattedAddress?: string;
+  displayName: string;
+  formattedAddress: string;
 }
 
 export default function WeatherApp() {
   const [location, setLocation] = useState<google.maps.LatLng | null>(null);
-
   const [locationName, setLocationName] = useState<string>('');
 
+  const { weatherState, setWeatherState } = useWeather();
+
   const handlePlaceSelect = (place: PlaceRedux) => {
+    console.log('place', place);
     if (place?.location) {
       setLocation(place.location as google.maps.LatLng);
     }
 
     if (place?.formattedAddress) {
       setLocationName(place.formattedAddress);
+      setWeatherState((prev) => ({
+        ...prev,
+        searchTerm: place.formattedAddress,
+      }));
     }
   };
 
+  useEffect(() => {
+    if (weatherState.searchTerm) {
+      setLocationName(weatherState.searchTerm);
+    }
+  }, [weatherState.searchTerm]);
+
   const weather = useQuery(weatherQueryOptions(location));
   const forecast = useQuery(forecastQueryOptions(location));
+
+  useEffect(() => {
+    if (weather.data) {
+      setWeatherState((prev) => ({
+        ...prev,
+        currentWeather: weather.data,
+      }));
+    }
+  }, [weather.data]);
+
+  useEffect(() => {
+    if (forecast.data) {
+      setWeatherState((prev) => ({
+        ...prev,
+        forecastWeather: forecast.data,
+      }));
+    }
+  }, [forecast.data]);
 
   useEffect(() => {
     if (location) {
@@ -153,9 +196,6 @@ export default function WeatherApp() {
     );
   }
 
-  console.log('forecast', forecast);
-  console.log('forecast.data', forecast.data);
-
   return (
     <APIProvider
       version="beta"
@@ -163,15 +203,21 @@ export default function WeatherApp() {
     >
       <WeatherAppWrapper>
         <PlacesSearchInput onPlaceSelect={handlePlaceSelect} />
-        {weather.data !== null && weather.data !== undefined && (
+        {!isEmpty(weatherState.currentWeather) &&
+        weatherState.currentWeather !== null ? (
           <CurrentWeatherCard
-            weather={weather.data}
+            weather={weatherState.currentWeather}
             locationName={locationName}
           />
+        ) : (
+          <div css={startMessage}>
+            <p>Please use the search above to fetch weather data.</p>
+          </div>
         )}
-        {forecast.data !== null && forecast.data !== undefined && (
-          <ForecastWeatherCard forecast={forecast.data} />
-        )}
+        {weatherState.forecastWeather !== null &&
+          weatherState.forecastWeather !== undefined && (
+            <ForecastWeatherCard forecast={weatherState.forecastWeather} />
+          )}
       </WeatherAppWrapper>
     </APIProvider>
   );

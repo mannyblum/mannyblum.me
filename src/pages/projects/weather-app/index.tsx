@@ -21,22 +21,22 @@
 //
 // ⚙️ 2. State & Data Management
 // [ ] Store:
-//  [ ] Search query
-//  [ ] Weather data response
+//  [x] Search query
+//  [x] Weather data response
 //  [ ] Loading/error states
-// [ ] Use React's useState, useEffect
-// [ ] Optional: useContext or useReducer for more complex data flows
+// [x] Use React's useState, useEffect
+// [x] Optional: useContext or useReducer for more complex data flows
 //
 // 🎨 3. UI/UX
 // [ ] Responsive design (mobile-first layout)
 // [ ] Clean and modern UI
-// [ ] Weather icons match condition (e.g. sun, rain, snow)
+// [x] Weather icons match condition (e.g. sun, rain, snow)
 // [ ] Dynamic background or styling based on weather (optional)
 // [ ] Temperature toggle (°C / °F)
 //
 // 🧪 4. Optional Features to Elevate the App
-// [ ] Forecast
-//  [ ] 5-day or 7-day forecast
+// [x] Forecast
+//  [x] 5-day or 7-day forecast
 //  [ ] Show daily high/low temps and weather icons
 //
 // [ ] Location Detection
@@ -54,6 +54,7 @@
 //  [ ] Empty input
 //  [ ] Nonexistent cities
 import Button from '@/components/Resume/Button';
+import WeatherProvider from '@/context/WeatherContext';
 import { BorderOutlined } from '@ant-design/icons';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
@@ -90,7 +91,9 @@ const WeatherAppPage = () => {
         </div>
         <div className="mb-8 flex grow justify-center items-center">
           <div className="w-11/12 pt-4 rounded-md border-5 flex justify-stretch items-start border-black bg-white min-h-[800px] h-[800px] max-h-[800px]">
-            <WeatherApp />
+            <WeatherProvider>
+              <WeatherApp />
+            </WeatherProvider>
           </div>
         </div>
         <div>

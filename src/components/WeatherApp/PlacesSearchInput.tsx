@@ -1,13 +1,16 @@
+import { useWeather } from '@/context/WeatherContext';
 import { useAutocompleteSuggestions } from '@/hooks/use-autocomplete-suggestions';
+import { PlaceRedux } from '@/pages/projects/weather-app/WeatherApp';
+import { CurrentWeatherResponse, ForecastResponse } from '@/types/Weather';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { XCircleIcon } from '@primer/octicons-react';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
 import { debounce } from 'lodash-es';
-import { FormEvent, useCallback, useMemo, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
 type PlaceSearchInputProps = {
-  onPlaceSelect: (place: google.maps.Place) => void;
+  onPlaceSelect: (place: PlaceRedux) => void;
 };
 
 const Input = styled.input`
@@ -100,19 +103,31 @@ export default function PlacesSearchInput({
 }: PlaceSearchInputProps) {
   const places = useMapsLibrary('places');
 
+  const { weatherState, setWeatherState } = useWeather();
+
   const [inputValue, setInputValue] = useState<string>('');
   const [acsValue, setAcsValue] = useState<string>('');
   const [showList, setShowList] = useState<boolean>(false);
 
-  const { suggestions, resetSession } = useAutocompleteSuggestions(acsValue, {
-    includedPrimaryTypes: ['locality', 'administrative_area_level_1'],
-  });
+  useEffect(() => {
+    if (weatherState.searchTerm) {
+      setInputValue(weatherState.searchTerm);
+      setAcsValue(weatherState.searchTerm);
+    }
+  }, [weatherState]);
+
+  const { suggestions, resetSession } = useAutocompleteSuggestions(
+    acsValue ?? '',
+    {
+      includedPrimaryTypes: ['locality', 'administrative_area_level_1'],
+    },
+  );
 
   const handleSearch = useMemo(() => {
     return debounce((searchTerm) => {
       setAcsValue(searchTerm);
       setShowList(true);
-    }, 300); // Debounce for 300 milliseconds
+    }, 300);
   }, []);
 
   const handleInputChange = useCallback(
@@ -135,13 +150,16 @@ export default function PlacesSearchInput({
         fields: ['displayName', 'location', 'formattedAddress'],
       });
 
-      const pl: google.maps.Place & { displayName?: string } = place.toJSON();
+      const placeJson = place.toJSON();
+      const pl: PlaceRedux = {
+        ...placeJson,
+        displayName: place.displayName ?? '',
+        formattedAddress: place.formattedAddress ?? '',
+      };
 
       setInputValue(suggestion.placePrediction.text.text);
 
       setShowList(false);
-      // setHasUserTyped(false);
-      // setFocused(false);
       resetSession();
 
       onPlaceSelect(pl);
@@ -149,18 +167,14 @@ export default function PlacesSearchInput({
     [places],
   );
 
-  // const handleFocus = useCallback(() => {
-  //   setFocused(true);
-  // }, []);
-
-  // const handleBlur = useCallback(() => {
-  //   setFocused(false);
-  // }, []);
-
   const handleClearInput = useCallback(() => {
     setInputValue('');
     setShowList(false);
-    // setHasUserTyped(false);
+    setWeatherState(() => ({
+      searchTerm: '',
+      currentWeather: {} as CurrentWeatherResponse,
+      forecastWeather: {} as ForecastResponse,
+    }));
     // resetSession();
   }, [resetSession]);
 
@@ -172,13 +186,11 @@ export default function PlacesSearchInput({
             handleInputChange(evt);
           }}
           value={inputValue}
-          // onFocus={handleFocus}
-          // onBlur={handleBlur}
           name="search"
           type="text"
           placeholder="search city ..."
         />
-        {inputValue.length > 0 && (
+        {inputValue && inputValue.length > 0 && (
           <button className="input-clear" onClick={handleClearInput}>
             <XCircleIcon size={24} />
           </button>

@@ -1,5 +1,6 @@
 import { ForecastDay, ForecastResponse } from '@/types/Weather';
 import { css } from '@emotion/react';
+import { isEmpty } from 'lodash-es';
 
 import ForecastDayCard from './ForecastDayCard';
 
@@ -19,6 +20,8 @@ export default function ForecastWeatherCard({
 }: {
   forecast: ForecastResponse;
 }) {
+  if (isEmpty(forecast)) return;
+
   return (
     <div css={forecastCard}>
       <div css={forecastDaysList}>
