@@ -1,3 +1,6 @@
 [submodule "src/projects/weather-app"]
 	path = src/projects/weather-app
 	url = https://github.com/mannyblum/weather-app
+[submodule "src/projects/triviaquiz-app"]
+	path = src/projects/triviaquiz-app
+	url = https://github.com/mannyblum/triviaquiz-app

@@ -1,9 +1,8 @@
 import Button from '@/components/Resume/Button';
+import TriviaQuiz from '@/projects/triviaquiz-app/src/TriviaQuiz';
 import { BorderOutlined, CheckSquareOutlined } from '@ant-design/icons';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
-
-import TriviaQuiz from './TriviaQuiz';
 
 const TriviaQuizPage = () => {
   const navigate = useNavigate();
