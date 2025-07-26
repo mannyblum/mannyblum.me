@@ -31,5 +31,5 @@
     },
     "jsxImportSource": "@emotion/react"
   },
-  "include": ["src"]
+  "include": ["src", "src/projects/weather-app"]
 }

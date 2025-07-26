@@ -48,7 +48,7 @@ function App() {
           </Route>
           <Route path="trivia" element={<TriviaQuizPage />} />
           <Route path="dnd-kit" element={<DndKitPage />} />
-          <Route path="weather" element={<WeatherAppPage />} />
+          <Route path="weather-app" element={<WeatherAppPage />} />
         </Route>
       </Routes>
     </Suspense>
