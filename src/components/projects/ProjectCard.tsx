@@ -20,6 +20,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   const openCodeLink = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    window.open(project.githubUrl, '_blank');
   };
 
   return (

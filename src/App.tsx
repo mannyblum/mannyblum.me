@@ -5,6 +5,7 @@ import { ProgressBar } from '@components/Conversions/ProgressBar';
 import ProjectList from '@components/projects/ProjectList.tsx';
 import { Suspense } from 'react';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Route, Routes, useLocation } from 'react-router';
 
 const Resume = React.lazy(() => import('./pages/Resume.tsx'));
@@ -32,26 +33,49 @@ const WeatherAppPage = React.lazy(
 function App() {
   const location = useLocation();
   return (
-    <Suspense fallback={<div>Loading ...</div>}>
-      <Routes location={location} key={location.pathname}>
-        <Route index element={<Resume />} />
-        <Route path="conversions" element={<Conversions />}>
-          <Route path="progress" element={<Progress />} />
-          <Route path="progress-bar" element={<ProgressBar />} />
-        </Route>
-        <Route path="projects" element={<Projects />}>
-          <Route index element={<ProjectList />} />
-          <Route path="css-challenges" element={<CSSChallenges />} />
-          <Route path="small" element={<Small />}>
-            <Route path="task-app" element={<TaskApp />} />
-            <Route path="recipe-book" element={<RecipeBook />} />
+    <>
+      <Helmet>
+        <title>
+          Senior Frontend Engineer | React, Next.js, GraphQL | Manny Blum
+        </title>
+        <meta
+          name="description"
+          content="Portfolio and resume of Manny Blum, Senior Frontend Engineer with expertise in React, TypeScript, GraphQL, and scalable UI development."
+        />
+        <meta
+          name="keywords"
+          content="Frontend Engineer, React Developer, Next.js, TypeScript, GraphQL, Apollo, Tailwind CSS, Manny Blum, UI Developer, Web Engineer"
+        />
+        <meta
+          property="og:title"
+          content="Manny Blum | Frontend Engineer – React, GraphQL, TypeScript"
+        />
+        <meta
+          property="og:description"
+          content="Portfolio and experience of Manny Blum, an expert in building performant, scalable frontend applications."
+        />
+      </Helmet>
+      <Suspense fallback={<div>Loading ...</div>}>
+        <Routes location={location} key={location.pathname}>
+          <Route index element={<Resume />} />
+          <Route path="conversions" element={<Conversions />}>
+            <Route path="progress" element={<Progress />} />
+            <Route path="progress-bar" element={<ProgressBar />} />
           </Route>
-          <Route path="trivia" element={<TriviaQuizPage />} />
-          <Route path="dnd-kit" element={<DndKitPage />} />
-          <Route path="weather-app" element={<WeatherAppPage />} />
-        </Route>
-      </Routes>
-    </Suspense>
+          <Route path="projects" element={<Projects />}>
+            <Route index element={<ProjectList />} />
+            <Route path="css-challenges" element={<CSSChallenges />} />
+            <Route path="small" element={<Small />}>
+              <Route path="task-app" element={<TaskApp />} />
+              <Route path="recipe-book" element={<RecipeBook />} />
+            </Route>
+            <Route path="trivia" element={<TriviaQuizPage />} />
+            <Route path="dnd-kit" element={<DndKitPage />} />
+            <Route path="weather-app" element={<WeatherAppPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 

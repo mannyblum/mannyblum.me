@@ -2,7 +2,7 @@ import ContactIcon from '../icons/Contact';
 
 export default function Contact() {
   return (
-    <section className="contact card shadow">
+    <section id="contact" className="contact card shadow">
       <ContactIcon />
       <ul>
         <li>

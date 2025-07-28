@@ -1,6 +1,6 @@
 export default function Profile() {
   return (
-    <section className="profile card">
+    <section id="profile" className="profile card">
       <p>
         Experienced Front-End and UX Developer with over a decade of expertise
         in building intuitive, responsive web applications and scalable

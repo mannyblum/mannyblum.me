@@ -1,7 +1,7 @@
 export default function Skills() {
   return (
     <>
-      <section className="skills">
+      <section id="skills" className="skills">
         <h2>Skills</h2>
         <h3>Front-End Development</h3>
         <ul>
@@ -67,7 +67,7 @@ export default function Skills() {
           <li>Jest </li>
         </ul>
       </section>
-      <section className="education">
+      <section id="education" className="education">
         <h2>Education</h2>
         <p>
           <strong>Bachelors of Fine Arts in Interactive Media Design</strong>

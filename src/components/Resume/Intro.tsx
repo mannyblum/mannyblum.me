@@ -10,14 +10,14 @@ export default function Intro() {
     navigate('/projects/');
   };
   return (
-    <section className="intro card shadow">
+    <section id="introduction" className="intro card shadow">
       <header>
         <h1>Manny Blum</h1>
         <h2>Front-End/UI/UX Engineer</h2>
       </header>
       <a
         className="download-btn"
-        href="/manny-blum-2025-resume-v9.pdf"
+        href="/manny-blum-2025-resume-v11.pdf"
         download
       >
         Download Resume
