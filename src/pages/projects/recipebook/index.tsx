@@ -1,8 +1,22 @@
-import RecipeBookIndex from './RecipeBook';
+import Button from '@/components/Resume/Button';
+import RecipeBookApp from '@/projects/recipebook-app/src/RecipeBookApp';
+import { MouseEvent } from 'react';
+import { useNavigate } from 'react-router';
 
 const RecipeBookPage = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    navigate(`/projects`);
+  };
+
   return (
-    <div>
+    <div className="mt-4">
+      <Button variant="vanilla" onClick={handleGoBack}>
+        Back to Gallery
+      </Button>
       <div className="relative my-4">
         <h2 className="text-4xl font-black mb-4 relative inline-block">
           <span className="relative z-10 uppercase">Recipe Book</span>
@@ -19,8 +33,10 @@ const RecipeBookPage = () => {
           list of results with categories and a detail window hwn clicked.
         </p>
       </div>
-      <div className="border-5 border-black mb-8 h-[500px] min-h-[300px] flex grow justify-center items-center">
-        <RecipeBookIndex />
+      <div className="bg-white mt-4 mb-4 border-4  border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] py-4 px-8">
+        <div className="rounded-md border-5 flex justify-start items-start border-black bg-white mx-auto">
+          <RecipeBookApp />
+        </div>
       </div>
       <div>
         <h3 className="text-2xl font-black mb-4 relative inline-block">

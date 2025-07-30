@@ -29,7 +29,7 @@
     "thumbnail": "recipe-book-thumb.png",
     "shortDescription": "Simple search UI for themealdb.com API",
     "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac magna ac lectus cursus feugiat et ut velit. Maecenas suscipit porta consequat. Donec feugiat ultrices tempor. Phasellus egestas tempus est eget dignissim. Duis eros arcu, ornare a lacinia interdum, porta vel orci. Proin eget risus quis ligula tristique placerat. Nam eget pellentesque ipsum, sed ornare eros. Sed vitae urna posuere, congue felis in, aliquam eros.",
-    "demoUrl": "/projects/small/recipe-book",
+    "demoUrl": "/projects/recipebook",
     "type": "app",
     "githubUrl": "http://github.com",
     "techStack": [

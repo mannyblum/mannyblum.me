@@ -18,7 +18,7 @@ const DndKitPage = React.lazy(
 );
 const Small = React.lazy(() => import('./pages/projects/small/Small.tsx'));
 const RecipeBook = React.lazy(
-  () => import('./pages/projects/small/recipe-book/RecipeBook.tsx'),
+  () => import('./pages/projects/recipebook/index.tsx'),
 );
 const TaskApp = React.lazy(
   () => import('./pages/projects/small/task-app/TaskApp.tsx'),
@@ -67,8 +67,8 @@ function App() {
             <Route path="css-challenges" element={<CSSChallenges />} />
             <Route path="small" element={<Small />}>
               <Route path="task-app" element={<TaskApp />} />
-              <Route path="recipe-book" element={<RecipeBook />} />
             </Route>
+            <Route path="recipebook" element={<RecipeBook />} />
             <Route path="trivia" element={<TriviaQuizPage />} />
             <Route path="dnd-kit" element={<DndKitPage />} />
             <Route path="weather-app" element={<WeatherAppPage />} />
