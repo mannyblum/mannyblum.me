@@ -22,9 +22,6 @@ export default function Intro() {
       >
         Download Resume
       </a>
-      <a className="download-btn projects" onClick={openProjectsLink} download>
-        Projects
-      </a>
     </section>
   );
 }

@@ -1,5 +1,4 @@
 import Button from '@/components/Resume/Button';
-import TriviaQuiz from '@/projects/triviaquiz-app/src/TriviaQuiz';
 import { BorderOutlined, CheckSquareOutlined } from '@ant-design/icons';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
@@ -37,7 +36,7 @@ const TriviaQuizPage = () => {
         </div>
         <div className="mb-8 flex grow justify-center items-center">
           <div className="rounded-md border-5 flex justify-center items-start border-black bg-white min-h-[800px] h-[800px] max-h-[800px] mx-auto">
-            <TriviaQuiz />
+            {/* <TriviaQuiz /> */}
           </div>
         </div>
         <div>
