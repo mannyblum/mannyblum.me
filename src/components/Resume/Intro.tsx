@@ -1,14 +1,4 @@
-import { MouseEvent } from 'react';
-import { useNavigate } from 'react-router';
-
 export default function Intro() {
-  const navigate = useNavigate();
-
-  const openProjectsLink = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-
-    navigate('/projects/');
-  };
   return (
     <section id="introduction" className="intro card shadow">
       <header>

@@ -1,5 +1,4 @@
 import Button from '@/components/Resume/Button';
-import Weather from '@/projects/weather-app/src/WeatherApp';
 import { BorderOutlined } from '@ant-design/icons';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
@@ -33,9 +32,7 @@ const WeatherAppPage = () => {
           <p className="text-xl max-w-2xl mt-6 mb-8!">A simple weather app.</p>
         </div>
         <div className="mb-8 flex grow justify-center items-center">
-          <div className="w-11/12 pt-4 rounded-md border-5 flex justify-stretch items-start border-black bg-white min-h-[800px] h-[800px] max-h-[800px]">
-            <Weather />
-          </div>
+          <div className="w-11/12 pt-4 rounded-md border-5 flex justify-stretch items-start border-black bg-white min-h-[800px] h-[800px] max-h-[800px]"></div>
         </div>
         <div>
           <h3 className="text-2xl font-black mb-8 relative inline-block">

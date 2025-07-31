@@ -1,5 +1,4 @@
 import Button from '@/components/Resume/Button';
-import RecipeBookApp from '@/projects/recipebook-app/src/RecipeBookApp';
 import { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -34,9 +33,7 @@ const RecipeBookPage = () => {
         </p>
       </div>
       <div className="bg-white mt-4 mb-4 border-4  border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] py-4 px-8">
-        <div className="rounded-md border-5 flex justify-start items-start border-black bg-white mx-auto">
-          <RecipeBookApp />
-        </div>
+        <div className="rounded-md border-5 flex justify-start items-start border-black bg-white mx-auto"></div>
       </div>
       <div>
         <h3 className="text-2xl font-black mb-4 relative inline-block">
